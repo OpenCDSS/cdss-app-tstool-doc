@@ -1,0 +1,2 @@
+StartRegressionTestResultsReport(OutputFile="RunTestSuite_UserManualExamples.TSTool.out.txt")
+RunCommands(InputFile="..\..\TestCases\CommandReference\WeightTraces\Test_WeightTraces.TSTool")

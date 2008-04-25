@@ -1,0 +1,4 @@
+StartLog(LogFile="Results/Test_WeightTraces.TSTool.log")
+RemoveFile(InputFile="Results/Test_WeightTraces_out.dv",WarnIfMissing=False)
+RunCommands(InputFile="WeightTraces.TSTool")
+CompareFiles(InputFile1="ExpectedResults/WeightTraces_out.dv",InputFile2="Results/WeightTraces_out.dv",WarnIfDifferent=True)

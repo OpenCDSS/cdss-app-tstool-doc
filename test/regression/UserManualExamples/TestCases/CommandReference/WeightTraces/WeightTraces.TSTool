@@ -1,0 +1,8 @@
+# Create annual traces from a time series shifted to the current year
+# The original time series is read from HydroBase
+# 
+# (1995-1998) ALAMOSA RIVER ABOVE JASPER, CO  USGS  Streamflow  Day
+08235350.USGS.Streamflow.Day~HydroBase
+CreateEnsemble(TSID="08235350.USGS.Streamflow.Day",TraceLength=1Year,EnsembleID="Ensemble_Jasper",EnsembleName="ALAMOSA RIVER ABOVE JASPER, CO",ReferenceDate="2008-01-01",ShiftDataHow=ShiftToReference)
+TS WeightedTS = WeightTraces(EnsembleID="Ensemble_Jasper",SpecifyWeightsHow="AbsoluteWeights",Weights="1997,.5,1998,.4,1999,.1",NewTSID="08235350.USGS.Streamflow.Day.weighted")
+WriteDateValue(OutputFile="Results/WeightTraces_out.dv")
