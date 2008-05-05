@@ -1,0 +1,28 @@
+SetOutputPeriod(OutputStart="1950",OutputEnd="2002")
+# _________________________________________________________
+# 0130 - ALAMOSA SAN LUIS VALLEY RGNL
+0130.NOAA.FrostDateL28S.Year~HydroBase
+0130.NOAA.FrostDateL32S.Year~HydroBase
+0130.NOAA.FrostDateF32F.Year~HydroBase
+0130.NOAA.FrostDateF28F.Year~HydroBase
+# Add Meeker Stations (5484 and 5487)
+# then "free" 5487 
+5484.NOAA.FrostDateL28S.Year~HydroBase
+5484.NOAA.FrostDateL32S.Year~HydroBase
+5484.NOAA.FrostDateF32F.Year~HydroBase
+5484.NOAA.FrostDateF28F.Year~HydroBase
+5487.NOAA.FrostDateL28S.Year~HydroBase
+5487.NOAA.FrostDateL32S.Year~HydroBase
+5487.NOAA.FrostDateF32F.Year~HydroBase
+5487.NOAA.FrostDateF28F.Year~HydroBase
+FillFromTS(TSList=AllMatchingTSID,TSID="5484.NOAA.FrostDateL28S.Year",IndependentTSList=AllMatchingTSID,IndependentTSID="5487.NOAA.FrostDateL28S.Year")
+FillFromTS(TSList=AllMatchingTSID,TSID="5484.NOAA.FrostDateL32S.Year",IndependentTSList=AllMatchingTSID,IndependentTSID="5487.NOAA.FrostDateL32S.Year")
+FillFromTS(TSList=AllMatchingTSID,TSID="5484.NOAA.FrostDateF32F.Year",IndependentTSList=AllMatchingTSID,IndependentTSID="5487.NOAA.FrostDateF32F.Year")
+FillFromTS(TSList=AllMatchingTSID,TSID="5484.NOAA.FrostDateF28F.Year",IndependentTSList=AllMatchingTSID,IndependentTSID="5487.NOAA.FrostDateF28F.Year")
+Free(TSID="5487*")
+#
+# _________________________________________________________
+FillHistYearAverage(TSList=AllMatchingTSID,TSID="*")
+#
+# _________________________________________________________
+writeStateCU("..\StateCU\Frost2002.stm")

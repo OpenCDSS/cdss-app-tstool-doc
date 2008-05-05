@@ -1,0 +1,34 @@
+# StartLog(LogFile="Example_Ensemble.TSTool.log")
+# These commands query historical and real-time data at the lobatos gage and
+# compute a weighted "best-guess" for the flows at lobatos for the remainder
+# of the current year.  In other words, the current year will be complete,
+# with observed at the beginning and historical "likely" at the end.
+# 
+# First get the historic daily lobatos gage and convert to traces.  Shift each trace to
+# 2008-01-01 (the current year) so that the data can overlay the current year's
+# values.
+TS daily = readTimeSeries("08251500.USGS.Streamflow.Day~HydroBase")
+CreateEnsemble(TSID="daily",TraceLength=1Year,EnsembleID="Lobatos",ReferenceDate="2008-01-01",ShiftDataHow=ShiftToReference)
+# 
+# Now weight the traces using representative historic years.
+# 
+TS lobatos_likely = WeightTraces(EnsembleID="Lobatos",SpecifyWeightsHow="AbsoluteWeights",Weights="1997,.5,1998,.4,1999,.1",NewTSID="Lobatos..Streamflow.Day.likely")
+# 
+# Now query the current (real-time) flows.  HydroBase may only hold a few weeks or months
+# of data.
+# 
+# Uncomment the following line to see the actual real-time values
+# 08251500 - RIO GRANDE RIVER NEAR LOBATOS
+08251500.DWR.Streamflow-DISCHRG.Irregular~HydroBase
+# Convert the irrigular instantaneous values to a daily instantaneous (midnight)
+TS lobatos_current = ChangeInterval(TSID="08251500.DWR.Streamflow-DISCHRG.Irregular",NewInterval=Day,OldTimeScale=INST,NewTimeScale=INST)
+#
+# Blend the current data to the end of the historical data (the current data
+# will override.
+#
+Blend(TSID="lobatos_current",IndependentTSID="lobatos_likely",BlendMethod=BlendAtEnd)
+# 
+# After the above commands are executed, time series in memory will include the traces and
+# the current time series.  You can select only the time series of interest and plot
+# OR select many time series and then disable/enable in the plot.  You may need to use
+# both approaches to find appropriate time series to weight.

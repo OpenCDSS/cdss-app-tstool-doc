@@ -1,0 +1,10 @@
+#
+# Structures for which to process data
+#
+# WDID - State of Colorado Water District Identifier
+# Name - Structure name (from HydroBase)
+#
+"WDID","Name"
+0100501,EMPIRE DITCH
+0100503,RIVERSIDE CANAL
+0100504,ILLINOIS DITCH

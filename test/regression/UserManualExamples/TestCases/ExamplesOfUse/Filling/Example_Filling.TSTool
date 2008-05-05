@@ -1,0 +1,23 @@
+#
+# Data filling example - assume daily DateValue time series as input
+#
+#
+# Generate some sample data for the example described above:
+# ts1 has observed values from 1900-2000
+# ts2 has observed values from 1920 to 1950 and regulated thereafter
+#
+# Although data are generated below, they could be read from files or a
+# database.  In this case, the SetOutputPeriod() command might need to be used
+# to ensure that the final result is for a required period.
+#
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1..Streamflow.Day",Description="Time series 1, all unregulated",SetStart="1900-01-01",SetEnd="2000-12-31",Units="CFS",PatternValues="1,2,4,7,12,6,2,1.5")
+TS ts2 = NewPatternTimeSeries(NewTSID="ts2..Streamflow.Day",Description="Time series 1, unregulated from 1920 to 1950, regulated after",SetStart="1900-01-01",SetEnd="2000-12-31",Units="CFS",PatternValues="2,3,6,10,15,3,2.5,2")
+#
+# Clear out the period 1919- in ts2 because it was not recorded in our example.
+SetConstant(TSList=AllMatchingTSID,TSID="ts2",ConstantValue=-999,SetEnd="1919-12-31")
+# Clear out the period 1951+ in ts2 because it is regulated and needs to
+# be filled with the result of unregulated MOVE2 analysis.
+SetConstant(TSList=AllMatchingTSID,TSID="ts2",ConstantValue=-999,SetStart="1951-01-01")
+# Analyze and fill the second time series.  Transform the data to log10 and
+# use monthly equations…
+FillMOVE2(TSID="ts2",IndependentTSID="ts1",NumberOfEquations=MonthlyEquations,DependentAnalysisStart="1920-01-01",DependentAnalysisEnd="1950-12-31",IndependentAnalysisStart="1900-01-01",IndependentAnalysisEnd="2000-12-31",FillFlag="M")

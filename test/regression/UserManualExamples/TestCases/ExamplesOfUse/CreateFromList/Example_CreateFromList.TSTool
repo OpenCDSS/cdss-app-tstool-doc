@@ -1,0 +1,9 @@
+# 
+# Example to illustrate how a delimited list of location identifiers can be used
+# to create time series identifiers for processing.  This example creates
+# time series identifiers to read from the State of Colorado's HydroBase, and
+# outputs to a StateMod model file.
+#
+CreateFromList(ListFile="structure_list.txt",IDCol=1,DataSource=DWR,DataType="DivTotal",Interval=Month,InputType=HydroBase,HandleMissingTSHow=IgnoreMissingTS)
+SetOutputYearType(Calendar)
+WriteStateMod(TSList=AllTS,OutputFile="structure_list.stm")
