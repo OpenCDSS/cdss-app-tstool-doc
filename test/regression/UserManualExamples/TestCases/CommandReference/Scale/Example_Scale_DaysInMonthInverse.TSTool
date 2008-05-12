@@ -1,0 +1,5 @@
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
+06754000.DWR.Streamflow.Month~HydroBase
+Scale(TSList=AllMatchingTSID,TSID="06754000.DWR.Streamflow.Month",ScaleValue=.5042)
+Scale(TSList=AllMatchingTSID,TSID="06754000.DWR.Streamflow.Month",ScaleValue=DaysInMonthInverse,NewUnits="CFS")
+06754000.DWR.Streamflow.Month~HydroBase

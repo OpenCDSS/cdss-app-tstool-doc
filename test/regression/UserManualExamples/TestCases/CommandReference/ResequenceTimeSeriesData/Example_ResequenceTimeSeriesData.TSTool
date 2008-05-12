@@ -1,0 +1,4 @@
+StartLog(LogFile="Results/Test_ResequenceTimeSeriesData_1.TSTool.log")
+ReadTableFromDelimitedFile(TableID="KNN_Years",InputFile="Data\flow_sequence_dataset_1.csv",SkipRows="1",HeaderRows="2")
+ReadStateMod(InputFile="Data\gm2004x.xbm")
+ResequenceTimeSeriesData(TSList=AllTS,TableID="KNN_Years",TableColumn="1",TableRowStart="1",TableRowEnd="30",OutputStart="1908",NewScenario="KNN01")

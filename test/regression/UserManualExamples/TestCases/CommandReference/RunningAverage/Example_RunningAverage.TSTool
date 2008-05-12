@@ -1,0 +1,6 @@
+# 0100501 - EMPIRE DITCH
+TS Center = readTimeSeries("0100501.DWR.DivTotal.Month~HydroBase")
+RunningAverage(TSList=AllMatchingTSID,TSID="Center",AverageMethod=Centered,Bracket=3)
+TS NYear = readTimeSeries("0100501.DWR.DivTotal.Month~HydroBase")
+RunningAverage(TSList=AllMatchingTSID,TSID="NYear",AverageMethod=NYear,Bracket=5)
+0100501.DWR.DivTotal.Month~HydroBase

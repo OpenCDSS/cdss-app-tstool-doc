@@ -1,0 +1,3 @@
+# 1458 - CENTER 4 SSW
+1458.NOAA.Precip.Month~HydroBase
+Scale(TSList=AllMatchingTSID,TSID="1458.NOAA.Precip.Month",ScaleValue=3.5)
