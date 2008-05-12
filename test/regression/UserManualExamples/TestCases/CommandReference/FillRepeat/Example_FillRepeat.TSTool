@@ -1,0 +1,3 @@
+# 08236500 - ALAMOSA RIVER BELOW TERRACE RESERVOIR
+08236500.DWR.Streamflow.Month~HydroBase
+FillRepeat(TSList=AllMatchingTSID,TSID="08236500.DWR.Streamflow.Month",FillDirection=Forward)

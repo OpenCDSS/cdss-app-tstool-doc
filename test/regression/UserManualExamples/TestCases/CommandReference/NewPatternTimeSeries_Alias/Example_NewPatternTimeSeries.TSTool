@@ -1,0 +1,2 @@
+TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+WriteDateValue(OutputFile="Results\Example_NewPatternTimeSeries_out.dv")
