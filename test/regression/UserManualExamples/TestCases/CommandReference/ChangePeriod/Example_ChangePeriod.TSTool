@@ -1,0 +1,3 @@
+# 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR
+08236000.DWR.Streamflow.Month~HydroBase
+ChangePeriod(TSList=AllTS,NewStart="1900-01")

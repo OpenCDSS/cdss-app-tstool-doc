@@ -1,0 +1,4 @@
+StartLog(LogFile="Results/Test_Example_Blend.TSTool.log")
+RemoveFile(InputFile="Results/Test_Example_Blend_out.dv",WarnIfMissing=False)
+RunCommands(InputFile="Example_Blend.TSTool")
+CompareFiles(InputFile1="ExpectedResults/Example_Blend_out.dv",InputFile2="Results/Example_Blend_out.dv",WarnIfDifferent=True)

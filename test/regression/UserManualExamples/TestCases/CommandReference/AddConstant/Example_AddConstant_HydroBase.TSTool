@@ -1,0 +1,3 @@
+# 2003536 - CONTINENTAL RES
+2003536.DWR.ResMeasStorage.Day~HydroBase
+AddConstant(TSList=AllMatchingTSID,TSID="2003536.DWR.ResMeasStorage.Day",ConstantValue=5000)
