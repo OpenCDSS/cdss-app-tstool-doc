@@ -1,0 +1,2 @@
+SetOutputPeriod(OutputStart="1950-01",OutputEnd="2002-12")
+TS station1 = NewTimeSeries(NewTSID="Station1.MyModel.Streamflow.Month",Description="Example Description",SetStart="1950-01",SetEnd="2002-12",Units="CFS",InitialValue=20)

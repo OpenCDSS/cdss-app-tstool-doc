@@ -1,0 +1,3 @@
+StartLog(LogFile="Results/Example_OpenHydroBase_DatabaseName.TSTool.log")
+OpenHydroBase(DatabaseServer="sopris",DatabaseName="HydroBase_CO_20060816")
+TS ts = ReadHydroBase(TSID="BOXHUDCO.DWR.Streamflow.Month")

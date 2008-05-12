@@ -1,0 +1,4 @@
+OpenHydroBase(DatabaseServer="hbserver",RunMode=GUIAndBatch,UseStoredProcedures=True,InputName="SP")
+OpenHydroBase(DatabaseServer="hbserver",RunMode=GUIAndBatch,UseStoredProcedures=False,InputName="NoSP")
+TS ts_sp = ReadHydroBase(TSID="BOXHUDCO.DWR.Streamflow.Month~HydroBase~SP")
+TS ts_nosp = ReadHydroBase(TSID="BOXHUDCO.DWR.Streamflow.Month~HydroBase~NoSP")

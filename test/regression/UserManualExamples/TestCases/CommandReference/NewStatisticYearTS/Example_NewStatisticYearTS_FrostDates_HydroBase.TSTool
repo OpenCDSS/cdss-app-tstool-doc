@@ -1,0 +1,10 @@
+StartLog(LogFile="FrostDates_HydroBase.log")
+SetOutputPeriod(OutputStart="1950-01",OutputEnd="2004-12")
+# 3553 - GREELEY UNC
+3553.NOAA.TempMin.Day~HydroBase
+TS 3553_FrostDateL28S = NewStatisticYearTS(TSID="3553.NOAA.TempMin.Day",NewTSID="3553.NOAA.FrostDateL28S.Year",Statistic=DayOfLastLE,TestValue=28,SearchStart="06/30")
+TS 3553_FrostDateL32S = NewStatisticYearTS(TSID="3553.NOAA.TempMin.Day",NewTSID="3553.NOAA.FrostDateL32S.Year",Statistic=DayOfLastLE,TestValue=32,SearchStart="06/30")
+TS 3553_FrostDateF32F = NewStatisticYearTS(TSID="3553.NOAA.TempMin.Day",NewTSID="3553.NOAA.FrostDateF32F.Year",Statistic=DayOfFirstLE,TestValue=32,SearchStart="07/01")
+TS 3553_FrostDateF28F = NewStatisticYearTS(TSID="3553.NOAA.TempMin.Day",NewTSID="3553.NOAA.FrostDateF28F.Year",Statistic=DayOfFirstLE,TestValue=28,SearchStart="07/01")
+Free(TSID="*.*.TempMin.*")
+writeStateCU("Results/Test.FrostDates")

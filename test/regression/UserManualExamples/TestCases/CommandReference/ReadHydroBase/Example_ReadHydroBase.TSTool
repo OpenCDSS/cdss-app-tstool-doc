@@ -1,0 +1,1 @@
+readHydroBase(DataType="DivClass",Interval="Day",Where1="District;Equals;3",Where2="Structure ID;Equals;905",Where3="SFUT;Contains;s:2",Where4="SFUT;Contains;u:Q",FillUsingDivComments=True)

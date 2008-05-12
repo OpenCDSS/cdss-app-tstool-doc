@@ -1,0 +1,7 @@
+# 08235350 - ALAMOSA RIVER ABOVE JASPER
+08235350.USGS.Streamflow.Day~HydroBase
+# 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR
+08236000.DWR.Streamflow.Day~HydroBase
+# 7337 - SAGUACHE
+7337.NOAA.Precip.Month~HydroBase
+ProcessTSProduct(TSProductFile="Example_ProcessTSProduct.tsp")

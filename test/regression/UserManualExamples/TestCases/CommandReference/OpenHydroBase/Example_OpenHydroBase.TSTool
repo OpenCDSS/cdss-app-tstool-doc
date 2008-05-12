@@ -1,0 +1,1 @@
+openHydroBase(RunMode=GUIAndBatch,OdbcDsn="HydroBase_DIV1_20030701")

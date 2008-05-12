@@ -1,0 +1,1 @@
+ReadNwsCard(InputFile="Data\03567500.CARD",InputStart="1960-01-01 24",InputEnd="2005-12-31 24",Read24HourAsDay=True)
