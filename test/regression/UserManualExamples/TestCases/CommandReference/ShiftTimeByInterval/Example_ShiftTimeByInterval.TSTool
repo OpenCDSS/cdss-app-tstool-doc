@@ -1,0 +1,4 @@
+# 08213500 - RIO GRANDE RIVER AT THIRTY MILE BRIDGE NEAR CREEDE
+08213500.DWR.Streamflow.Day~HydroBase
+ShiftTimeByInterval(TSList=AllMatchingTSID,TSID="08213500.DWR.Streamflow.Day",ShiftData="-1,1")
+08213500.DWR.Streamflow.Day~HydroBase

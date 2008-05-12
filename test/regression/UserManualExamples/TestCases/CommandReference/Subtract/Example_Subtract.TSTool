@@ -1,0 +1,5 @@
+# 0100501 - EMPIRE DITCH
+0100501.DWR.DivTotal.Month~HydroBase
+# 0100503 - RIVERSIDE CANAL
+0100503.DWR.DivTotal.Month~HydroBase
+Subtract(TSID="0100501.DWR.DivTotal.Month",SubtractTSList=SpecifiedTSID,SubtractTSID="0100503.DWR.DivTotal.Month",HandleMissingHow="IgnoreMissing")
