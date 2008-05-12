@@ -1,0 +1,3 @@
+# 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR
+08236000.DWR.Streamflow.Month~HydroBase
+ConvertDataUnits(TSList=AllMatchingTSID,TSID="08236000.DWR.Streamflow.Month",NewUnits="CFSD")

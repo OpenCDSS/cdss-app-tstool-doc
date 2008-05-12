@@ -1,0 +1,5 @@
+# 1458 - CENTER 4 SSW
+1458.NOAA.Precip.Day~HydroBase
+# 2184 - DEL NORTE 2 E
+2184.NOAA.Precip.Day~HydroBase
+Cumulate(TSList=AllTS,HandleMissingHow=CarryForwardIfMissing)

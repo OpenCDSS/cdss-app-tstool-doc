@@ -1,0 +1,2 @@
+LARIMER.NASS.CropArea-Vegetables, Harvested.Year~HydroBase
+fillHistYearAverage("LARIMER.NASS.CropArea-Vegetables, Harvested.Year")

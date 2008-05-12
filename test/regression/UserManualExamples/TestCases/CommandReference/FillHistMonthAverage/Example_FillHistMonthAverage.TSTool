@@ -1,0 +1,3 @@
+# 1179 - BYERS 5 ENE
+1179.NOAA.Precip.Month~HydroBase
+fillHistMonthAverage(TSList=AllMatchingTSID,TSID="1179.NOAA.Precip.Month",FillFlag="H")
