@@ -1,0 +1,2 @@
+ReadDateValue(InputFile="Data/FRANH.ESP.SQME.1HOUR.QPF1.TRACE2001")
+WriteNwsrfsEspTraceEnsemble(OutputFile="Results/FRANH.FRANH.SQME.01.CS",CarryoverGroup="FRANH",ForecastGroup="FRANH",SegmentDescription="FRANH",Latitude="43",Longitude="-72",RFC="NH",TSList="AllTS")

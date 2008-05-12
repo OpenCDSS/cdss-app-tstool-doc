@@ -1,0 +1,6 @@
+SetOutputPeriod(OutputStart="1950-01",OutputEnd="2002-12")
+# 08213500 - RIO GRANDE RIVER AT THIRTY MILE BRIDGE NEAR CREEDE
+08213500.DWR.Streamflow.Month~HydroBase
+# 08217000 - RIO GRANDE AT WASON, BELOW CREEDE, CO.
+08217000.USGS.Streamflow.Month~HydroBase
+WriteStateMod(TSList=AllTS,OutputFile="RioGrande.rih")

@@ -1,0 +1,3 @@
+# 0130 - ALAMOSA SAN LUIS VALLEY RGNL
+0130.NOAA.Precip.Day~HydroBase
+WriteNWSCard(OutputFile="Results/Alamosa.NOAA.PTPX.24Hour",TSList=AllTS)
