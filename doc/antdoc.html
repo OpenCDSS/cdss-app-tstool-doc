@@ -1,0 +1,231 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ant Documentation</title>
+  </head>
+  <style>
+                table {
+                border-width:0;
+                border-collapse: collapse;
+                }
+                .header td {
+                border-width:1;
+                border-color:black;
+                background-color: gray;
+                border-style: solid;
+                }
+                .row td {
+                border-width:1;
+                border-color:black;
+                border-style: solid;
+                vertical-align: top;
+                }
+            </style>
+  <body>
+                Properties used in build files:
+                <table>
+      <tr class="header">
+        <td>Property Name</td><td>Default Value</td><td>Description</td>
+      </tr>
+      <tr class="row">
+        <td>build.classpath</td><td></td><td>The classpath to use during compilation</td>
+      </tr>
+      <tr class="row">
+        <td>build.dir</td><td>bin</td><td>The name of a build directory</td>
+      </tr>
+      <tr class="row">
+        <td>default.jar.excludes</td><td>**/*.svn
+                ,<br>${jar.excludes}</td><td>The default excludes - do not change this - instead change jar.excludes</td>
+      </tr>
+      <tr class="row">
+        <td>dist.dir</td><td>dist</td><td>The name of a distributable directory</td>
+      </tr>
+      <tr class="row">
+        <td>ext.dir</td><td>externals</td><td>The directory for externals with contents defined by svn:externals</td>
+      </tr>
+      <tr class="row">
+        <td>fork.javac</td><td>true</td><td>Whether to fork javac or not (true or false)</td>
+      </tr>
+      <tr class="row">
+        <td>graphics.dir</td><td>graphics</td><td>The directory for graphics resources</td>
+      </tr>
+      <tr class="row">
+        <td>jar.excludes</td><td></td><td>A list of excludes for jar building</td>
+      </tr>
+      <tr class="row">
+        <td>jar.extra.includes</td><td></td><td>A list of includes to use for adding to jars</td>
+      </tr>
+      <tr class="row">
+        <td>jar.file</td><td>${dist.dir}/${jar.name}</td><td></td>
+      </tr>
+      <tr class="row">
+        <td>jar.includes</td><td>**/*.png
+                ,<br>**/*.gif
+                ,<br>**/*.jpg
+                ,<br>**/*.class/
+                ,<br>**/*.properties
+                ,<br>META-INF/**/*
+                ,<br>${jar.extra.includes}</td><td></td>
+      </tr>
+      <tr class="row">
+        <td>jar.name</td><td>${product.name}_${product.version}.jar</td><td></td>
+      </tr>
+      <tr class="row">
+        <td>java.src.version</td><td>1.4</td><td>The java source level to pass to the compiler</td>
+      </tr>
+      <tr class="row">
+        <td>java.target.version</td><td>1.4</td><td>The java byte code target level to pass to the compiler</td>
+      </tr>
+      <tr class="row">
+        <td>javac.debug</td><td>true</td><td>A flag to pass to javac for including debugging</td>
+      </tr>
+      <tr class="row">
+        <td>javac.excludes</td><td></td><td>Files to exclude from compilation</td>
+      </tr>
+      <tr class="row">
+        <td>javac.includes</td><td>**/*.java</td><td>Files to include in compilation</td>
+      </tr>
+      <tr class="row">
+        <td>jdoc.dir</td><td>doc/javadoc</td><td>The name of a javadoc directory</td>
+      </tr>
+      <tr class="row">
+        <td>jdoc.excludes</td><td>docs/javadoc</td><td>A list of files to exclude in javadoc</td>
+      </tr>
+      <tr class="row">
+        <td>jdoc.includes</td><td>**/*.java</td><td>A list of files to include in javadoc</td>
+      </tr>
+      <tr class="row">
+        <td>junit.jar</td><td>${rti.build.home}/lib/junit-3.8.1.jar</td><td></td>
+      </tr>
+      <tr class="row">
+        <td>logs.dir</td><td>test/logs</td><td></td>
+      </tr>
+      <tr class="row">
+        <td>nsis.dir</td><td>installer</td><td>The name of the nsis installer directory</td>
+      </tr>
+      <tr class="row">
+        <td>nsis.exe</td><td>S:\DEVELOP\NSIS\makensis.exe</td><td>The full path to the NSIS exe</td>
+      </tr>
+      <tr class="row">
+        <td>product.disabled.jars</td><td></td><td>A list of jars to exclude from an installer - matching is based upon the token appearing anywhere in the jar name</td>
+      </tr>
+      <tr class="row">
+        <td>product.icon</td><td>${rti.build.home}/resources/RTi.ico</td><td>The product icon used in installers, exe, etc.</td>
+      </tr>
+      <tr class="row">
+        <td>run.classpath</td><td></td><td>The classpath to use during execution</td>
+      </tr>
+      <tr class="row">
+        <td>src.dir</td><td>src</td><td>The directory for source code</td>
+      </tr>
+      <tr class="row">
+        <td>test.build.dir</td><td>${test.dir}/bin</td><td>The name of a test build directory</td>
+      </tr>
+      <tr class="row">
+        <td>test.classpath</td><td></td><td>The classpath to use during test execution</td>
+      </tr>
+      <tr class="row">
+        <td>test.dir</td><td>test</td><td>The name of a test directory</td>
+      </tr>
+    </table>
+                Targets:
+                <table>
+      <tr class="header">
+        <td>Target</td><td>Project</td><td>Depends</td><td>Description</td>
+      </tr>
+      <tr class="row">
+        <td>ant-doc</td><td>rti-common</td><td>-init</td><td>Generate ant documentation</td>
+      </tr>
+      <tr class="row">
+        <td>bootstrap</td><td>rti-common</td><td></td><td>build the rtibuild dependencies</td>
+      </tr>
+      <tr class="row">
+        <td>build</td><td>rti-common-build</td><td>clean compile</td><td>clean and compile this product</td>
+      </tr>
+      <tr class="row">
+        <td>clean</td><td>rti-common-build</td><td>-init</td><td>Clean class files and jar file, including tests</td>
+      </tr>
+      <tr class="row">
+        <td>clean-all</td><td>rti-common-build</td><td>-init</td><td>Clean all build products</td>
+      </tr>
+      <tr class="row">
+        <td>clean-all-deps</td><td>rti-common-build</td><td>-init -init-deps clean-all</td><td>Clean all build products and clean-all on all dependencies</td>
+      </tr>
+      <tr class="row">
+        <td>clean-and-build-installer</td><td>rti-common-installer</td><td>clean-and-build-local-install installer</td><td>clean and build local install, then create nsis installer</td>
+      </tr>
+      <tr class="row">
+        <td>clean-and-build-local-install</td><td>rti-common-installer</td><td>clean-deps clean-local-install local-install</td><td>clean all deps, local install and then rebuild local-install</td>
+      </tr>
+      <tr class="row">
+        <td>clean-deps</td><td>rti-common-build</td><td>-init -init-deps clean</td><td>clean this product and all dependencies</td>
+      </tr>
+      <tr class="row">
+        <td>clean-local-install</td><td>rti-common-installer</td><td>-init-installer</td><td>clean local installation only - does not clean deps or anything else</td>
+      </tr>
+      <tr class="row">
+        <td>compile</td><td>rti-common-build</td><td>-init -pre-compile-java -init-javac -compile-deps -compile-java -emma -check-tests -compile-tests</td><td>Compile product and all dependencies, including tests</td>
+      </tr>
+      <tr class="row">
+        <td>compile-nodeps</td><td>rti-common-build</td><td>-init</td><td>Compile java but do not compile dependencies</td>
+      </tr>
+      <tr class="row">
+        <td>create-user-manual-rti</td><td>TSTool</td><td></td><td>Merges PDF documentation into doc/dist_RTi folder</td>
+      </tr>
+      <tr class="row">
+        <td>exe</td><td>rti-common-installer</td><td>-standard-exe</td><td>generate an executable using launch4j</td>
+      </tr>
+      <tr class="row">
+        <td>generate-license</td><td>rti-common-installer</td><td>-bootstrap-cipher</td><td>Generate a license file</td>
+      </tr>
+      <tr class="row">
+        <td>installer</td><td>rti-common-installer</td><td>-init -pre-installer local-install -post-installer</td><td>Create an nsis installer for this product</td>
+      </tr>
+      <tr class="row">
+        <td>installer-only</td><td>rti-common-installer</td><td>-init</td><td>Create nsis an installer - does not call any other targets</td>
+      </tr>
+      <tr class="row">
+        <td>install-license</td><td>rti-common-installer</td><td>generate-license -install-license</td><td>perform license installation</td>
+      </tr>
+      <tr class="row">
+        <td>jar</td><td>rti-common-build</td><td>compile</td><td>Create product jar from name and version</td>
+      </tr>
+      <tr class="row">
+        <td>jar-deps</td><td>rti-common-build</td><td>-init</td><td>Build all dependency jars</td>
+      </tr>
+      <tr class="row">
+        <td>jar-no-deps</td><td>rti-common-build</td><td>compile-nodeps</td><td>Create jar without calling deps</td>
+      </tr>
+      <tr class="row">
+        <td>javadoc</td><td>rti-common-build</td><td>-init -init-java</td><td>Create javadocs</td>
+      </tr>
+      <tr class="row">
+        <td>local-install</td><td>rti-common-installer</td><td>jar-deps -local-install exe</td><td>build local installation and executable (if java.main.class defined)</td>
+      </tr>
+      <tr class="row">
+        <td>local-install-no-build</td><td>rti-common-installer</td><td>-local-install</td><td>do local install without building, just collect previously built products</td>
+      </tr>
+      <tr class="row">
+        <td>local-install-no-deps</td><td>rti-common-installer</td><td>jar-no-deps -local-install</td><td>build local installation without building any dependencies</td>
+      </tr>
+      <tr class="row">
+        <td>mergePDF</td><td>common-doc</td><td></td><td>Merges multiple PDF files into one</td>
+      </tr>
+      <tr class="row">
+        <td>pre-release</td><td>rti-common-build</td><td>clean-deps jar</td><td>Complete clean,build,test, and jar</td>
+      </tr>
+      <tr class="row">
+        <td>profile</td><td>rti-common-build</td><td>-init-deps compile</td><td>Netbeans profiler target</td>
+      </tr>
+      <tr class="row">
+        <td>run</td><td>rti-common-build</td><td>-init-deps -init-java -init-build</td><td>Run java.main.class as defined in product</td>
+      </tr>
+      <tr class="row">
+        <td>test</td><td>rti-common-build</td><td>-init -enable-emma -check-tests</td><td>Run all tests</td>
+      </tr>
+      <tr class="row">
+        <td>test-deps</td><td>rti-common-build</td><td>-init-deps test</td><td>Test with dependencies</td>
+      </tr>
+    </table>
+  </body>
+</html>
