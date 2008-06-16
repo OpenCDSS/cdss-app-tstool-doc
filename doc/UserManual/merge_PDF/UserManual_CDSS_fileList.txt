@@ -1,6 +1,5 @@
 01_Cover_CDSS.pdf
 03_Disclaimer_CDSS.pdf
-08_TableOfContents_CDSS.pdf
 11_Acknowledgements.pdf
 14_Introduction.pdf
 17_GettingStarted_CDSS.pdf
@@ -23,7 +22,7 @@
 60_Command_compareTimeSeries.pdf
 60_Command_ComputeErrorTimeSeries.pdf
 60_Command_convertDataUnits.pdf
-60_Command_copy_TSX.pdf
+60_Command_Copy_Alias.pdf
 60_Command_CopyEnsemble.pdf
 60_Command_CreateEnsemble.pdf
 60_Command_createFromList.pdf

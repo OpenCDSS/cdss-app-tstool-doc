@@ -1,6 +1,6 @@
 01_Cover_RTi.pdf
+00_BlankPage.pdf
 03_License_RTi.pdf
-08_TableOfContents_RTi.pdf
 11_Acknowledgements.pdf
 14_Introduction.pdf
 17_GettingStarted_RTi.pdf
@@ -23,7 +23,7 @@
 60_Command_compareTimeSeries.pdf
 60_Command_ComputeErrorTimeSeries.pdf
 60_Command_convertDataUnits.pdf
-60_Command_copy_TSX.pdf
+60_Command_Copy_Alias.pdf
 60_Command_CopyEnsemble.pdf
 60_Command_CreateEnsemble.pdf
 60_Command_createFromList.pdf
