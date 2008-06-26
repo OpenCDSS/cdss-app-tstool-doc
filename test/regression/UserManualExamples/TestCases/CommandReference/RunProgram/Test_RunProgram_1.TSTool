@@ -1,0 +1,1 @@
+RunProgram(CommandLine="echo Hello > ${WorkingDir}/Results/Test_RunProgram_1_out.txt")
