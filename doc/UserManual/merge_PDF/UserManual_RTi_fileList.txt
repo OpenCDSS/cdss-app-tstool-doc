@@ -84,6 +84,7 @@
 60_Command_runCommands.pdf
 60_Command_runningAverage.pdf
 60_Command_runProgram.pdf
+60_Command_RunPython.pdf
 60_Command_scale.pdf
 60_Command_selectTimeSeries.pdf
 60_Command_setAutoExtendPeriod.pdf
