@@ -1,0 +1,2 @@
+TS 401234 = NewPatternTimeSeries(NewTSID="401234..Precip.Day",Description="Example data",SetStart="2000-01-01",SetEnd="2000-12-31",Units="IN",PatternValues="0,1,3,0,0,0")
+SelectTimeSeries(TSList=AllMatchingTSID,TSID="40*",DeselectAllFirst=True)
