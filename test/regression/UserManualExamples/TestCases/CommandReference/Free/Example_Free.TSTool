@@ -1,1 +1,1 @@
-free(TSID="40*")
+Free(TSList=AllMatchingTSID,TSID="40*")
