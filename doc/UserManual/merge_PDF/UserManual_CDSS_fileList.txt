@@ -112,6 +112,7 @@
 60_Command_writeStateCU.pdf
 60_Command_writeStateMod.pdf
 60_Command_writeSummary.pdf
+60_Command_WriteTimeSeriesProperty.pdf
 80_Appendix_Install_Config_CDSS.pdf
 82_Appendix_ReleaseNotes.pdf
 90_Appendix_InputType_ColoradoSMS.pdf
