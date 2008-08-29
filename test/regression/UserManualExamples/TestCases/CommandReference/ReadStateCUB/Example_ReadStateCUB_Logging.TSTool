@@ -1,0 +1,3 @@
+StartLog(LogFile="commands.TSTool.log")
+SetDebugLevel(LogFileLevel=1)
+ReadStateCUB(InputFile="Data\farmers.BD1")
