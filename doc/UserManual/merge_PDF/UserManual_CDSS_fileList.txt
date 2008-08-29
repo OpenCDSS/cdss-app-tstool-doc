@@ -57,6 +57,7 @@
 60_Command_newStatisticYearTS_TSX.pdf
 60_Command_newTimeSeries_TSX.pdf
 60_Command_normalize_TSX.pdf
+60_Command_OpenCheckFile.pdf
 60_Command_openHydroBase.pdf
 60_Command_processTSProduct.pdf
 60_Command_readDateValue.pdf
@@ -67,6 +68,7 @@
 60_Command_readMODSIM_TSX.pdf
 60_Command_readRiverWare_TSX.pdf
 60_Command_readStateCU.pdf
+60_Command_readStateCUB.pdf
 60_Command_readStateMod.pdf
 60_Command_readStateModB.pdf
 60_Command_ReadTableFromDelimitedFile.pdf
@@ -120,7 +122,8 @@
 90_Appendix_InputType_HydroBase.pdf
 90_Appendix_InputType_RiverWare.pdf
 90_Appendix_InputType_StateCU.pdf
-90_Appendix_InputType_StateMod.pdf
+90_Appendix_InputType_StateCU.pdf
+90_Appendix_InputType_StateCUB.pdf
 90_Appendix_InputType_StateModB.pdf
 90_Appendix_InputType_USGSNWIS.pdf
 95_Appendix_TSView.pdf
