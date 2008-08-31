@@ -122,8 +122,8 @@
 90_Appendix_InputType_HydroBase.pdf
 90_Appendix_InputType_RiverWare.pdf
 90_Appendix_InputType_StateCU.pdf
-90_Appendix_InputType_StateCU.pdf
 90_Appendix_InputType_StateCUB.pdf
+90_Appendix_InputType_StateMod.pdf
 90_Appendix_InputType_StateModB.pdf
 90_Appendix_InputType_USGSNWIS.pdf
 95_Appendix_TSView.pdf
