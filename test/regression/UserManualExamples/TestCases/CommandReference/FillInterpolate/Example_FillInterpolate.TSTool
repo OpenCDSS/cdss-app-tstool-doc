@@ -1,3 +1,3 @@
 # 06707500 - SOUTH PLATTE RIVER AT SOUTH PLATTE
 06707500.DWR.Streamflow.Month~HydroBase
-fillInterpolate(06707500.DWR.Streamflow.Month,3,Linear)
+FillInterpolate(TSList=AllMatchingTSID,TSID="06707500.DWR.Streamflow.Month",MaxIntervals=3,Transformation=None)
