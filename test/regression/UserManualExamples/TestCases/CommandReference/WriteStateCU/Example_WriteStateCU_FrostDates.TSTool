@@ -3,4 +3,4 @@
 0109.NOAA.FrostDateL32S.Year~HydroBase
 0109.NOAA.FrostDateF32F.Year~HydroBase
 0109.NOAA.FrostDateF28F.Year~HydroBase
-writeStateCU("test.stm")
+WriteStateCU(OutputFile="Results/test.fst")

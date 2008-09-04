@@ -1,5 +1,0 @@
-# 0776 - BLANCA
-0776.NOAA.Precip.Month~HydroBase
-# 0130 - ALAMOSA SAN LUIS VALLEY RGNL
-0130.NOAA.Precip.Month~HydroBase
-writeStateCU("AllPrecip.stm")
