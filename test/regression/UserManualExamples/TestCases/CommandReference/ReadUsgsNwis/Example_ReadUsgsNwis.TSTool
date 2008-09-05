@@ -1,0 +1,1 @@
+TS nwis = ReadUsgsNwis(InputFile="Data\G03451500.txt")
