@@ -1,0 +1,3 @@
+# 06759000 - BIJOU CREEK NEAR WIGGINS, CO.
+06759000.USGS.Streamflow.Day~HydroBase
+AdjustExtremes(TSList=AllMatchingTSID,TSID="06759000.USGS.Streamflow.Day",AdjustMethod=Average,ExtremeToAdjust=AdjustMinimum,ExtremeValue=0,MaxIntervals=0)
