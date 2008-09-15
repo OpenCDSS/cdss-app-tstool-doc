@@ -1,0 +1,4 @@
+SetOutputPeriod(OutputStart="1936-01-01",OutputEnd="1936-03-31")
+TS Original = ReadUsgsNwis(InputFile="Data/G03596000.in1")
+TS Route = Copy(TSID="Original",NewTSID="03596000.USGS.Streamflow.Day.Routed")
+ARMA(TSList=AllMatchingTSID,TSID="Route",ARMAInterval=2Hour,a="0.7325,-0.3613,0.1345,0.5221,-0.2500,0.1381,-0.2643,0.0558",b="0.0263,0.0116,-0.0146,-0.0081,0.0127,0.0798,0.0727,0.0523,0.0599")
