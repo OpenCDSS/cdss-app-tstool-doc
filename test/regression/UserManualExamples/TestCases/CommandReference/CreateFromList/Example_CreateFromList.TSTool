@@ -1,0 +1,1 @@
+CreateFromList(ListFile="Data\Diversions.txt",IDCol=1,DataSource="DWR",DataType="DivTotal",Interval="Month",InputType="HydroBase",IfNotFound=DefaultMissingTS)
