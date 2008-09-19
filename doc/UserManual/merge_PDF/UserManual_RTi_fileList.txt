@@ -71,6 +71,7 @@
 60_Command_readNwsCard_TSX.pdf
 60_Command_readNWSRFSESPTraceEnsemble.pdf
 60_Command_readNWSRFSFS5Files_TSX.pdf
+60_Command_ReadPatternFile.pdf
 60_Command_readRiverWare_TSX.pdf
 60_Command_readStateCU.pdf
 60_Command_readStateCUB.pdf

@@ -66,6 +66,7 @@
 60_Command_readHydroBase_TSX.pdf
 60_Command_readMODSIM.pdf
 60_Command_readMODSIM_TSX.pdf
+60_Command_ReadPatternFile.pdf
 60_Command_readRiverWare_TSX.pdf
 60_Command_readStateCU.pdf
 60_Command_readStateCUB.pdf
