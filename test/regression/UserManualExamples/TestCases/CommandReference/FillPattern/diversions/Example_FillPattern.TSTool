@@ -1,0 +1,8 @@
+# Read StateMod time series to fill
+ReadStateMod(InputFile="..\StateMod\sjm_prelim.ddh")
+# Read the file containing the patterns
+ReadPatternFile(PatternFile="fill.pat")
+# Fill time series having identifiers that start with "30"
+FillPattern(TSList=AllMatchingTSID,TSID="30*",PatternID="9034500")
+# Write the results
+WriteStateMod(TSList=AllTS,OutputFile="..\StateMod\sjm.ddh")
