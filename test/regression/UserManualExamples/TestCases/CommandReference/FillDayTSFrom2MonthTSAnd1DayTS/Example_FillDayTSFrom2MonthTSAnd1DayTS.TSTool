@@ -1,0 +1,15 @@
+# The following is D1:
+# (1995-1998) ALAMOSA RIVER ABOVE JASPER, CO  USGS  Streamflow  Daily
+08235350.USGS.Streamflow.Day~HydroBase
+# The following is M1:
+# (1995-1998) ALAMOSA RIVER ABOVE JASPER, CO  USGS  Streamflow  Monthly
+08235350.USGS.Streamflow.Month~HydroBase
+# The following is D2:
+# (1914-1998) ALAMOSA RIVER ABOVE TERRACE RESERVOIR, CO.  DWR  Streamflow  Daily
+08236000.DWR.Streamflow.Day~HydroBase
+# The following is M2:
+# (1914-1998) ALAMOSA RIVER ABOVE TERRACE RESERVOIR, CO.  DWR  Streamflow  Monthly
+08236000.DWR.Streamflow.Month~HydroBase
+FillRegression(TSID="08235350.USGS.Streamflow.Month",IndependentTSID="08236000.DWR.Streamflow.Month",NumberOfEquations=OneEquation,Transformation=Linear)
+FillDayTSFrom2MonthTSAnd1DayTS(TSID_D1="08235350.USGS.Streamflow.Day",TSID_M1="08235350.USGS.Streamflow.Month",TSID_M2="08236000.DWR.Streamflow.Month",TSID_D2="08236000.DWR.Streamflow.Day")
+
