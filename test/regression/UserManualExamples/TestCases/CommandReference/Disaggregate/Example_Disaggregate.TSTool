@@ -1,0 +1,1 @@
+TS HourTS = Disaggregate(TSID="DayTS",Method=SameValue,NewInterval=6Hour)
