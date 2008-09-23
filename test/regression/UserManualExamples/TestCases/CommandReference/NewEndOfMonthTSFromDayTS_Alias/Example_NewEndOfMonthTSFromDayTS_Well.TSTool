@@ -1,0 +1,5 @@
+# StartLog(LogFile="usingWellData.log")
+# 384549104445101 - SCO1506611ABC
+384549104445101.USGS.WellLevel.Day~HydroBase
+TS WellMonth = NewEndOfMonthTSFromDayTS(DayTSID="384549104445101.USGS.WellLevel.Day",Bracket=30)
+FillInterpolate(TSList=AllMatchingTSID,TSID="WellMonth",MaxIntervals=0,Transformation=None)
