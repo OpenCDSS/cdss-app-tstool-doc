@@ -1,0 +1,3 @@
+# 06730500 - BOULDER CREEK AT MOUTH, NEAR LONGMONT, CO.
+06730500.USGS.Streamflow.Month~HydroBase
+TS NormalizedTS = Normalize(TSID="06730500.USGS.Streamflow.Month",MinValueMethod=MinFromTS,MinValue=0.0,MaxValue=1.0)
