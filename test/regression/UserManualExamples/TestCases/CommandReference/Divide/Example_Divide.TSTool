@@ -1,0 +1,5 @@
+# 2184 - DEL NORTE 2 E
+2184.NOAA.TempMean.Month~HydroBase
+# 5706 - MONTE VISTA 2 W
+5706.NOAA.TempMean.Month~HydroBase
+Divide(TSID="2184.NOAA.TempMean.Month",DivisorTSID="5706.NOAA.TempMean.Month")
