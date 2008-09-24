@@ -1,0 +1,1 @@
+TS Alamosa = ReadTimeSeries(TSID="08235350.USGS.Streamflow.Day~HydroBase")
