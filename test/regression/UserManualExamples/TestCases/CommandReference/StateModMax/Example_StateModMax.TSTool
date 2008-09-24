@@ -1,0 +1,2 @@
+StateModMax(InputFile1="rgTW.ddh",InputFile2="rgTWC_prelim.ddm")
+WriteStateMod(TSList=AllTS,OutputFile="rgTW.ddm")
