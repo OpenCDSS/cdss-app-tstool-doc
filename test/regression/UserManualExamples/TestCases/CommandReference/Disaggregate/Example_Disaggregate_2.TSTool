@@ -1,3 +1,0 @@
-# 08223000 - RIO GRANDE RIVER AT ALAMOSA
-TS DayTS = ReadTimeSeries("08223000.DWR.Streamflow.Day~HydroBase")
-TS HourTS = Disaggregate(TSID="DayTS",Method=Ormsbee,NewInterval=6Hour)
