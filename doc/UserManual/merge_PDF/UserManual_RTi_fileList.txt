@@ -10,7 +10,10 @@
 28_UsingTheMap.pdf
 29_Troubleshooting.pdf
 50_CommandGlossary.pdf
-55_Command_TSID_StateMod.pdf
+55_Command_Comment.pdf
+55_Command_CommentBlockStart.pdf
+55_Command_CommentBlockEnd.pdf
+55_Command_TSID.pdf
 60_Command_add.pdf
 60_Command_addConstant.pdf
 60_Command_adjustExtremes.pdf
