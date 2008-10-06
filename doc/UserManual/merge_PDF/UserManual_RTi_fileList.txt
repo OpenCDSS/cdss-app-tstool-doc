@@ -123,6 +123,7 @@
 60_Command_writeNwsCard.pdf
 60_Command_WriteProperty.pdf
 60_Command_writeRiverWare.pdf
+60_Command_WriteSHEF.pdf
 60_Command_writeStateCU.pdf
 60_Command_writeStateMod.pdf
 60_Command_writeSummary.pdf
