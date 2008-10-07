@@ -1,5 +1,4 @@
 01_Cover_RTi.pdf
-00_BlankPage.pdf
 03_License_RTi.pdf
 11_Acknowledgements.pdf
 14_Introduction.pdf
@@ -102,13 +101,14 @@
 60_Command_setIgnoreLEZero.pdf
 60_Command_setIncludeMissingTS.pdf
 60_Command_setInputPeriod.pdf
-60_Command_setMax.pdf
 60_Command_setOutputPeriod.pdf
 60_Command_setOutputYearType.pdf
 60_Command_setPatternFile.pdf
 60_Command_SetProperty.pdf
 60_Command_SetPropertyFromNwsrfsAppDefault.pdf
 60_Command_SetTimeSeriesProperty.pdf
+60_Command_SetToMax.pdf
+60_Command_SetToMin.pdf
 60_Command_setWarningLevel.pdf
 60_Command_setWorkingDir.pdf
 60_Command_shiftTimeByInterval.pdf
