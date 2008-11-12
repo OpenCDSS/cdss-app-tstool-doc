@@ -65,6 +65,7 @@
 60_Command_ProcessTSProduct.pdf
 60_Command_ReadDateValue.pdf
 60_Command_ReadDateValue_Alias.pdf
+60_Command_ReadHecDss.pdf
 60_Command_ReadHydroBase.pdf
 60_Command_ReadHydroBase_Alias.pdf
 60_Command_ReadMODSIM.pdf
@@ -133,6 +134,7 @@
 90_Appendix_InputType_ColoradoSMS.pdf
 90_Appendix_InputType_DateValue.pdf
 90_Appendix_InputType_DIADvisor.pdf
+90_Appendix_InputType_HEC-DSS.pdf
 90_Appendix_InputType_HydroBase.pdf
 90_Appendix_InputType_MexicoCSMN.pdf
 90_Appendix_InputType_MODSIM.pdf
