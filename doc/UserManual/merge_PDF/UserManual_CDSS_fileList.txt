@@ -1,5 +1,4 @@
 01_Cover_CDSS.pdf
-00_BlankPage.pdf
 03_Disclaimer_CDSS.pdf
 11_Acknowledgements.pdf
 14_Introduction.pdf
@@ -9,6 +8,7 @@
 26_Examples.pdf
 28_UsingTheMap.pdf
 29_Troubleshooting.pdf
+33_QualityControl.pdf
 50_CommandGlossary.pdf
 55_Command_Comment.pdf
 55_Command_CommentBlockStart.pdf
@@ -66,6 +66,7 @@
 60_Command_ProcessTSProduct.pdf
 60_Command_ReadDateValue.pdf
 60_Command_ReadDateValue_Alias.pdf
+60_Command_ReadHecDss.pdf
 60_Command_ReadHydroBase.pdf
 60_Command_ReadHydroBase_Alias.pdf
 60_Command_ReadMODSIM.pdf
@@ -115,6 +116,7 @@
 60_Command_Subtract.pdf
 60_Command_WeightTraces_Alias.pdf
 60_Command_WriteDateValue.pdf
+60_Command_WriteHecDss.pdf
 60_Command_WriteProperty.pdf
 60_Command_WriteRiverWare.pdf
 60_Command_WriteStateCU.pdf
@@ -125,6 +127,7 @@
 82_Appendix_ReleaseNotes.pdf
 90_Appendix_InputType_ColoradoSMS.pdf
 90_Appendix_InputType_DateValue.pdf
+90_Appendix_InputType_HEC-DSS.pdf
 90_Appendix_InputType_HydroBase.pdf
 90_Appendix_InputType_RiverWare.pdf
 90_Appendix_InputType_StateCU.pdf

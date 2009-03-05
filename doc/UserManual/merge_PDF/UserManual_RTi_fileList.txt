@@ -8,6 +8,7 @@
 26_Examples.pdf
 28_UsingTheMap.pdf
 29_Troubleshooting.pdf
+33_QualityControl.pdf
 50_CommandGlossary.pdf
 55_Command_Comment.pdf
 55_Command_CommentBlockStart.pdf
@@ -120,6 +121,7 @@
 60_Command_Subtract.pdf
 60_Command_WeightTraces_Alias.pdf
 60_Command_WriteDateValue.pdf
+60_Command_WriteHecDss.pdf
 60_Command_WriteNWSRFSESPTraceEnsemble.pdf
 60_Command_WriteNwsCard.pdf
 60_Command_WriteProperty.pdf
