@@ -22,6 +22,7 @@
 60_Command_Blend.pdf
 60_Command_ChangeInterval_Alias.pdf
 60_Command_ChangePeriod.pdf
+60_Command_CheckTimeSeries.pdf
 60_Command_CompareFiles.pdf
 60_Command_CompareTimeSeries.pdf
 60_Command_ComputeErrorTimeSeries.pdf
@@ -116,6 +117,7 @@
 60_Command_StateModMax.pdf
 60_Command_Subtract.pdf
 60_Command_WeightTraces_Alias.pdf
+60_Command_WriteCheckFile.pdf
 60_Command_WriteDateValue.pdf
 60_Command_WriteHecDss.pdf
 60_Command_WriteProperty.pdf
