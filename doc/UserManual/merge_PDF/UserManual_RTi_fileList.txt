@@ -1,6 +1,5 @@
 01_Cover_RTi.pdf
 03_License_RTi.pdf
-00_BlankPage.pdf
 11_Acknowledgements.pdf
 14_Introduction.pdf
 17_GettingStarted_RTi.pdf
@@ -48,6 +47,7 @@
 60_Command_FillMOVE1.pdf
 60_Command_FillMOVE2.pdf
 60_Command_FillPattern.pdf
+60_Command_FillPrincipalComponentAnalysis.pdf
 60_Command_FillProrate.pdf
 60_Command_FillRegression.pdf
 60_Command_FillRepeat.pdf
@@ -122,6 +122,7 @@
 60_Command_StartRegressionTestResultsReport.pdf
 60_Command_StateModMax.pdf
 60_Command_Subtract.pdf
+60_Command_VariableLagK.pdf
 60_Command_WeightTraces_Alias.pdf
 60_Command_WriteCheckFile.pdf
 60_Command_WriteDateValue.pdf
@@ -134,6 +135,7 @@
 60_Command_WriteStateCU.pdf
 60_Command_WriteStateMod.pdf
 60_Command_WriteSummary.pdf
+60_Command_WriteTableToDelimitedFile.pdf
 60_Command_WriteTimeSeriesProperty.pdf
 80_Appendix_Install_Config_RTi.pdf
 82_Appendix_ReleaseNotes.pdf
