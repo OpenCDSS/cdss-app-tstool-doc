@@ -31,7 +31,7 @@
 60_Command_ConvertDataUnits.pdf
 60_Command_Copy_Alias.pdf
 60_Command_CopyEnsemble.pdf
-60_Command_CreateEnsemble.pdf
+60_Command_CreateEnsembleFromOneTimeSeries.pdf
 60_Command_CreateFromList.pdf
 60_Command_CreateRegressionTestCommandFile.pdf
 60_Command_Cumulate.pdf
@@ -39,6 +39,7 @@
 60_Command_Disaggregate_Alias.pdf
 60_Command_Divide.pdf
 60_Command_Exit.pdf
+60_Command_ExpandTemplateFile.pdf
 60_Command_FillConstant.pdf
 60_Command_FillDayTSFrom2MonthTSAnd1DayTS.pdf
 60_Command_FillFromTS.pdf
@@ -55,10 +56,12 @@
 60_Command_FillRepeat.pdf
 60_Command_FillUsingDiversionComments.pdf
 60_Command_Free.pdf
+60_Command_InsertTimeSeriesIntoEnsemble.pdf
 60_Command_LagK_Alias.pdf
 60_Command_multiply.pdf
 60_Command_NewDayTSFromMonthAndDayTS_Alias.pdf
 60_Command_NewEndOfMonthTSFromDayTS_Alias.pdf
+60_Command_NewEnsemble.pdf
 60_Command_NewPatternTimeSeries_Alias.pdf
 60_Command_NewStatisticTimeSeries_Alias.pdf
 60_Command_NewStatisticTimeSeriesFromEnsemble_Alias.pdf
@@ -120,6 +123,7 @@
 60_Command_StartRegressionTestResultsReport.pdf
 60_Command_StateModMax.pdf
 60_Command_Subtract.pdf
+60_Command_TimeSeriesToTable.pdf
 60_Command_VariableLagK.pdf
 60_Command_WeightTraces_Alias.pdf
 60_Command_WriteCheckFile.pdf
