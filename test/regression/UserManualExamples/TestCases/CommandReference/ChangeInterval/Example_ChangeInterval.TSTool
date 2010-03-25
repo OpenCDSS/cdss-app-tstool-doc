@@ -1,0 +1,2 @@
+TS Original = NewPatternTimeSeries(NewTSID="loc1..Precip.Year",PatternValues="1")
+TS New = ChangeInterval(TSID="Original",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=MEAN,OutputYearType=Water)
