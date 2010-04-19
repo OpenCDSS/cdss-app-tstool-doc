@@ -55,6 +55,7 @@
 60_Command_FillRepeat.pdf
 60_Command_FillUsingDiversionComments.pdf
 60_Command_Free.pdf
+60_Command_FTPGet.pdf
 60_Command_InsertTimeSeriesIntoEnsemble.pdf
 60_Command_LagK_Alias.pdf
 60_Command_Multiply.pdf
@@ -73,6 +74,7 @@
 60_Command_ProcessTSProduct.pdf
 60_Command_ReadDateValue.pdf
 60_Command_ReadDateValue_Alias.pdf
+60_Command_ReadDelimitedFile.pdf
 60_Command_ReadHecDss.pdf
 60_Command_ReadHydroBase.pdf
 60_Command_ReadHydroBase_Alias.pdf
@@ -129,6 +131,7 @@
 60_Command_Subtract.pdf
 60_Command_TimeSeriesToTable.pdf
 60_Command_VariableLagK.pdf
+60_Command_WebGet.pdf
 60_Command_WeightTraces_Alias.pdf
 60_Command_WriteCheckFile.pdf
 60_Command_WriteDateValue.pdf
