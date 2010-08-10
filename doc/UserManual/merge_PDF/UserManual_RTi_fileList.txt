@@ -34,6 +34,7 @@
 60_Command_CreateFromList.pdf
 60_Command_CreateRegressionTestCommandFile.pdf
 60_Command_Cumulate.pdf
+60_Command_Delta.pdf
 60_Command_DeselectTimeSeries.pdf
 60_Command_Disaggregate_Alias.pdf
 60_Command_Divide.pdf
@@ -68,6 +69,7 @@
 60_Command_NewStatisticYearTS_Alias.pdf
 60_Command_NewTable.pdf
 60_Command_NewTimeSeries_Alias.pdf
+60_Command_NewTreeView.pdf
 60_Command_Normalize_Alias.pdf
 60_Command_OpenCheckFile.pdf
 60_Command_OpenHydroBase.pdf
