@@ -1,0 +1,4 @@
+# Calculate a time series statistic for drought analysis
+ReadDateValue(InputFile="streamflow.dv")
+# Calculate the mean monthly volumes for each month
+TS 06754000-mean = NewStatisticTimeSeries(TSID="06754000.DWR.Streamflow.Month",NewTSID="06754000.DWR.Streamflow.Month.mean",Statistic=Mean)

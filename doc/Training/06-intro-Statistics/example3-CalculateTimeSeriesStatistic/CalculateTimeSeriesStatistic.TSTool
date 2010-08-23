@@ -1,0 +1,11 @@
+# Calculate a time series statistic for drought analysis
+ReadDateValue(InputFile="streamflow.dv")
+# Convert the monthly volumes to an annual water year volume
+TS 06754000 = ChangeInterval(TSID="06754000.DWR.Streamflow.Month",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM,OutputYearType=Water)
+# Create a table to receive statistic output
+NewTable(TableID="Kersey-Statistics",Columns="TSID,string;DeficitSeqMean,double;DeficitSeqMax,double")
+# Calculate the statistic and save the result in the table
+CalculateTimeSeriesStatistic(TSList=AllMatchingTSID,TSID="*.*.*.Year.*",Statistic="DeficitSeqMean",TableID="Kersey-Statistics",TableTSIDColumn="TSID",TableStatisticColumn="DeficitSeqMean")
+CalculateTimeSeriesStatistic(TSList=AllMatchingTSID,TSID="*.*.*.Year.*",Statistic="DeficitSeqMax",TableID="Kersey-Statistics",TableTSIDColumn="TSID",TableStatisticColumn="DeficitSeqMax")
+# Write the table to a file
+WriteTableToDelimitedFile(TableID="Kersey-Statistics",OutputFile="KerseyStatistics.csv")
