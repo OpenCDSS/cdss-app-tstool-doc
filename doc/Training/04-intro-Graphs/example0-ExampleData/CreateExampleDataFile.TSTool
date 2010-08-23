@@ -1,0 +1,12 @@
+# Extract data from HydroBase for examples - various data types, monthly interval
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
+06754000.DWR.Streamflow.Month~HydroBase
+# 3546 - GREELEY
+3546.NOAA.Precip.Month~HydroBase
+# 3553 - GREELEY UNC
+3553.NOAA.Precip.Month~HydroBase
+# 3546 - GREELEY
+3546.NOAA.TempMean.Month~HydroBase
+# 3553 - GREELEY UNC
+3553.NOAA.TempMean.Month~HydroBase
+WriteDateValue(OutputFile="data-month.dv",Precision=2)

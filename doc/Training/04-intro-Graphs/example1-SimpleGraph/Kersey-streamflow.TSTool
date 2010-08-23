@@ -1,0 +1,4 @@
+# Simple graph for one streamflow station
+ReadDateValue(InputFile="data-month.dv")
+# Process the graph product to display the configured graph and generate an image file
+ProcessTSProduct(TSProductFile="Kersey-streamflow.tsp",OutputFile="Kersey-streamflow.png")

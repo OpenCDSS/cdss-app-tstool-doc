@@ -1,0 +1,4 @@
+# Simple graph for one streamflow, temperature, and precipitation data
+ReadDateValue(InputFile="data-month.dv")
+# Process the graph product to display the configured graph and generate an image file
+ProcessTSProduct(TSProductFile="ComplexGraph.tsp",OutputFile="ComplexGraph.png")
