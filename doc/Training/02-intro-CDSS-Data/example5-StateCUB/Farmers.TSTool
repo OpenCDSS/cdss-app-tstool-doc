@@ -1,0 +1,4 @@
+# Read single time series from StateCU binary output file using time series identifier
+Farmers.StateCU.Irrigation Water Reqt.Month~StateCUB~farmers.BD1
+# Read multiple time series using the ReadStateCUB() command
+ReadStateCUB(InputFile="farmers.BD1",TSID="*.*.Irrigation Water Reqt.*")

@@ -1,0 +1,5 @@
+# Read crop pattern time series
+# Time series identifiers will not work if data types include periods
+360645.StateCU.CropArea-GRASS_PASTURE.DWHA.Year~StateCU~cm2006.cds
+# Instead, use a ReadStateCU() command
+ReadStateCU(InputFile="cm2006.cds")

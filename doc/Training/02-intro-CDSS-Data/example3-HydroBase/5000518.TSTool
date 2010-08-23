@@ -1,0 +1,7 @@
+# Example illustrating diversion comments annotation in HTML summary
+# Set the output year type to ensure that reports use irrigation year
+SetOutputYearType(OutputYearType=NovToOct)
+# 5000518 - BECKER NO 4 DITCH
+5000518.DWR.DivTotal.Day~HydroBase
+FillUsingDiversionComments(TSID="5000518.DWR.DivTotal.Day",FillFlag="Auto",FillUsingCIU=True,FillUsingCIUFlag="Auto",RecalcLimits=True)
+WriteSummary(OutputFile="5000518-summary.html")

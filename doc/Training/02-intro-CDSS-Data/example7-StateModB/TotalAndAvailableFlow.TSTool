@@ -1,0 +1,9 @@
+# Read time series from StateMod binary output file
+# Read using time series identifiers
+Dem_2.StateMod.River_Outflow.Month~StateModB~ex119C2.b43
+Dem_2.StateMod.Available_Flow.Month~StateModB~ex119C2.b43
+Dem_3.StateMod.River_Outflow.Month~StateModB~ex119C2.b43
+Dem_3.StateMod.Available_Flow.Month~StateModB~ex119C2.b43
+# Also can read one or more time series with one command
+ReadStateModB(InputFile="ex119C2.b43",TSID="*.*.Available_Flow.*",Alias="%L-Avail")
+ProcessTSProduct(TSProductFile="TotalAndAvailableFlow.tsp",OutputFile="TotalAndAvailableFlow.png")

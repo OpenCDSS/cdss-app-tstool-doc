@@ -1,0 +1,4 @@
+# Read single time series from StateMod binary output file using time series identifier
+430511...MONTH~StateMod~wm2009.ddh
+# Read multiple time series using the ReadStateMod() command
+ReadStateMod(InputFile="wm2009.ddh",Alias="%L-Div")

@@ -1,0 +1,11 @@
+# Example to read diversion time series from ColoradoWaterHBGuest web service
+# Illustrate getting Day, Month, and Year data for the same location
+# Compute an annual time series using calendar year, since the annual
+# values in HydroBase are irrigation year.
+# 3800502 - ALFRED SLOSS DITCH NO 1
+3800502.DWR.DivTotal.Day~ColoradoWaterHBGuest
+3800502.DWR.DivTotal.Month~ColoradoWaterHBGuest
+TS 3800502-CalYear = ChangeInterval(TSID="3800502.DWR.DivTotal.Month",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM)
+3800502.DWR.DivTotal.Year~ColoradoWaterHBGuest
+# Graph the data
+ProcessTSProduct(TSProductFile="3800502.tsp",OutputFile="2800502.png")

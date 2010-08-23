@@ -1,0 +1,11 @@
+# Simple example to query HydroBase time series.
+# 06759500 - SOUTH PLATTE RIVER AT FORT MORGAN, CO.
+06759500.USGS.Streamflow.Month~HydroBase
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
+06754000.DWR.Streamflow.Month~HydroBase
+# Write time series in two simple formats
+# Write a DateValue format file (columns with metadata in a header)
+WriteDateValue(OutputFile="SPlatteStreamflow.dv",Precision=1)
+# Convert time series to a table and then write the table (columns)
+TimeSeriesToTable(TableID="PlatteStreamflow",DateTimeColumn="Date",DataColumn="%L-%T",DataRow=1,IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="PlatteStreamflow",OutputFile="SPlatteStreamflow.csv")

@@ -1,0 +1,5 @@
+# Example commands to read StateCU Irrigation Practice Time Series
+# Individual time series can be read
+360645.StateCU.CropArea-Total.Year~StateCU~cm2006.ipy
+# Multiple time series can also be read
+ReadStateCU(InputFile="cm2006.ipy")

@@ -1,0 +1,4 @@
+# Read diversion rights and convert to time series
+ReadStateMod(InputFile="wm2009.ddr",Alias="%L-Decree")
+# Plot the total water rights for the model
+ProcessTSProduct(TSProductFile="DiversionRights.tsp",OutputFile="DiversionRights.png")

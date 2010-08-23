@@ -1,0 +1,9 @@
+# Example to retreive real-time streamflow using the ColoradoWaterSMS web service
+# The default input period is 14 days.  Set to 60.
+SetInputPeriod(InputStart="CurrentToDay - 60Day",InputEnd="CurrentToDay")
+# COLGBYCO - COLORADO RIVER BELOW LAKE GRANBY
+COLGBYCO.DWR.DISCHRG.Day~ColoradoWaterSMS
+# Check the data for critical values
+CheckTimeSeries(CheckCriteria="AbsChangePercent>",Value1=50,Flag="+BIGCHANGE",FlagDesc="> 50 percent change")
+# Generate a plot
+ProcessTSProduct(TSProductFile="ColoradoBelowGranby.tsp",OutputFile="ColoradoBelowGranby.png")

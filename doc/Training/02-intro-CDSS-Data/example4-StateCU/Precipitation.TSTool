@@ -1,0 +1,4 @@
+# StateMod format time series files with recognized file extensions
+# can be read with ReadStateCU() commands.  Otherwise, use ReadStateMod().
+0214...MONTH~StateMod~COClim2006.prc
+ReadStateMod(InputFile="COClim2006.prc",Alias="%L-precip")

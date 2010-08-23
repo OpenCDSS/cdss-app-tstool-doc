@@ -1,0 +1,9 @@
+# Example to read diversion time series from ColoradoWaterHBGuest web service
+# 3800501 - ALEX ARBANEY DITCH
+3800501.DWR.DivTotal.Month~ColoradoWaterHBGuest
+# 3800502 - ALFRED SLOSS DITCH NO 1
+3800502.DWR.DivTotal.Month~ColoradoWaterHBGuest
+# 3800503 - ALFRED SLOSS NO 2 DITCH
+3800503.DWR.DivTotal.Month~ColoradoWaterHBGuest
+# 3800504 - ALFRED M SLOSS PL SPG 2
+3800504.DWR.DivTotal.Month~ColoradoWaterHBGuest
