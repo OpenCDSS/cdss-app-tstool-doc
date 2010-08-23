@@ -1,0 +1,2 @@
+# Example to find data gaps
+ReadDateValue(InputFile="white-streamflow.dv")

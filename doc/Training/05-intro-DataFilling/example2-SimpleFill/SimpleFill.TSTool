@@ -1,0 +1,14 @@
+# Example to fill data gaps using simple techniques - just to illustrate commands
+# but this approach is not typical
+# The output period is usually specified for modeling.  If not provided, then
+# filling will only occur in the time series' origional period, but will not
+# automatically extend the time series.
+ReadDateValue(InputFile="white-streamflow.dv")
+# Try to fill with interpolation, but limit to gaps of <= 3 months
+FillInterpolate(MaxIntervals=3,FillFlag="INT")
+# Next try repeating values forward
+FillRepeat(FillDirection=Forward,MaxIntervals=12)
+# Finally just set constant
+FillConstant(ConstantValue=0,FillFlag="CONST")
+# Check for missing data in the time series
+CheckTimeSeries(CheckCriteria="Missing",MaxWarnings=1)
