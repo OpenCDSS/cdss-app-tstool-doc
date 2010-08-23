@@ -1,5 +1,4 @@
 01_Cover_CDSS.pdf
-00_BlankPage.pdf
 03_Disclaimer_CDSS.pdf
 11_Acknowledgements.pdf
 14_Introduction.pdf
@@ -145,6 +144,7 @@
 82_Appendix_ReleaseNotes.pdf
 90_Appendix_InputType_ColoradoIPP.pdf
 90_Appendix_InputType_ColoradoSMS.pdf
+90_Appendix_InputType_ColoradoWaterHBGuest.pdf
 90_Appendix_InputType_ColoradoWaterSMS.pdf
 90_Appendix_InputType_DateValue.pdf
 90_Appendix_InputType_HEC-DSS.pdf

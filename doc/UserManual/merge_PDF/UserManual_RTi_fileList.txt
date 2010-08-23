@@ -151,6 +151,7 @@
 80_Appendix_Install_Config_RTi.pdf
 82_Appendix_ReleaseNotes.pdf
 90_Appendix_InputType_ColoradoSMS.pdf
+90_Appendix_InputType_ColoradoWaterHBGuest.pdf
 90_Appendix_InputType_ColoradoWaterSMS.pdf
 90_Appendix_InputType_DateValue.pdf
 90_Appendix_InputType_DIADvisor.pdf
