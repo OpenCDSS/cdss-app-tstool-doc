@@ -1,0 +1,8 @@
+# Simple command file to process a DateValue file that contains all the
+# daily streamflow time series from HydroBase for Water District 38
+# (Roaring Fork).  After reading the time series are read in, they can be viewed.
+ReadDateValue(InputFile="RoaringFork-Streamflow-Month.dv")
+# Copy one of the time series to keep the original and modified versions
+TS ROABMCCO-10Year = Copy(TSID="ROABMCCO.DWR.Streamflow.Month",NewTSID="ROABMCCO.DWR.Streamflow.Month.10Year")
+# Compute the 10-year running average of the time series
+RunningAverage(TSList=AllMatchingTSID,TSID="ROABMCCO-10Year",AverageMethod=NYear,Bracket=10)

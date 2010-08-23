@@ -1,0 +1,7 @@
+# Simple command file to read a DateValue file, which contains all the
+# monthly streamflow time series from HydroBase for Water District 38
+# (Roaring Fork).  After reading the time series are read in, they can be viewed.
+# !!!!
+# The following file does not exist - it illustrates the error handling
+# !!!!
+ReadDateValue(InputFile="RoaringFork-Streamflow-Month-NoFile.dv")

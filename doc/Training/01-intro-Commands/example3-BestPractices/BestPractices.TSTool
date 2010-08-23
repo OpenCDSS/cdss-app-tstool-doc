@@ -1,0 +1,13 @@
+StartLog(LogFile="BestPractices.TSToo.log")
+# Simple command file illustrating best practices.
+# History:
+# 2010-08-20 Steve Malers, initial version.
+# Use relative paths for files to allow transport
+ReadDateValue(InputFile="RoaringFork-Streamflow-Month.dv")
+# Copy one of the time series to keep the original and modified versions
+TS ROABMCCO-10Year = Copy(TSID="ROABMCCO.DWR.Streamflow.Month",NewTSID="ROABMCCO.DWR.Streamflow.Month.10Year")
+# Compute the 10-year running average of the time series
+RunningAverage(TSList=AllMatchingTSID,TSID="ROABMCCO-10Year",AverageMethod=NYear,Bracket=10)
+# Checking results is always a good idea
+CheckTimeSeries(CheckCriteria="Missing",MaxWarnings=10)
+WriteCheckFile(OutputFile="BestPractices.TSTool.check.html",Title="Monthly Streamflow Checks")
