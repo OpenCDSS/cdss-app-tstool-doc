@@ -1,0 +1,7 @@
+# Command file to read Roaring Fork streamflow historical monthly stremflow data
+# from HydroBase and save to a DateValue file, using query to read in bulk.
+# This is used to save off-line data for training (since HydroBase may not be
+# available).
+ReadHydroBase(DataType="Streamflow",Interval="Month",Where1="District;Equals;38")
+# Write the output file.
+WriteDateValue(OutputFile="RoaringFork-Streamflow-Month-Bulk.dv",Precision=2,MissingValue=NaN)
