@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html>
+<head>
+<title>Streamflow Missing Data Checks.
+</title><style>
+#titles { font-weight:bold; color:#303044 }
+table { background-color:black; text-align:left; border:1; bordercolor:black; cellspacing:1; cellpadding:1 }
+th { background-color:#333366; text-align:center; vertical-align:bottom; color:white }
+tr { valign:bottom }
+td { background-color:white; text-align:left; vertical-align:bottom; }
+body { text-align:left; font-size:12pt; }
+pre { font-size:12pt; margin: 0px }
+p { font-size:12pt; }
+/* The following controls formatting of severity column in tables */
+.warning { background-color:yellow; }
+.failure { background-color:red; }
+.success { background-color:green; }
+.unknown { background-color:white; }
+</style>
+</head>
+<body>
+
+<h1>TSTool Check Results</h1>
+
+<h2>Streamflow Missing Data Checks.</h2>
+
+<h2>Check File Table of Contents</h2>
+<a href="#environment">Program/Environment Information</a>
+ - generated at runtime<br>
+<a href="#notes">Command File Comments</a>
+ - as written to output file headers<br>
+<a href="#commands">Command Details</a>
+ - command run times and warning/failure counts<br>
+<a href="#summary">Command Problem Summary</a>
+ - command problem summary<br>
+
+<h2><a name="environment">Program/Environment Information</a></h2>
+<p>
+<table>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>Command file
+</td>
+<td>C:\Develop\TSTool_SourceBuild\TSTool\doc\Training\03-intro-QualityControl\example2-CheckTimeSeries\CheckTimeSeries.TSTool
+</td>
+</tr>
+<tr>
+<td>Program
+</td>
+<td>TSTool 9.07.02 (2010-08-19)
+</td>
+</tr>
+<tr>
+<td>User
+</td>
+<td>sam
+</td>
+</tr>
+<tr>
+<td>Creation time
+</td>
+<td>2010-08-22 11:50:16 MDT
+</td>
+</tr>
+<tr>
+<td>Computer
+</td>
+<td>AMAZON
+</td>
+</tr>
+<tr>
+<td>Processor initial working directory
+</td>
+<td>C:\Develop\TSTool_SourceBuild\TSTool\doc\Training\03-intro-QualityControl\example2-CheckTimeSeries
+</td>
+</tr>
+<tr>
+<td>Command line
+</td>
+<td>TSTool -home test/operational/CDSS
+</td>
+</tr>
+</table>
+</p>
+
+<h2><a name="notes">Command File Comments</a></h2>
+<pre>
+TSTool check file containing all warning/failure messages from run.
+
+-----------------------------------------------------------------------
+Command file name: "C:\Develop\TSTool_SourceBuild\TSTool\doc\Training\03-intro-QualityControl\example2-CheckTimeSeries\CheckTimeSeries.TSTool"
+Commands: 
+# Example illustrating errors in commands
+# Problem is that the filename is incorrect (remove X to fix)
+ReadDateValue(InputFile="06754000-streamflow.dv")
+# Fill the time series with historical monthly average
+FillHistMonthAverage(FillFlag="Auto")
+# Write the filled time series to a different filename
+WriteDateValue(OutputFile="06754000-streamflow-filled.dv",Precision=2)
+# Check the time series for missing data and write a check file
+CheckTimeSeries(CheckCriteria="Missing",Flag="MISSING",FlagDesc="No recorded value")
+WriteCheckFile(OutputFile="CheckTimeSeries.TSTool.summary.html",Title="Streamflow Missing Data Checks.")
+
+-----------------------------------------------------------------------------
+HydroBase database is: HydroBase on lonetree\CDSS
+HydroBase.db_version:  design version: 20080701  last data change: 20100801
+HydroBase table structure for software is at least 2007052520070525
+HydroBase input name is "".
+Stored procedures are being used.
+-----------------------------------------------------------------------------
+
+</pre>
+
+<h2><a name="commands">Command Details</a></h2>
+<p>
+Total number of failures: 0<br>
+Total number of commands with failures: 0<br>
+Total number of warnings: 0<br>
+Total number of commands with warnings: 0<br>
+</p>
+<p>
+<table>
+<tr>
+<th>#</th>
+<th>Time, sec.</th>
+<th>Warnings</th>
+<th>Failures</th>
+<th>Command</th>
+</tr>
+<tr>
+<td>1
+</td>
+<td>0.000
+</td>
+<td>0
+</td>
+<td>0
+</td>
+<td><a name="c0"># Example illustrating errors in commands</a></td>
+</tr>
+<tr>
+<td>2
+</td>
+<td>0.000
+</td>
+<td>0
+</td>
+<td>0
+</td>
+<td><a name="c1"># Problem is that the filename is incorrect (remove X to fix)</a></td>
+</tr>
+<tr>
+<td>3
+</td>
+<td>0.015
+</td>
+<td>0
+</td>
+<td>0
+</td>
+<td><a name="c2">ReadDateValue(InputFile="06754000-streamflow.dv")</a></td>
+</tr>
+<tr>
+<td>4
+</td>
+<td>0.000
+</td>
+<td>0
+</td>
+<td>0
+</td>
+<td><a name="c3"># Fill the time series with historical monthly average</a></td>
+</tr>
+<tr>
+<td>5
+</td>
+<td>0.000
+</td>
+<td>0
+</td>
+<td>0
+</td>
+<td><a name="c4">FillHistMonthAverage(FillFlag="Auto")</a></td>
+</tr>
+<tr>
+<td>6
+</td>
+<td>0.000
+</td>
+<td>0
+</td>
+<td>0
+</td>
+<td><a name="c5"># Write the filled time series to a different filename</a></td>
+</tr>
+<tr>
+<td>7
+</td>
+<td>0.016
+</td>
+<td>0
+</td>
+<td>0
+</td>
+<td><a name="c6">WriteDateValue(OutputFile="06754000-streamflow-filled.dv",Precision=2)</a></td>
+</tr>
+<tr>
+<td>8
+</td>
+<td>0.000
+</td>
+<td>0
+</td>
+<td>0
+</td>
+<td><a name="c7"># Check the time series for missing data and write a check file</a></td>
+</tr>
+<tr>
+<td>9
+</td>
+<td>0.047
+</td>
+<td>0
+</td>
+<td>0
+</td>
+<td><a name="c8">CheckTimeSeries(CheckCriteria="Missing",Flag="MISSING",FlagDesc="No recorded value")</a></td>
+</tr>
+<tr>
+<td>10
+</td>
+<td>0.000
+</td>
+<td>0
+</td>
+<td>0
+</td>
+<td><a name="c9">WriteCheckFile(OutputFile="CheckTimeSeries.TSTool.summary.html",Title="Streamflow Missing Data Checks.")</a></td>
+</tr>
+<td>
+</td>
+<td>0.078
+</td>
+<td>0
+</td>
+<td>0
+</td>
+<td>
+</td>
+</table>
+
+<h2><a name="summary">Command Problem Summary</a></h2>
+<p>
+Total number of failures: 0<br>
+Total number of commands with failures: 0<br>
+Total number of warnings: 0<br>
+Total number of commands with warnings: 0<br>
+</p>
+
+</body>
+</html>

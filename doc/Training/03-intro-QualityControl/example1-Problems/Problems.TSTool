@@ -1,0 +1,7 @@
+# Example illustrating errors in commands
+# Problem is that the filename is incorrect (remove X to fix)
+ReadDateValue(InputFile="Xstreamflow.dv")
+# Fill the time series with historical monthly average
+FillHistMonthAverage(FillFlag="Auto",FillFlagDesc="Fill with monthly average")
+# Write the filled time series to a different filename
+WriteDateValue(OutputFile="streamflow-filled.dv",Precision=2)

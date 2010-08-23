@@ -1,0 +1,6 @@
+# Extract data from HydroBase for examples
+# 06711590 - SOUTH PLATTE RIVER AT FLORIDA AVE AT DENVER, CO.
+06711590.USGS.Streamflow.Month~HydroBase
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
+06754000.DWR.Streamflow.Month~HydroBase
+WriteDateValue(OutputFile="streamflow.dv",Precision=2)

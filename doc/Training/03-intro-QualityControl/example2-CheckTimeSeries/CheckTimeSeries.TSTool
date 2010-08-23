@@ -1,0 +1,10 @@
+# Example illustrating errors in commands
+# Problem is that the filename is incorrect (remove X to fix)
+ReadDateValue(InputFile="streamflow.dv")
+# Fill the time series with historical monthly average
+FillHistMonthAverage(FillFlag="Auto")
+# Write the filled time series to a different filename
+WriteDateValue(OutputFile="streamflow-filled.dv",Precision=2)
+# Check the time series for missing data and write a check file
+CheckTimeSeries(CheckCriteria="Missing",Flag="MISSING",FlagDesc="No recorded value")
+WriteCheckFile(OutputFile="streamflow-checks.html",Title="Streamflow Missing Data Checks.")
