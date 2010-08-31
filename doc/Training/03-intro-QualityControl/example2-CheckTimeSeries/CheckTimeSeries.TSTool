@@ -1,5 +1,4 @@
-# Example illustrating errors in commands
-# Problem is that the filename is incorrect (remove X to fix)
+# Example illustrating use of CheckTimeSeries()
 ReadDateValue(InputFile="streamflow.dv")
 # Fill the time series with historical monthly average
 FillHistMonthAverage(FillFlag="Auto")
