@@ -1,4 +1,5 @@
 01_Cover_RTi.pdf
+00_BlankPage.pdf
 03_License_RTi.pdf
 11_Acknowledgements.pdf
 14_Introduction.pdf
@@ -131,6 +132,8 @@
 60_Command_StartRegressionTestResultsReport.pdf
 60_Command_StateModMax.pdf
 60_Command_Subtract.pdf
+60_Command_TableMath.pdf
+60_Command_TableTimeSeriesMath.pdf
 60_Command_TimeSeriesToTable.pdf
 60_Command_VariableLagK.pdf
 60_Command_WebGet.pdf
