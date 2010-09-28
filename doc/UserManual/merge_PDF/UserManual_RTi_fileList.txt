@@ -31,6 +31,7 @@
 60_Command_ConvertDataUnits.pdf
 60_Command_Copy_Alias.pdf
 60_Command_CopyEnsemble.pdf
+60_Command_CopyTable.pdf
 60_Command_CreateEnsembleFromOneTimeSeries.pdf
 60_Command_CreateFromList.pdf
 60_Command_CreateRegressionTestCommandFile.pdf
@@ -60,6 +61,7 @@
 60_Command_FTPGet.pdf
 60_Command_InsertTimeSeriesIntoEnsemble.pdf
 60_Command_LagK_Alias.pdf
+60_Command_ManipulateTableString.pdf
 60_Command_Multiply.pdf
 60_Command_NewDayTSFromMonthAndDayTS_Alias.pdf
 60_Command_NewEndOfMonthTSFromDayTS_Alias.pdf
@@ -93,6 +95,7 @@
 60_Command_ReadStateCUB.pdf
 60_Command_ReadStateMod.pdf
 60_Command_ReadStateModB.pdf
+60_Command_ReadTableFromDBF.pdf
 60_Command_ReadTableFromDelimitedFile.pdf
 60_Command_ReadTimeSeries_Alias.pdf
 60_Command_ReadUsgsNwis_Alias.pdf
@@ -121,6 +124,7 @@
 60_Command_SetPatternFile.pdf
 60_Command_SetProperty.pdf
 60_Command_SetPropertyFromNwsrfsAppDefault.pdf
+60_Command_SetTimeSeriesPropertiesFromTable.pdf
 60_Command_SetTimeSeriesProperty.pdf
 60_Command_SetToMax.pdf
 60_Command_SetToMin.pdf
