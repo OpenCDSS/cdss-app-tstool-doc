@@ -76,6 +76,7 @@
 60_Command_OpenCheckFile.pdf
 60_Command_OpenHydroBase.pdf
 60_Command_ProcessTSProduct.pdf
+60_Command_ReadColoradoBNDSS.pdf
 60_Command_ReadDateValue.pdf
 60_Command_ReadDateValue_Alias.pdf
 60_Command_ReadDelimitedFile.pdf
@@ -148,7 +149,7 @@
 60_Command_WriteTimeSeriesProperty.pdf
 80_Appendix_Install_Config_CDSS.pdf
 82_Appendix_ReleaseNotes.pdf
-90_Appendix_InputType_ColoradoIPP.pdf
+90_Appendix_InputType_ColoradoBNDSS.pdf
 90_Appendix_InputType_ColoradoSMS.pdf
 90_Appendix_InputType_ColoradoWaterHBGuest.pdf
 90_Appendix_InputType_ColoradoWaterSMS.pdf
