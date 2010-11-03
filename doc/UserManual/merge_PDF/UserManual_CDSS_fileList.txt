@@ -1,4 +1,5 @@
 01_Cover_CDSS.pdf
+00_BlankPage.pdf
 03_Disclaimer_CDSS.pdf
 11_Acknowledgements.pdf
 14_Introduction.pdf
@@ -86,6 +87,7 @@
 60_Command_ReadMODSIM.pdf
 60_Command_ReadMODSIM_Alias.pdf
 60_Command_ReadPatternFile.pdf
+60_Command_ReadReclamationHDB.pdf
 60_Command_ReadRiverWare_Alias.pdf
 60_Command_ReadStateCU.pdf
 60_Command_ReadStateCUB.pdf
@@ -156,6 +158,7 @@
 90_Appendix_InputType_DateValue.pdf
 90_Appendix_InputType_HEC-DSS.pdf
 90_Appendix_InputType_HydroBase.pdf
+90_Appendix_InputType_ReclamationHDB.pdf
 90_Appendix_InputType_RiverWare.pdf
 90_Appendix_InputType_StateCU.pdf
 90_Appendix_InputType_StateCUB.pdf

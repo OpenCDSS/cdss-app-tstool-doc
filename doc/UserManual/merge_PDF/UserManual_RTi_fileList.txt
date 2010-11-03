@@ -90,6 +90,7 @@
 60_Command_ReadNWSRFSESPTraceEnsemble.pdf
 60_Command_ReadNWSRFSFS5Files_Alias.pdf
 60_Command_ReadPatternFile.pdf
+60_Command_ReadReclamationHDB.pdf
 60_Command_ReadRiverWare_Alias.pdf
 60_Command_ReadStateCU.pdf
 60_Command_ReadStateCUB.pdf
@@ -169,6 +170,7 @@
 90_Appendix_InputType_NWSCard.pdf
 90_Appendix_InputType_NWSRFS_ESPTraceEnsemble.pdf
 90_Appendix_InputType_NWSRFS_FS5Files.pdf
+90_Appendix_InputType_ReclamationHDB.pdf
 90_Appendix_InputType_RiversideDB.pdf
 90_Appendix_InputType_RiverWare.pdf
 90_Appendix_InputType_SHEF.pdf
