@@ -1,0 +1,1 @@
+FTPGet(RemoteSite="ftp.somebody.com",Login="anonymous",Password="mypassword",RemoteFolder="/outgoing",FilePattern="data.txt",DestinationFolder="Results",TransferMode=ASCII)
