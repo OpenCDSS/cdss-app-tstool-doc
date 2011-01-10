@@ -26,6 +26,7 @@
 60_Command_ChangePeriod.pdf
 60_Command_CheckTimeSeries.pdf
 60_Command_CompareFiles.pdf
+60_Command_CompareTables.pdf
 60_Command_CompareTimeSeries.pdf
 60_Command_ComputeErrorTimeSeries.pdf
 60_Command_ConvertDataUnits.pdf
@@ -155,6 +156,7 @@
 60_Command_WriteStateMod.pdf
 60_Command_WriteSummary.pdf
 60_Command_WriteTableToDelimitedFile.pdf
+60_Command_WriteTableToHTML.pdf
 60_Command_WriteTimeSeriesProperty.pdf
 80_Appendix_Install_Config_RTi.pdf
 82_Appendix_ReleaseNotes.pdf
@@ -170,6 +172,7 @@
 90_Appendix_InputType_NWSCard.pdf
 90_Appendix_InputType_NWSRFS_ESPTraceEnsemble.pdf
 90_Appendix_InputType_NWSRFS_FS5Files.pdf
+90_Appendix_InputType_RCCACIS.pdf
 90_Appendix_InputType_ReclamationHDB.pdf
 90_Appendix_InputType_RiversideDB.pdf
 90_Appendix_InputType_RiverWare.pdf
