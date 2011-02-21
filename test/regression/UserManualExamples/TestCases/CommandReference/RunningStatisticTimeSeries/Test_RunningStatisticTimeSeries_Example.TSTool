@@ -1,0 +1,6 @@
+# SetInputPeriod(InputStart="1993-01",InputEnd="2000-12")
+# 0100501 - EMPIRE DITCH
+0100501.DWR.DivTotal.Month~HydroBase
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="0100501.DWR.DivTotal.Month",Statistic=Mean,SampleMethod=Centered,Bracket=3,Alias="Centered")
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="0100501.DWR.DivTotal.Month",Statistic=Mean,SampleMethod=NYear,Bracket=5,Alias="NYear")
+ProcessTSProduct(TSProductFile="Test_RunningStatisticTimeSeries_Example.tsp")
