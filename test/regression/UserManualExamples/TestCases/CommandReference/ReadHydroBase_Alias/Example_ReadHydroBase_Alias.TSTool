@@ -1,1 +1,0 @@
-TS NorthPoudreDiv = ReadHydroBase(TSID="0300905.DWR.DivTotal.Day~HydroBase")
