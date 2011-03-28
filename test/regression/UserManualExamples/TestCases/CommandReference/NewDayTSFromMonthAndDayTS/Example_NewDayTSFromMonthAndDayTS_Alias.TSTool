@@ -3,4 +3,4 @@ SetOutputPeriod(OutputStart="1950-01",OutputEnd="2002-12")
 08236500.DWR.Streamflow.Day~HydroBase
 # 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR
 08236000.DWR.Streamflow.Month~HydroBase
-TS DayTS = NewDayTSFromMonthAndDayTS(NewTSID="08236000.DWR.Streamflow.Day",MonthTSID="08236000.DWR.Streamflow.Month",DayTSID="08236500.DWR.Streamflow.Day")
+NewDayTSFromMonthAndDayTS(Alias="DayTS",NewTSID="08236000.DWR.Streamflow.Day",MonthTSID="08236000.DWR.Streamflow.Month",DayTSID="08236500.DWR.Streamflow.Day")

@@ -1,3 +1,3 @@
 # 08223000 - RIO GRANDE RIVER AT ALAMOSA
 08223000.DWR.Streamflow.Month~HydroBase
-TS Filled = copy(TSID="08223000.DWR.Streamflow.Month",NewTSID="08223000.DWR.Streamflow.Month.Filled")
+Copy(Alias="Filled",TSID="08223000.DWR.Streamflow.Month",NewTSID="08223000.DWR.Streamflow.Month.Filled")
