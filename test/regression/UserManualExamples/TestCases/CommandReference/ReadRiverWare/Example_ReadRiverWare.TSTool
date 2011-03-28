@@ -1,1 +1,1 @@
-TS ts1 = ReadRiverWare(InputFile="SouthHolstonData.SOGPoolElevation")
+ReadRiverWare(Alias="ts1",InputFile="SouthHolstonData.SOGPoolElevation")
