@@ -1,1 +1,1 @@
-ReadNwsCard(InputFile="Data/TDAO3.QA.ESP",EnsembleID="Ensemble_TDAO3",NewUnits="CMS",Read24HourAsDay=True)
+ReadNwsCard(Alias="%L-%T-%I-%z",InputFile="Data/TDAO3.QA.ESP",EnsembleID="Ensemble_TDAO3",NewUnits="CMS",Read24HourAsDay=True)

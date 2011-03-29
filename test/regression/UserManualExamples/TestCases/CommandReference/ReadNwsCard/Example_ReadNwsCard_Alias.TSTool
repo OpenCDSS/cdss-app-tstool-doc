@@ -1,1 +1,1 @@
-TS 03567500 = ReadNwsCard(InputFile="Data\03567500.CARD",NewUnits="CMSD",InputStart="1960-01-01 24",InputEnd="2000-12-31 24",Read24HourAsDay=True)
+ReadNwsCard(Alias="03567500",InputFile="Data\03567500.CARD",NewUnits="CMSD",InputStart="1960-01-01 24",InputEnd="2000-12-31 24",Read24HourAsDay=True)
