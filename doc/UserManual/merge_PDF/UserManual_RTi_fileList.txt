@@ -96,7 +96,7 @@
 60_Command_ReadTableFromDBF.pdf
 60_Command_ReadTableFromDelimitedFile.pdf
 60_Command_ReadTimeSeries.pdf
-60_Command_ReadUsgsNwiss.pdf
+60_Command_ReadUsgsNwis.pdf
 60_Command_RelativeDiff.pdf
 60_Command_RemoveFile.pdf
 60_Command_ReplaceValue.pdf
