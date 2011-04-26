@@ -24,6 +24,7 @@
 60_Command_ChangeInterval.pdf
 60_Command_ChangePeriod.pdf
 60_Command_CheckTimeSeries.pdf
+60_Command_CheckTimeSeriesStatistic.pdf
 60_Command_CompareFiles.pdf
 60_Command_CompareTables.pdf
 60_Command_CompareTimeSeries.pdf
