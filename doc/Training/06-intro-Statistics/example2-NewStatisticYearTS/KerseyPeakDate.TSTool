@@ -1,5 +1,5 @@
 # Calculate the day of the peak flow for each year
 ReadDateValue(InputFile="streamflow-day.dv")
-TS 06754000-PeakDay = NewStatisticYearTS(TSID="06754000.DWR.Streamflow.Day",NewTSID="06754000.DWR.Streamflow.Year.PeakDay",Statistic=DayOfMax)
+NewStatisticYearTS(Alias="06754000-PeakDay",TSID="06754000.DWR.Streamflow.Day",NewTSID="06754000.DWR.Streamflow.Year.PeakDay",Statistic=DayOfMax)
 # Create a graph for day of peak
 ProcessTSProduct(TSProductFile="06754000-DayOfPeak.tsp",OutputFile="06754000-DayOfPeak.png")
