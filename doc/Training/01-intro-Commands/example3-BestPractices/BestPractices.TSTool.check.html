@@ -28,9 +28,9 @@ p { font-size:12pt; }
  - generated at runtime<br>
 <a href="#notes">Command File Comments</a>
  - as written to output file headers<br>
-<a href="#commands">Command Details</a>
- - command run times and warning/failure counts<br>
 <a href="#summary">Command Problem Summary</a>
+ - command run times and warning/failure counts<br>
+<a href="#commands">Command Details</a>
  - command problem summary<br>
 
 <h2><a name="environment">Program/Environment Information</a></h2>
@@ -43,13 +43,13 @@ p { font-size:12pt; }
 <tr>
 <td>Command file
 </td>
-<td>C:\Develop\TSTool_SourceBuild\TSTool\doc\Training\01-intro-Commands\example2-RunningAverage\RunningAverage.TSTool
+<td>C:\Develop\TSTool_SourceBuild\TSTool\doc\Training\01-intro-Commands\example3-BestPractices\BestPractices.TSTool
 </td>
 </tr>
 <tr>
 <td>Program
 </td>
-<td>TSTool 9.07.02 (2010-08-19)
+<td>TSTool 10.00.01beta (2011-04-20)
 </td>
 </tr>
 <tr>
@@ -61,7 +61,7 @@ p { font-size:12pt; }
 <tr>
 <td>Creation time
 </td>
-<td>2010-08-20 02:11:11 MDT
+<td>2011-05-09 11:18:43 MDT
 </td>
 </tr>
 <tr>
@@ -90,7 +90,7 @@ p { font-size:12pt; }
 TSTool check file containing all warning/failure messages from run.
 
 -----------------------------------------------------------------------
-Command file name: "C:\Develop\TSTool_SourceBuild\TSTool\doc\Training\01-intro-Commands\example2-RunningAverage\RunningAverage.TSTool"
+Command file name: "C:\Develop\TSTool_SourceBuild\TSTool\doc\Training\01-intro-Commands\example3-BestPractices\BestPractices.TSTool"
 Commands: 
 StartLog(LogFile="BestPractices.TSToo.log")
 # Simple command file illustrating best practices.
@@ -99,7 +99,7 @@ StartLog(LogFile="BestPractices.TSToo.log")
 # Use relative paths for files to allow transport
 ReadDateValue(InputFile="RoaringFork-Streamflow-Month.dv")
 # Copy one of the time series to keep the original and modified versions
-TS ROABMCCO-10Year = Copy(TSID="ROABMCCO.DWR.Streamflow.Month",NewTSID="ROABMCCO.DWR.Streamflow.Month.10Year")
+Copy(Alias="ROABMCCO-10Year",TSID="ROABMCCO.DWR.Streamflow.Month",NewTSID="ROABMCCO.DWR.Streamflow.Month.10Year")
 # Compute the 10-year running average of the time series
 RunningAverage(TSList=AllMatchingTSID,TSID="ROABMCCO-10Year",AverageMethod=NYear,Bracket=10)
 # Checking results is always a good idea
@@ -116,7 +116,7 @@ Stored procedures are being used.
 
 </pre>
 
-<h2><a name="commands">Command Details</a></h2>
+<h2><a name="summary">Command Problem Summary</a></h2>
 <p>
 Total number of failures: 0<br>
 Total number of commands with failures: 0<br>
@@ -190,7 +190,7 @@ Total number of commands with warnings: 1<br>
 <tr>
 <td>6
 </td>
-<td>0.188
+<td>0.203
 </td>
 <td>0
 </td>
@@ -212,13 +212,13 @@ Total number of commands with warnings: 1<br>
 <tr>
 <td>8
 </td>
-<td>0.000
+<td>0.016
 </td>
 <td>0
 </td>
 <td>0
 </td>
-<td><a name="c7">TS ROABMCCO-10Year = Copy(TSID="ROABMCCO.DWR.Streamflow.Month",NewTSID="ROABMCCO.DWR.Streamflow.Month.10Year")</a></td>
+<td><a name="c7">Copy(Alias="ROABMCCO-10Year",TSID="ROABMCCO.DWR.Streamflow.Month",NewTSID="ROABMCCO.DWR.Streamflow.Month.10Year")</a></td>
 </tr>
 <tr>
 <td>9
@@ -256,7 +256,7 @@ Total number of commands with warnings: 1<br>
 <tr>
 <td>12
 </td>
-<td>0.406
+<td>0.359
 </td>
 <td class=warning >792
 </td>
@@ -277,7 +277,7 @@ Total number of commands with warnings: 1<br>
 </tr>
 <td>
 </td>
-<td>0.594
+<td>0.578
 </td>
 <td class=warning >792
 </td>
@@ -287,7 +287,7 @@ Total number of commands with warnings: 1<br>
 </td>
 </table>
 
-<h2><a name="summary">Command Problem Summary</a></h2>
+<h2><a name="commands">Command Problem Details</a></h2>
 <p>
 Total number of failures: 0<br>
 Total number of commands with failures: 0<br>
