@@ -1,0 +1,4 @@
+ReadTimeSeries(Alias="%L-precipitation",TSID="COOP:050125.ACIS.4.Day~DateValue~ACIS-Colorado-Precipitation.dv",IfNotFound=Warn)
+ReadTimeSeries(Alias="%L-precipitation",TSID="COOP:051778.ACIS.4.Day~DateValue~ACIS-Colorado-Precipitation.dv",IfNotFound=Warn)
+ReadTimeSeries(Alias="%L-precipitation",TSID="COOP:052223.ACIS.4.Day~DateValue~ACIS-Colorado-Precipitation.dv",IfNotFound=Warn)
+ReadTimeSeries(Alias="%L-precipitation",TSID="COOP:053005.ACIS.4.Day~DateValue~ACIS-Colorado-Precipitation.dv",IfNotFound=Warn)

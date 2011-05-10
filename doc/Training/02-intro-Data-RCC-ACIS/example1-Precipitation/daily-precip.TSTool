@@ -1,0 +1,8 @@
+# Read precipitation data from RCC ACIS web service using TSIDs
+# Fort Collins
+COOP:053005.ACIS.4.Day~RCC-ACIS
+# Greeley (two periods, latter moved to UNC)
+COOP:053546.ACIS.4.Day~RCC-ACIS
+COOP:053553.ACIS.4.Day~RCC-ACIS
+# Write the data to a local DateValue file as an archive of data
+WriteDateValue(OutputFile="daily-precip-ACIS.dv")
