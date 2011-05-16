@@ -1,7 +1,7 @@
 #StartLog(LogFile="Example_RelativeDiff.log")
 SetOutputPeriod(OutputStart="01/1912",OutputEnd="12/1998")
 # (1912-1998) RIO GRANDE AT ALAMOSA, CO.  DWR  Streamflow  Monthly
-ReadTimeSeries(Alias="Alamosa",TSID="08223000.DWR.Streamflow.Month~HydroBase",IfNotFound=Warn)
+ReadTimeSeries(TSID="08223000.DWR.Streamflow.Month~HydroBase",Alias="Alamosa",IfNotFound=Warn)
 # (1890-1998) RIO GRANDE NEAR DEL NORTE, CO.  DWR  Streamflow  Monthly
-ReadTimeSeries(Alias="DelNorte",TSID="08220000.DWR.Streamflow.Month~HydroBase",IfNotFound=Warn)
-RelativeDiff(Alias="RelativeDiff",TSID1="DelNorte",TSID2="Alamosa",Divisor=DivideByTS1)
+ReadTimeSeries(TSID="08220000.DWR.Streamflow.Month~HydroBase",Alias="DelNorte",IfNotFound=Warn)
+RelativeDiff(TSID1="DelNorte",TSID2="Alamosa",Divisor=DivideByTS1,Alias="RelativeDiff")

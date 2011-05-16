@@ -1,1 +1,1 @@
-TS HourTS = Disaggregate(TSID="DayTS",Method=SameValue,NewInterval=6Hour)
+Disaggregate(TSID="DayTS",Alias="HourTS",Method=SameValue,NewInterval=6Hour)
