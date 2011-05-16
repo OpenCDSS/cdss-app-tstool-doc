@@ -76,7 +76,6 @@
 60_Command_NewTimeSeries.pdf
 60_Command_NewTreeView.pdf
 60_Command_Normalize.pdf
-60_Command_OpenCheckFile.pdf
 60_Command_OpenHydroBase.pdf
 60_Command_ProcessTSProduct.pdf
 60_Command_ReadDateValue.pdf
