@@ -1,0 +1,21 @@
+# Reservoir target file commands
+# Each reservoir needs a minimum (zero) and maximum time series (from HydroBase)
+SetOutputPeriod(OutputStart="10/1974",OutputEnd="9/1991")
+SetOutputYearType(OutputYearType=Water)
+# CBT SHADOW MTN GRAND L
+NewTimeSeries(Alias="ShadowMtn",NewTSID="513695.USBR.ResEOM.Month",
+    Description="CBT SHADOW MTN GRAND L",Units="AF",InitialValue=0)
+513695.USBR.ResEOM.MONTH~HydroBase
+# CBT GRANBY RESERVOIR
+NewTimeSeries(Alias="Granby",NewTSID="51460.USBR.ResEOM.Month",Units="AF",InitialValue=0)
+514620.USBR.ResEOM.MONTH~HydroBase
+# DILLON RESERVOIR
+NewTimeSeries(Alias="Dillon",NewTSID="364512.USBR.ResEOM.Month",Units="AF",InitialValue=0)
+364512.DWB.ResEOM.MONTH~HydroBase
+# GREEN MOUNTAIN RESERVIOR
+NewTimeSeries(Alias="GreenMtn",NewTSID="363543.USBR.ResEOM.Month",Units="AF",InitialValue=0)
+363543.USBR.ResEOM.MONTH~HydroBase
+# RIFLE GAP RESERVOIR
+NewTimeSeries(Alias="RifleGap",NewTSID="393508.USBR.ResEOM.Month",Units="AF",InitialValue=0)
+393508.USBR.ResEOM.MONTH~HydroBase
+WriteStateMod(TSList=AllTS,OutputFile="coloup.tar")

@@ -10,8 +10,8 @@
 # database.  In this case, the SetOutputPeriod() command might need to be used
 # to ensure that the final result is for a required period.
 #
-TS ts1 = NewPatternTimeSeries(NewTSID="ts1..Streamflow.Day",Description="Time series 1, all unregulated",SetStart="1900-01-01",SetEnd="2000-12-31",Units="CFS",PatternValues="1,2,4,7,12,6,2,1.5")
-TS ts2 = NewPatternTimeSeries(NewTSID="ts2..Streamflow.Day",Description="Time series 1, unregulated from 1920 to 1950, regulated after",SetStart="1900-01-01",SetEnd="2000-12-31",Units="CFS",PatternValues="2,3,6,10,15,3,2.5,2")
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..Streamflow.Day",Description="Time series 1, all unregulated",SetStart="1900-01-01",SetEnd="2000-12-31",Units="CFS",PatternValues="1,2,4,7,12,6,2,1.5")
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2..Streamflow.Day",Description="Time series 1, unregulated from 1920 to 1950, regulated after",SetStart="1900-01-01",SetEnd="2000-12-31",Units="CFS",PatternValues="2,3,6,10,15,3,2.5,2")
 #
 # Clear out the period 1919- in ts2 because it was not recorded in our example.
 SetConstant(TSList=AllMatchingTSID,TSID="ts2",ConstantValue=-999,SetEnd="1919-12-31")
