@@ -1,0 +1,34 @@
+StartLog(LogFile="download-DOLA-county-population-forecast.TSTool.log")
+#
+# This command file downloads population data from the Colorado State Demographer
+# website and processes the data into time series compatible with TSTool,
+# for use in analysis.  It requires that Python be installed on the system and it uses
+# a Python script distributed with TSTool.
+#
+# First retrieve the data from the DOLA web site.
+WebGet(URI="http://www.dola.state.co.us/dlg/demog/population/forecasts/counties1yr.csv",LocalFile="DOLA-counties1yr.csv")
+#
+# Transpose the rows/columns to match TSTool time series notation with dates in the first column.
+# Use Python with a script that transposes a "matrix" file.
+# Development environment...
+#RunPython(InputFile="..\..\Python\transpose-csv.py",Arguments="\"${WorkingDir}\DOLA-counties1yr.csv\" \"${WorkingDir}\DOLA-counties1yr-trans.csv\"",Interpreter="IronPython",Program="C:\Program Files\IronPython 2.6\ipy.exe")
+# Installed TSTool...
+RunPython(InputFile="${InstallDir}\Python\table\transpose-csv.py",Arguments="\"${WorkingDir}\DOLA-counties1yr.csv\" \"${WorkingDir}\DOLA-counties1yr-trans.csv\"",Interpreter="IronPython",Program="C:\Program Files\IronPython 2.6\ipy.exe")
+#
+# Set the output period to include 1995 because some passive conservation calculations
+# for toilets deal with 1996 data and 1995 is a nice 5-year increment
+SetOutputPeriod(OutputStart=1995,OutputEnd=2050)
+#
+# Read the forecasted county population time series from the delimited CSV file.
+# This is for the period 2000+
+# Define column names dynamically based on the first non-comment line in the file
+ReadDelimitedFile(InputFile="DOLA-counties1yr-trans.csv",Delimiter=",",ColumnNames="Year,FC[2:]",DateTimeColumn="Year",ValueColumn="FC[2:]",LocationID="FC[2:]",Provider="DOLA",DataType="Population",Interval=Year,Units="Persons",Alias="%L-population")
+#
+# Write out the time series to a DateValue format, to simplify subsequent use
+WriteDateValue(OutputFile="DOLA-counties1yr.dv",Precision=0)
+# The following creates a total time series, to compare with the state total
+# supplied in the file.  They should be the same.
+TS Total = NewTimeSeries(NewTSID="Total.DOLA.Population.Year",Description="Total of counties",SetStart="1995",SetEnd="2040",Units="Persons")
+Add(TSID="Total",AddTSList=SpecifiedTSID,AddTSID="Adams-population,Alamosa-population,Arapahoe-population,Archuleta-population,Baca-population,Bent-population,Boulder-population,Broomfield-population,Chaffee-population,Cheyenne-population,Clear Creek-population,Conejos-population,Costilla-population,Crowley-population,Custer-population,Delta-population,Denver-population,Dolores-population,Douglas-population,Eagle-population,Elbert-population,El Paso-population,Fremont-population,Garfield-population,Gilpin-population,Grand-population,Gunnison-population,Hinsdale-population,Huerfano-population,Jackson-population,Jefferson-population,Kiowa-population,Kit Carson-population,Lake-population,La Plata-population,Larimer-population,Las Animas-population,Lincoln-population,Logan-population,Mesa-population,Mineral-population,Moffat-population,Montezuma-population,Montrose-population,Morgan-population,Otero-population,Ouray-population,Park-population,Phillips-population,Pitkin-population,Prowers-population,Pueblo-population,Rio Blanco-population,Rio Grande-population,Routt-population,Saguache-population,San Juan-population,San Miguel-population,Sedgwick-population,Summit-population,Teller-population,Washington-population,Weld-population,Yuma-population",HandleMissingHow="IgnoreMissing")
+# Time series are now in memory and can be further processed.
+# Wait to see how the data are being used by CDM.

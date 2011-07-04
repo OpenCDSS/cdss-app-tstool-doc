@@ -1,0 +1,3 @@
+# Example retrieving data from the State of Colorado's website and reading the file
+WebGet(URI="http://www.dwr.state.co.us/SurfaceWater/data/export_tabular.aspx?IDADATUNCO&MTYPEGAGE_HT,DISCHRG&INTERVAL1&START10/1/06&END10/6/06",LocalFile="Data\CO-DWR-ADATUNCO-tab.txt")
+ReadDelimitedFile(InputFile="Data\CO-DWR-ADATUNCO-tab.txt",Delimiter="\t",ColumnNames="ID,DateTime,GAGE_HT,DISCHRG",DateTimeColumn="DateTime",ValueColumn="GAGE_HT,DISCHRG",SkipRowsAfterComments="1",LocationID="ADATUNCO",Provider="DWR",DataType="GAGE_HT,DISCHRG",Interval=15Minute,Units="ft,cfs",Alias="%L%T")

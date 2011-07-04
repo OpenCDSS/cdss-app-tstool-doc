@@ -1,0 +1,13 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Error</title>
+</head>
+<body>
+<h4>Error Retrieving Page</h4>
+<p>There was an error in retrieving the requested page.  Please try again later.</p>
+<p>If this error persists, please contact the Colorado Division of Water Resources at:</p>
+<p><a href="mailto:AskDWR@state.co.us">AskDWR@state.co.us</a></p>
+<p>Thank you for your patience.</p>
+</body>
+</html>
