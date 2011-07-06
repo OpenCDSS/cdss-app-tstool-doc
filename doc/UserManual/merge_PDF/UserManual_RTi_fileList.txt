@@ -76,6 +76,7 @@
 60_Command_NewTreeView.pdf
 60_Command_Normalize.pdf
 60_Command_OpenHydroBase.pdf
+60_Command_PrintTextFile.pdf
 60_Command_ProcessTSProduct.pdf
 60_Command_ReadDateValue.pdf
 60_Command_ReadDelimitedFile.pdf
