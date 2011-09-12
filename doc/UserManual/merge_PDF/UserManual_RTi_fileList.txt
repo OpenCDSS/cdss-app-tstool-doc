@@ -87,6 +87,7 @@
 60_Command_ReadNWSRFSESPTraceEnsemble.pdf
 60_Command_ReadNWSRFSFS5Files.pdf
 60_Command_ReadPatternFile.pdf
+60_Command_ReadRccAcis.pdf
 60_Command_ReadReclamationHDB.pdf
 60_Command_ReadRiverWare.pdf
 60_Command_ReadStateCU.pdf

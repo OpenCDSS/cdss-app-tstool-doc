@@ -85,6 +85,7 @@
 60_Command_ReadHydroBase.pdf
 60_Command_ReadMODSIM.pdf
 60_Command_ReadPatternFile.pdf
+60_Command_ReadRccAcis.pdf
 60_Command_ReadReclamationHDB.pdf
 60_Command_ReadRiverWare.pdf
 60_Command_ReadStateCU.pdf
