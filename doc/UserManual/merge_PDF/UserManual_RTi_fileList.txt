@@ -58,6 +58,7 @@
 60_Command_FillRegression.pdf
 60_Command_FillRepeat.pdf
 60_Command_FillUsingDiversionComments.pdf
+60_Command_FormatDateTimeProperty.pdf
 60_Command_Free.pdf
 60_Command_FTPGet.pdf
 60_Command_InsertTimeSeriesIntoEnsemble.pdf
@@ -148,6 +149,7 @@
 60_Command_WriteNWSRFSESPTraceEnsemble.pdf
 60_Command_WriteNwsCard.pdf
 60_Command_WriteProperty.pdf
+60_Command_WriteReclamationHDB.pdf
 60_Command_WriteRiverWare.pdf
 60_Command_WriteSHEF.pdf
 60_Command_WriteStateCU.pdf
