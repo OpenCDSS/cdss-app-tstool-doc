@@ -1,3 +1,3 @@
 # 09019500 - COLORADO RIVER NEAR GRANBY
 09019500.USGS.Streamflow.Day~HydroBase
-CreateEnsemble(TSID="09019500.USGS.Streamflow.Day",TraceLength=1Year,EnsembleID="Ensemble_1",EnsembleName="Test Ensemble",ReferenceDate="2008-01-01",ShiftDataHow=ShiftToReference)
+CreateEnsembleFromOneTimeSeries(TSID="09019500.USGS.Streamflow.Day",TraceLength=1Year,EnsembleID="Ensemble_1",EnsembleName="Test Ensemble",ReferenceDate="2008-01-01",ShiftDataHow=ShiftToReference)
