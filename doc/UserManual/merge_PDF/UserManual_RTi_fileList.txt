@@ -90,6 +90,7 @@
 60_Command_ReadPatternFile.pdf
 60_Command_ReadRccAcis.pdf
 60_Command_ReadReclamationHDB.pdf
+60_Command_ReadRiversideDB.pdf
 60_Command_ReadRiverWare.pdf
 60_Command_ReadStateCU.pdf
 60_Command_ReadStateCUB.pdf
