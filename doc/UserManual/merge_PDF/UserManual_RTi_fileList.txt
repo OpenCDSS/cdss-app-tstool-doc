@@ -96,6 +96,7 @@
 60_Command_ReadStateCUB.pdf
 60_Command_ReadStateMod.pdf
 60_Command_ReadStateModB.pdf
+60_Command_ReadTableFromDataStore.pdf
 60_Command_ReadTableFromDBF.pdf
 60_Command_ReadTableFromDelimitedFile.pdf
 60_Command_ReadTimeSeries.pdf
