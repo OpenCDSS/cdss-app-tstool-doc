@@ -63,6 +63,7 @@
 60_Command_FTPGet.pdf
 60_Command_InsertTimeSeriesIntoEnsemble.pdf
 60_Command_LagK.pdf
+60_Command_LookupTimeSeriesFromTable.pdf
 60_Command_ManipulateTableString.pdf
 60_Command_multiply.pdf
 60_Command_NewDayTSFromMonthAndDayTS.pdf
