@@ -101,6 +101,7 @@
 60_Command_ReadTableFromDBF.pdf
 60_Command_ReadTableFromDelimitedFile.pdf
 60_Command_ReadTimeSeries.pdf
+60_Command_ReadUsgsNwisDaily.pdf
 60_Command_ReadUsgsNwisRdb.pdf
 60_Command_RelativeDiff.pdf
 60_Command_RemoveFile.pdf
@@ -184,8 +185,8 @@
 90_Appendix_InputType_StateCUB.pdf
 90_Appendix_InputType_StateMod.pdf
 90_Appendix_InputType_StateModB.pdf
-90_Appendix_InputType_USGSNWIS.pdf
-90_Appendix_InputType_USGSNWIS_WebService.pdf
+90_Appendix_InputType_UsgsNwisDaily.pdf
+90_Appendix_InputType_UsgsNwisRdb.pdf
 95_Appendix_TSView.pdf
 96_Appendix_GeoView.pdf
 96_Appendix_GeoView_NWSRFS.pdf
