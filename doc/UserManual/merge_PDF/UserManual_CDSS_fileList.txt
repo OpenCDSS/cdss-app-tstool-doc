@@ -101,6 +101,7 @@
 60_Command_ReadTimeSeries.pdf
 60_Command_ReadUsgsNwisDaily.pdf
 60_Command_ReadUsgsNwisRdb.pdf
+60_Command_ReadWaterML.pdf
 60_Command_RelativeDiff.pdf
 60_Command_RemoveFile.pdf
 60_Command_ReplaceValue.pdf
@@ -156,8 +157,10 @@
 60_Command_WriteTableToDelimitedFile.pdf
 60_Command_WriteTableToHTML.pdf
 60_Command_WriteTimeSeriesProperty.pdf
+60_Command_WriteWaterML.pdf
 80_Appendix_Install_Config_CDSS.pdf
 82_Appendix_ReleaseNotes.pdf
+89_Appendix_DataStore_Overview.pdf
 90_Appendix_InputType_ColoradoBNDSS.pdf
 90_Appendix_InputType_ColoradoSMS.pdf
 90_Appendix_InputType_ColoradoWaterHBGuest.pdf
@@ -178,6 +181,7 @@
 90_Appendix_InputType_StateModB.pdf
 90_Appendix_InputType_UsgsNwisDaily.pdf
 90_Appendix_InputType_UsgsNwisRdb.pdf
+90_Appendix_InputType_WaterML.pdf
 95_Appendix_TSView.pdf
 96_Appendix_GeoView.pdf
 96_Appendix_GeoView_Shapefile.pdf
