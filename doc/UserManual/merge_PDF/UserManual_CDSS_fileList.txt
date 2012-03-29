@@ -102,6 +102,7 @@
 60_Command_ReadUsgsNwisDaily.pdf
 60_Command_ReadUsgsNwisRdb.pdf
 60_Command_ReadWaterML.pdf
+60_Command_ReadWaterOneFlow.pdf
 60_Command_RelativeDiff.pdf
 60_Command_RemoveFile.pdf
 60_Command_ReplaceValue.pdf
@@ -182,6 +183,7 @@
 90_Appendix_InputType_UsgsNwisDaily.pdf
 90_Appendix_InputType_UsgsNwisRdb.pdf
 90_Appendix_InputType_WaterML.pdf
+90_Appendix_InputType_WaterOneFlow.pdf
 95_Appendix_TSView.pdf
 96_Appendix_GeoView.pdf
 96_Appendix_GeoView_Shapefile.pdf
