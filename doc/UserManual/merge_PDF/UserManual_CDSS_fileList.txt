@@ -169,6 +169,7 @@
 90_Appendix_InputType_ColoradoWaterHBGuest.pdf
 90_Appendix_InputType_ColoradoWaterSMS.pdf
 90_Appendix_InputType_DateValue.pdf
+90_Appendix_InputType_GenericDatabaseDataStore.pdf
 90_Appendix_InputType_HEC-DSS.pdf
 90_Appendix_InputType_HydroBase.pdf
 90_Appendix_InputType_MODSIM.pdf
