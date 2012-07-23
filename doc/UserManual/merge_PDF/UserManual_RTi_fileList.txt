@@ -10,6 +10,7 @@
 29_Troubleshooting.pdf
 33_QualityControl.pdf
 50_CommandGlossary.pdf
+60_Command_AppendFile.pdf
 55_Command_Comment.pdf
 55_Command_CommentBlockStart.pdf
 55_Command_CommentBlockEnd.pdf
