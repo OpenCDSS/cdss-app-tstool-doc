@@ -90,6 +90,7 @@
 60_Command_ReadNWSRFSESPTraceEnsemble.pdf
 60_Command_ReadNWSRFSFS5Files.pdf
 60_Command_ReadPatternFile.pdf
+60_Command_ReadPropertiesFromFile.pdf
 60_Command_ReadRccAcis.pdf
 60_Command_ReadReclamationHDB.pdf
 60_Command_ReadRiversideDB.pdf
@@ -155,6 +156,7 @@
 60_Command_WriteHecDss.pdf
 60_Command_WriteNWSRFSESPTraceEnsemble.pdf
 60_Command_WriteNwsCard.pdf
+60_Command_WritePropertiesToFile.pdf
 60_Command_WriteProperty.pdf
 60_Command_WriteReclamationHDB.pdf
 60_Command_WriteRiverWare.pdf
