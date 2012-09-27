@@ -171,6 +171,7 @@
 90_Appendix_InputType_DateValue.pdf
 90_Appendix_InputType_GenericDatabaseDataStore.pdf
 90_Appendix_InputType_HEC-DSS.pdf
+90_Appendix_InputType_HydroBaseDataStore.pdf
 90_Appendix_InputType_HydroBase.pdf
 90_Appendix_InputType_MODSIM.pdf
 90_Appendix_InputType_NWSCard.pdf
