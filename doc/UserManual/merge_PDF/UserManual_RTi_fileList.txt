@@ -9,7 +9,8 @@
 28_UsingTheMap.pdf
 29_Troubleshooting.pdf
 33_QualityControl.pdf
-50_CommandGlossary.pdf
+48_Command_Syntax.pdf
+49_Command_Glossary.pdf
 60_Command_AppendFile.pdf
 55_Command_Comment.pdf
 55_Command_CommentBlockStart.pdf
