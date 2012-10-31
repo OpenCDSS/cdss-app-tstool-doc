@@ -103,6 +103,7 @@
 60_Command_ReadTimeSeries.pdf
 60_Command_ReadUsgsNwisDaily.pdf
 60_Command_ReadUsgsNwisGroundwater.pdf
+60_Command_ReadUsgsNwisInstantaneous.pdf
 60_Command_ReadUsgsNwisRdb.pdf
 60_Command_ReadWaterML.pdf
 60_Command_ReadWaterOneFlow.pdf
@@ -188,6 +189,7 @@
 90_Appendix_InputType_StateModB.pdf
 90_Appendix_InputType_UsgsNwisDaily.pdf
 90_Appendix_InputType_UsgsNwisGroundwater.pdf
+90_Appendix_InputType_UsgsNwisInstantaneous.pdf
 90_Appendix_InputType_UsgsNwisRdb.pdf
 90_Appendix_InputType_WaterML.pdf
 90_Appendix_InputType_WaterOneFlow.pdf
