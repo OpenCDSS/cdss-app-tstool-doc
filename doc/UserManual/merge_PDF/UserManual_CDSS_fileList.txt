@@ -87,6 +87,7 @@
 60_Command_ReadHecDss.pdf
 60_Command_ReadHydroBase.pdf
 60_Command_ReadMODSIM.pdf
+60_Command_ReadNrcsAwdb.pdf
 60_Command_ReadPatternFile.pdf
 60_Command_ReadPropertiesFromFile.pdf
 60_Command_ReadRccAcis.pdf
@@ -177,6 +178,7 @@
 90_Appendix_InputType_HydroBaseDataStore.pdf
 90_Appendix_InputType_HydroBase.pdf
 90_Appendix_InputType_MODSIM.pdf
+90_Appendix_InputType_NrcsAwdb.pdf
 90_Appendix_InputType_NWSCard.pdf
 90_Appendix_InputType_NWSRFS_ESPTraceEnsemble.pdf
 90_Appendix_InputType_NWSRFS_FS5Files.pdf
