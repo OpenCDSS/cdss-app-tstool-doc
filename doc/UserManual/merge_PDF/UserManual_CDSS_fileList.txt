@@ -147,6 +147,7 @@
 60_Command_Subtract.pdf
 60_Command_TableMath.pdf
 60_Command_TableTimeSeriesMath.pdf
+60_Command_TableToTimeSeries.pdf
 60_Command_TimeSeriesToTable.pdf
 60_Command_VariableLagK.pdf
 60_Command_WebGet.pdf
