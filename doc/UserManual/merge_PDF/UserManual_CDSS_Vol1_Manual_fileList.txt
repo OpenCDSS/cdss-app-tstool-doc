@@ -1,5 +1,4 @@
 01_Cover_CDSS.pdf
-00_BlankPage.pdf
 03_Disclaimer_CDSS.pdf
 11_Acknowledgements.pdf
 14_Introduction.pdf
@@ -8,9 +7,9 @@
 23_Tools_CDSS.pdf
 26_Examples.pdf
 27_SpatialDataIntegration.pdf
-28_ExcelIntegration.pdf
 29_Troubleshooting.pdf
 33_QualityControl.pdf
+35_ExcelIntegration.pdf
 80_Appendix_Install_Config_CDSS.pdf
 95_Appendix_TSView.pdf
 96_Appendix_GeoView.pdf
