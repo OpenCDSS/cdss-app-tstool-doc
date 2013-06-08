@@ -10,6 +10,7 @@
 60_Command_AddConstant.pdf
 60_Command_AdjustExtremes.pdf
 60_Command_AnalyzePattern.pdf
+60_Command_AnalyzeNetworkPointFlow.pdf
 60_Command_AppendFile.pdf
 60_Command_ARMA.pdf
 60_Command_Blend.pdf
@@ -52,6 +53,7 @@
 60_Command_FillRepeat.pdf
 60_Command_FillUsingDiversionComments.pdf
 60_Command_FormatDateTimeProperty.pdf
+60_Command_FormatTableString.pdf
 60_Command_Free.pdf
 60_Command_FreeTable.pdf
 60_Command_FTPGet.pdf
@@ -96,6 +98,7 @@
 60_Command_ReadTableFromDelimitedFile.pdf
 60_Command_ReadTableFromExcel.pdf
 60_Command_ReadTimeSeries.pdf
+60_Command_ReadTimeSeriesList.pdf
 60_Command_ReadUsgsNwisDaily.pdf
 60_Command_ReadUsgsNwisGroundwater.pdf
 60_Command_ReadUsgsNwisInstantaneous.pdf
@@ -162,5 +165,8 @@
 60_Command_WriteTableToDelimitedFile.pdf
 60_Command_WriteTableToHTML.pdf
 60_Command_WriteTimeSeriesProperty.pdf
+60_Command_WriteTimeSeriesToDataStore.pdf
+60_Command_WriteTimeSeriesToJson.pdf
+60_Command_WriteTimeSeriesToKml.pdf
 60_Command_WriteWaterML.pdf
 99_TSTool_Spine_CDSS_CommandReference.pdf
