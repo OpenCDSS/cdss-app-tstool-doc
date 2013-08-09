@@ -59,6 +59,7 @@
 60_Command_FreeTable.pdf
 60_Command_FTPGet.pdf
 60_Command_InsertTimeSeriesIntoEnsemble.pdf
+60_Command_JoinTables.pdf
 60_Command_LagK.pdf
 60_Command_LookupTimeSeriesFromTable.pdf
 60_Command_ManipulateTableString.pdf
@@ -76,6 +77,7 @@
 60_Command_Normalize.pdf
 60_Command_OpenHydroBase.pdf
 60_Command_PrintTextFile.pdf
+60_Command_ProcessRasterGraph.pdf
 60_Command_ProcessTSProduct.pdf
 60_Command_ProfileCommands.pdf
 60_Command_ReadDateValue.pdf
@@ -99,6 +101,7 @@
 60_Command_ReadTableFromDelimitedFile.pdf
 60_Command_ReadTableFromExcel.pdf
 60_Command_ReadTimeSeries.pdf
+60_Command_ReadTimeSeriesFromDataStore.pdf
 60_Command_ReadTimeSeriesList.pdf
 60_Command_ReadUsgsNwisDaily.pdf
 60_Command_ReadUsgsNwisGroundwater.pdf
@@ -108,7 +111,7 @@
 60_Command_ReadWaterOneFlow.pdf
 60_Command_RelativeDiff.pdf
 60_Command_RemoveFile.pdf
-60_Command_RemoveTableRowsFromDataStore.pdf
+60_Command_RemoveDataStoreTableRows.pdf
 60_Command_ReplaceValue.pdf
 60_Command_ResequenceTimeSeriesData.pdf
 60_Command_RunCommands.pdf
@@ -132,6 +135,7 @@
 60_Command_SetOutputYearType.pdf
 60_Command_SetPatternFile.pdf
 60_Command_SetProperty.pdf
+60_Command_SetTableValues.pdf
 60_Command_SetTimeSeriesPropertiesFromTable.pdf
 60_Command_SetTimeSeriesProperty.pdf
 60_Command_SetToMax.pdf
