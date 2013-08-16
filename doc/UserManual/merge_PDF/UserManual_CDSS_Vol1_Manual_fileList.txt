@@ -11,6 +11,7 @@
 33_QualityControl.pdf
 35_SpreadsheetIntegration.pdf
 80_Appendix_Install_Config_CDSS.pdf
+85_Appendix_RunningTSTool.pdf
 95_Appendix_TSView.pdf
 96_Appendix_GeoView.pdf
 96_Appendix_GeoView_Shapefile.pdf
