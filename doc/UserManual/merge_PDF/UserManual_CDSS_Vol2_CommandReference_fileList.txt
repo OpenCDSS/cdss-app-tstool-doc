@@ -171,6 +171,7 @@
 60_Command_WriteTableToHTML.pdf
 60_Command_WriteTimeSeriesProperty.pdf
 60_Command_WriteTimeSeriesToDataStore.pdf
+60_Command_WriteTimeSeriesToDataStream.pdf
 60_Command_WriteTimeSeriesToJson.pdf
 60_Command_WriteTimeSeriesToKml.pdf
 60_Command_WriteWaterML.pdf
