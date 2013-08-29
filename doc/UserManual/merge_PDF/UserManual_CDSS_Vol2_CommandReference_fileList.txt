@@ -120,6 +120,7 @@
 60_Command_RunningStatisticTimeSeries.pdf
 60_Command_RunProgram.pdf
 60_Command_RunPython.pdf
+60_Command_RunSql.pdf
 60_Command_Scale.pdf
 60_Command_SelectTimeSeries.pdf
 60_Command_SetAutoExtendPeriod.pdf
