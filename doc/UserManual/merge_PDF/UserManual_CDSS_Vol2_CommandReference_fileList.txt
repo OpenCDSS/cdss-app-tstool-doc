@@ -31,7 +31,9 @@
 60_Command_CreateEnsembleFromOneTimeSeries.pdf
 60_Command_CreateFromList.pdf
 60_Command_CreateRegressionTestCommandFile.pdf
+60_Command_CreateTimeSeriesEventTable.pdf
 60_Command_Cumulate.pdf
+60_Command_DeleteDataStoreTableRows.pdf
 60_Command_Delta.pdf
 60_Command_DeselectTimeSeries.pdf
 60_Command_Disaggregate.pdf
@@ -111,7 +113,6 @@
 60_Command_ReadWaterOneFlow.pdf
 60_Command_RelativeDiff.pdf
 60_Command_RemoveFile.pdf
-60_Command_RemoveDataStoreTableRows.pdf
 60_Command_ReplaceValue.pdf
 60_Command_ResequenceTimeSeriesData.pdf
 60_Command_RunCommands.pdf
