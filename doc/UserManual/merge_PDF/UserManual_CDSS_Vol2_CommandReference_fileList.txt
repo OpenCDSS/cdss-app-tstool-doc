@@ -159,6 +159,7 @@
 60_Command_WeightTraces.pdf
 60_Command_WriteCheckFile.pdf
 60_Command_WriteDateValue.pdf
+60_Command_WriteDelimitedFile.pdf
 60_Command_WriteHecDss.pdf
 60_Command_WritePropertiesToFile.pdf
 60_Command_WriteProperty.pdf
