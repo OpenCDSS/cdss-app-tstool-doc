@@ -172,6 +172,7 @@
 60_Command_WriteTableToDataStore.pdf
 60_Command_WriteTableToDelimitedFile.pdf
 60_Command_WriteTableToHTML.pdf
+60_Command_WriteTableToKml.pdf
 60_Command_WriteTimeSeriesProperty.pdf
 60_Command_WriteTimeSeriesToDataStore.pdf
 60_Command_WriteTimeSeriesToDataStream.pdf
