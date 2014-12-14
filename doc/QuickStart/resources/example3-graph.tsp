@@ -3,11 +3,11 @@
 ProductType = "Graph"
 TotalWidth = "600"
 TotalHeight = "400"
+MainTitleString = "Example Precipitation Graph"
 
 [SubProduct 1]
 
 GraphType = "Line"
-LayoutYPercent = ""
 
 [Data 1.1]
 

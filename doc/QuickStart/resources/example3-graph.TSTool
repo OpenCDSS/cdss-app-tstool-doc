@@ -1,0 +1,4 @@
+# Example command file to automate downloading precipitation data and creating a graph
+ReadTimeSeries(TSID="COOP:052211.ACIS.pcpn.Day~RCC-ACIS",Alias="%L-%T",IfNotFound=Warn)
+COOP:055402.ACIS.pcpn.Day~RCC-ACIS
+ProcessTSProduct(TSProductFile="example3-graph.tsp",OutputFile="example3-graph.png")
