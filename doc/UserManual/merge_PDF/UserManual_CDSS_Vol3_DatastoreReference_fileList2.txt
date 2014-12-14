@@ -1,0 +1,30 @@
+# Documentation file list to create merged TSTool Datastore Reference
+01_Cover_CDSS_DatastoreReference.pdf,Cover
+89_Appendix_DataStore_Overview.pdf,Datastore Overview
+90_Appendix_InputType_ColoradoSMS.pdf,Colorado SMS Database (legacy)
+90_Appendix_InputType_ColoradoWaterHBGuest.pdf,ColoradoWaterHBGuest Web Service
+90_Appendix_InputType_ColoradoWaterSMS.pdf,ColoradoWaterSMS Web Service
+90_Appendix_InputType_DateValue.pdf,DateValue File
+90_Appendix_InputType_GenericDatabaseDataStore.pdf,GenericDatabase Database
+90_Appendix_InputType_HEC-DSS.pdf,HEC-DSS File
+90_Appendix_InputType_HydroBaseDataStore.pdf,HydroBase Database
+90_Appendix_InputType_HydroBase.pdf,HydroBase Database (legacy)
+90_Appendix_InputType_MODSIM.pdf,MODSIM File
+90_Appendix_InputType_NrcsAwdb.pdf,NRCS AWDB Web Service
+90_Appendix_InputType_NWSCard.pdf,NWS Card File
+90_Appendix_InputType_NWSRFS_ESPTraceEnsemble.pdf,NWSRFS ESP Ensemble File
+90_Appendix_InputType_NWSRFS_FS5Files.pdf,NWSRFS FS5 Files
+90_Appendix_InputType_RCCACIS.pdf,RCC ACIS Web Service
+90_Appendix_InputType_ReclamationHDB.pdf,Reclamation HDB Database
+90_Appendix_InputType_RiverWare.pdf,RiverWare File
+90_Appendix_InputType_StateCU.pdf,StateCU File
+90_Appendix_InputType_StateCUB.pdf,StateCU Binary File
+90_Appendix_InputType_StateMod.pdf,StateMod File
+90_Appendix_InputType_StateModB.pdf,StateMod Binary File
+90_Appendix_InputType_UsgsNwisDaily.pdf,USGS NWIS Daily Web Service
+90_Appendix_InputType_UsgsNwisGroundwater.pdf,USGS NWIS Groundwater Web Service
+90_Appendix_InputType_UsgsNwisInstantaneous.pdf,USGS NWIS Instantaneous Web Service
+90_Appendix_InputType_UsgsNwisRdb.pdf,USGS RDB File
+90_Appendix_InputType_WaterML.pdf,WaterML File
+90_Appendix_InputType_WaterOneFlow.pdf,WaterOneFlow Web Service
+99_TSTool_Spine_CDSS_DatastoreReference.pdf,Binder Spine

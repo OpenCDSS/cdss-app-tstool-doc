@@ -1,0 +1,22 @@
+# Files that comprise the TSTool User Manual
+# This content is intended to help the user get started.
+# Reference manuals are provided for commands and datastores
+01_Cover_CDSS.pdf,Cover
+03_Disclaimer_CDSS.pdf,Disclaimer
+11_Acknowledgements.pdf,1 - Acknowledgements
+14_Introduction.pdf,2 - Introduction
+17_GettingStarted_CDSS.pdf,3 - Getting Started
+20_Commands.pdf,4 - Commands
+23_Tools_CDSS.pdf,5 - Tools
+26_Examples.pdf,6 - Examples of Use
+27_SpatialDataIntegration.pdf,7 - Spatial Data Integration
+29_Troubleshooting.pdf,8 - Troubleshooting
+33_QualityControl.pdf,9 - Quality Control
+35_SpreadsheetIntegration.pdf,10 - Spreadsheet Integration
+80_Appendix_Install_Config_CDSS.pdf,Appendix - Installation and Configuration
+85_Appendix_RunningTSTool.pdf,Appendix - Running TSTool in Various Modes
+95_Appendix_TSView.pdf,Appendix - TSView - Time Series Viewing Tools
+96_Appendix_GeoView.pdf,Appendix - GeoView Mapping Tools
+# Don't need to include shapefile
+#96_Appendix_GeoView_Shapefile.pdf,Appendix
+99_TSTool_Spine_CDSS.pdf,Binder Spine

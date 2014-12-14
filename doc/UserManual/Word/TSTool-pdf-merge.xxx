@@ -1,0 +1,10 @@
+rem Troubleshoot PDF merge process for TSTool build
+rem Code the full command line below
+
+set rti_build_home=C:\DevRiv\TSTool_SourceBuild\rtibuild
+
+rem %rti_build_home%\lib\pdfmerge\PMCMD.exe C:\DevRiv\TSTool_SourceBuild\TSTool\doc\UserManual\dist_CDSS\TSTool-Vol1-UserManual.pdf -FC:\DevRiv\TSTool_SourceBuild\TSTool\doc\UserManual\merge_PDF\UserManual_CDSS_Vol1_Manual_fileList.txt -B -NSTYLE=[0] -TLEVEL=1,LEVELSIZE1=10,LEVELCOLOR1=993333,TEMPLATE=%rti_build_home%/lib/pdfmerge/Table_of_Contents.pdf,TOP=2,PAGE=3 -VOPENSHOW=bookmark
+
+%rti_build_home%\lib\pdfmerge\PMCMD.exe C:\DevRiv\TSTool_SourceBuild\TSTool\doc\UserManual\dist_CDSS\TSTool-Vol1-UserManual.pdf -FC:\DevRiv\TSTool_SourceBuild\TSTool\doc\UserManual\merge_PDF\UserManual_CDSS_Vol1_Manual_fileList.txt
+
+rem %rti_build_home%\lib\pdfmerge\PMCMD.exe

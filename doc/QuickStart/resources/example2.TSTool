@@ -1,0 +1,2 @@
+ReadTimeSeries(TSID="COOP:052211.ACIS.pcpn.Day~RCC-ACIS",Alias="%L-%T",IfNotFound=Warn)
+COOP:055402.ACIS.pcpn.Day~RCC-ACIS
