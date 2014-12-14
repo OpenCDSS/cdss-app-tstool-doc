@@ -1,0 +1,4 @@
+# TSTool Quick Start - Example 1 - Data Browsing and Viewing
+# - read two time series using their time series identifiers
+COOP:052211.ACIS.pcpn.Day~RCC-ACIS
+COOP:055402.ACIS.pcpn.Day~RCC-ACIS

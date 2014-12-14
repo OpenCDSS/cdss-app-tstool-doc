@@ -1,0 +1,4 @@
+SetInputPeriod(InputStart="CurrentToMinute-30Day",InputEnd="CurrentToMinute")
+# CLAFTCCO - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+CLAFTCCO.DWR.DISCHRG.Irregular~ColoradoWaterSMS
+ReadUsgsNwisInstantaneous(DataStore="UsgsNwisInstantaneous",Sites="06752260",Parameters="00060",Alias="%L-Streamflow")
