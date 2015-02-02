@@ -21,6 +21,7 @@
 60_Command_ChangePeriod.pdf,ChangePeriod
 60_Command_CheckTimeSeries.pdf,CheckTimeSeries
 60_Command_CheckTimeSeriesStatistic.pdf,CheckTimeSeriesStatistic
+60_Command_CloseExcelWorkbook.pdf,CloseExcelWorkbook
 60_Command_CompareFiles.pdf,CompareFiles
 60_Command_CompareTables.pdf,CompareTables
 60_Command_CompareTimeSeries.pdf,CompareTimeSeries
@@ -164,6 +165,7 @@
 60_Command_ShiftTimeByInterval.pdf,ShiftTimeByInterval
 60_Command_SortTable.pdf,SortTable
 60_Command_SortTimeSeries.pdf,SortTimeSeries
+60_Command_SplitTableRowIntoSequence.pdf,SplitTableRowIntoSequence
 60_Command_StartLog.pdf,StartLog
 60_Command_StartRegressionTestResultsReport.pdf,StartRegressionTestResultsReport
 60_Command_StateModMax.pdf,StateModMax
