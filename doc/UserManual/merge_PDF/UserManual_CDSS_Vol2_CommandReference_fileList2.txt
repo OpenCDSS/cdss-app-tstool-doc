@@ -146,6 +146,7 @@
 60_Command_SetConstant.pdf,SetConstant
 60_Command_SetDataValue.pdf,SetDataValue
 60_Command_SetDebugLevel.pdf,SetDebugLevel
+60_Command_SetExcelWorksheetViewProperties.pdf,SetExcelWorksheetViewProperties
 60_Command_SetFromTS.pdf,SetFromTS
 60_Command_SetIgnoreLEZero.pdf,SetIgnoreLEZero
 60_Command_SetIncludeMissingTS.pdf,SetIncludeMissingTS
