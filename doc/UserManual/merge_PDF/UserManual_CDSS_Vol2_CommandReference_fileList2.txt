@@ -166,7 +166,8 @@
 60_Command_ShiftTimeByInterval.pdf,ShiftTimeByInterval
 60_Command_SortTable.pdf,SortTable
 60_Command_SortTimeSeries.pdf,SortTimeSeries
-60_Command_SplitTableRowIntoSequence.pdf,SplitTableRowIntoSequence
+60_Command_SplitTableColumn.pdf,SplitTableColumn
+60_Command_SplitTableRow.pdf,SplitTableRow
 60_Command_StartLog.pdf,StartLog
 60_Command_StartRegressionTestResultsReport.pdf,StartRegressionTestResultsReport
 60_Command_StateModMax.pdf,StateModMax
