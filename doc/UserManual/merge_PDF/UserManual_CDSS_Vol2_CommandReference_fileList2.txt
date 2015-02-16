@@ -21,6 +21,7 @@
 60_Command_ChangePeriod.pdf,ChangePeriod
 60_Command_CheckTimeSeries.pdf,CheckTimeSeries
 60_Command_CheckTimeSeriesStatistic.pdf,CheckTimeSeriesStatistic
+60_Command_CloseDataStore.pdf,CloseDataStore
 60_Command_CloseExcelWorkbook.pdf,CloseExcelWorkbook
 60_Command_CompareFiles.pdf,CompareFiles
 60_Command_CompareTables.pdf,CompareTables
@@ -177,6 +178,7 @@
 60_Command_TableToTimeSeries.pdf,TableToTimeSeries
 60_Command_TimeSeriesToTable.pdf,TimeSeriesToTable
 60_Command_VariableLagK.pdf,VariableLagK
+60_Command_Wait.pdf,Wait
 60_Command_WebGet.pdf,WebGet
 60_Command_WeightTraces.pdf,WeightTraces
 60_Command_WriteCheckFile.pdf,WriteCheckFile
