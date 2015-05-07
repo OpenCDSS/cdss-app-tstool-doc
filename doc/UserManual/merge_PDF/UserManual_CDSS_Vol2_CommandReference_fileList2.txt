@@ -106,6 +106,7 @@
 60_Command_ReadMODSIM.pdf,ReadMODSIM
 60_Command_ReadNrcsAwdb.pdf,ReadNrcsAwdb
 60_Command_ReadPatternFile.pdf,ReadPatternFile
+60_Command_ReadPropertiesFromExcel.pdf,ReadPropertiesFromExcel
 60_Command_ReadPropertiesFromFile.pdf,ReadPropertiesFromFile
 60_Command_ReadRccAcis.pdf,ReadRccAcis
 60_Command_ReadReclamationHDB.pdf,ReadReclamationHDB
