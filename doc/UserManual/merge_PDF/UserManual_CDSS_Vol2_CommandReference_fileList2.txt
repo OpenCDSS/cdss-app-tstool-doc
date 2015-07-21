@@ -102,6 +102,7 @@
 60_Command_ProfileCommands.pdf,ProfileCommands
 60_Command_ReadDateValue.pdf,ReadDateValue
 60_Command_ReadDelimitedFile.pdf,ReadDelimitedFile
+60_Command_ReadExcelWorkbook.pdf,ReadExcelWorkbook
 60_Command_ReadHecDss.pdf,ReadHecDss
 60_Command_ReadHydroBase.pdf,ReadHydroBase
 60_Command_ReadMODSIM.pdf,ReadMODSIM
