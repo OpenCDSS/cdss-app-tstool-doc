@@ -16,6 +16,7 @@
 90_Appendix_InputType_NWSRFS_FS5Files.pdf,NWSRFS FS5 Files
 90_Appendix_InputType_RCCACIS.pdf,RCC ACIS Web Service
 90_Appendix_InputType_ReclamationHDB.pdf,Reclamation HDB Database
+90_Appendix_InputType_ReclamationPisces.pdf,Reclamation Pisces Database
 90_Appendix_InputType_RiverWare.pdf,RiverWare File
 90_Appendix_InputType_StateCU.pdf,StateCU File
 90_Appendix_InputType_StateCUB.pdf,StateCU Binary File
