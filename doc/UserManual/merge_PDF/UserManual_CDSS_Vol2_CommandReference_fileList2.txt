@@ -112,6 +112,7 @@
 60_Command_ReadPropertiesFromFile.pdf,ReadPropertiesFromFile
 60_Command_ReadRccAcis.pdf,ReadRccAcis
 60_Command_ReadReclamationHDB.pdf,ReadReclamationHDB
+60_Command_ReadReclamationPisces.pdf,ReadReclamationPisces
 60_Command_ReadRiversideDB.pdf,ReadRiversideDB
 60_Command_ReadRiverWare.pdf,ReadRiverWare
 60_Command_ReadStateCU.pdf,ReadStateCU
