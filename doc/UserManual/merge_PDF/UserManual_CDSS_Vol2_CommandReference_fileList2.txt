@@ -185,6 +185,7 @@
 60_Command_TableTimeSeriesMath.pdf,TableTimeSeriesMath
 60_Command_TableToTimeSeries.pdf,TableToTimeSeries
 60_Command_TimeSeriesToTable.pdf,TimeSeriesToTable
+60_Command_UnzipFile.pdf,UnzipFile
 60_Command_VariableLagK.pdf,VariableLagK
 60_Command_Wait.pdf,Wait
 60_Command_WebGet.pdf,WebGet
