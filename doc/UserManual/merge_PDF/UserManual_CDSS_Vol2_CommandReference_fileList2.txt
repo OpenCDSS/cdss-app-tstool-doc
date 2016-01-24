@@ -101,6 +101,7 @@
 60_Command_ProcessTSProduct.pdf,ProcessTSProduct
 60_Command_ProfileCommands.pdf,ProfileCommands
 60_Command_ReadDateValue.pdf,ReadDateValue
+60_Command_ReadDelfFewsPiXml.pdf,ReadDelfFewsPiXml
 60_Command_ReadDelimitedFile.pdf,ReadDelimitedFile
 60_Command_ReadExcelWorkbook.pdf,ReadExcelWorkbook
 60_Command_ReadHecDss.pdf,ReadHecDss

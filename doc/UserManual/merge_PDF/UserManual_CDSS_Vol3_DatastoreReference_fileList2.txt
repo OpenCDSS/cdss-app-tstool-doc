@@ -5,6 +5,7 @@
 90_Appendix_InputType_ColoradoWaterHBGuest.pdf,ColoradoWaterHBGuest Web Service
 90_Appendix_InputType_ColoradoWaterSMS.pdf,ColoradoWaterSMS Web Service
 90_Appendix_InputType_DateValue.pdf,DateValue File
+90_Appendix_InputType_DelftFEWS_PI_XML.pdf,Delft FEWS PI XML File
 90_Appendix_InputType_GenericDatabaseDataStore.pdf,GenericDatabase Database
 90_Appendix_InputType_HEC-DSS.pdf,HEC-DSS File
 90_Appendix_InputType_HydroBaseDataStore.pdf,HydroBase Database
