@@ -154,6 +154,7 @@
 60_Command_SetConstant.pdf,SetConstant
 60_Command_SetDataValue.pdf,SetDataValue
 60_Command_SetDebugLevel.pdf,SetDebugLevel
+60_Command_SetEnsembleProperty.pdf,SetEnsembleProperty
 60_Command_SetExcelCell.pdf,SetExcelCell
 60_Command_SetExcelWorksheetViewProperties.pdf,SetExcelWorksheetViewProperties
 60_Command_SetFromTS.pdf,SetFromTS
