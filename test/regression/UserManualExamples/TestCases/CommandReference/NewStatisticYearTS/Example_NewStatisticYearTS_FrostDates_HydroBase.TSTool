@@ -2,9 +2,9 @@ StartLog(LogFile="FrostDates_HydroBase.log")
 SetOutputPeriod(OutputStart="1950-01",OutputEnd="2004-12")
 # 3553 - GREELEY UNC
 3553.NOAA.TempMin.Day~HydroBase
-NewStatisticYearTS(TSID="3553.NOAA.TempMin.Day",Alias="3553_FrostDateL28S",NewTSID="3553.NOAA.FrostDateL28S.Year",Statistic=DayOfLastLE,TestValue=28,SearchStart="06/30")
-NewStatisticYearTS(TSID="3553.NOAA.TempMin.Day",Alias="3553_FrostDateL32S",NewTSID="3553.NOAA.FrostDateL32S.Year",Statistic=DayOfLastLE,TestValue=32,SearchStart="06/30")
-NewStatisticYearTS(TSID="3553.NOAA.TempMin.Day",Alias="3553_FrostDateF32F",NewTSID="3553.NOAA.FrostDateF32F.Year",Statistic=DayOfFirstLE,TestValue=32,SearchStart="07/01")
-NewStatisticYearTS(TSID="3553.NOAA.TempMin.Day",Alias="3553_FrostDateF28F",NewTSID="3553.NOAA.FrostDateF28F.Year",Statistic=DayOfFirstLE,TestValue=28,SearchStart="07/01")
+NewStatisticYearTS(TSList=LastMatchingTSID,TSID="3553.NOAA.TempMin.Day",Statistic=DayOfLastLE,TestValue=28,Value1=28,SearchStart="06/30",Alias="3553_FrostDateL28S",NewTSID="3553.NOAA.FrostDateL28S.Year")
+NewStatisticYearTS(TSList=LastMatchingTSID,TSID="3553.NOAA.TempMin.Day",Statistic=DayOfLastLE,TestValue=32,Value1=32,SearchStart="06/30",Alias="3553_FrostDateL32S",NewTSID="3553.NOAA.FrostDateL32S.Year")
+NewStatisticYearTS(TSList=LastMatchingTSID,TSID="3553.NOAA.TempMin.Day",Statistic=DayOfFirstLE,TestValue=32,Value1=32,SearchStart="07/01",Alias="3553_FrostDateF32F",NewTSID="3553.NOAA.FrostDateF32F.Year")
+NewStatisticYearTS(TSList=LastMatchingTSID,TSID="3553.NOAA.TempMin.Day",Statistic=DayOfFirstLE,TestValue=28,Value1=28,SearchStart="07/01",Alias="3553_FrostDateF28F",NewTSID="3553.NOAA.FrostDateF28F.Year")
 Free(TSList=AllMatchingTSID,TSID="*.*.TempMin.*")
 WriteStateCU(OutputFile="Results/Test.FrostDates")
