@@ -1,0 +1,70 @@
+/*
+Styles for TSTool User Manual 
+- Put html defaults at top
+- Override with additional styles below
+*/
+/*
+	font-family: "Arial", Helvetica, sans-serif;
+	font-family: Palatino, 'Palatino Linotype', serif;
+	font-family: "Tahoma", Geneva, sans-serif;
+*/
+
+html *
+{
+	font-family: 'Times New Roman', Times, serif;
+}
+
+code {
+	font-family: "Courier New", Courier, monospace;
+}
+
+h1 {
+	font-family: "Arial", Helvetica, sans-serif;
+}
+
+h2 {
+	font-family: "Tahoma", Geneva, sans-serif;
+}
+
+p {
+	font-family: 'Times New Roman', Times, serif;
+}
+
+ul {
+	list-style-type: "square";
+}
+
+/*
+Styles for specific classes.
+*/
+
+/* Font to use for commands, such as command names referenced in text */
+.command {
+	font-family: "Courier New", Courier, monospace;
+}
+
+/* Titles for figures and tables */
+.figure-title {
+	font-family: "Arial", Helvetica, sans-serif;
+	font-size:  larger;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* Highight text with yellow background */
+.highlight {
+	background-color: yellow;
+}
+
+/* References to UI components like menus, buttons, etc. */
+.ui {
+	font-family: "Arial", Helvetica, sans-serif;
+	font-style: italic;
+	font-weight: bold;
+}
+
+/* Small notes indicating TSTool version */
+.version-note {
+	font-family: "Arial", Helvetica, sans-serif;
+	font-size: 8pt;
+}

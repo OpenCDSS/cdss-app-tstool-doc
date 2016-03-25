@@ -1,0 +1,858 @@
+<html>
+<!-- This is the entry point for TriLynx NovaStar5 documentation maintained in the trilynx-novastar-core-doc repository,
+which includes all documentation related to NovaStar5 software.
+Links to PDF files are provided, where the original is Word documents. -->
+<head>
+<link rel="stylesheet" type="text/css" href="../../include/TSTool-UserManual.css">
+<title>TSTool Command Reference:  WriteReclamationHDB()</title>
+</head>
+
+<body>
+<h1>TSTool Command Reference: WriteReclamationHDB()</h1>
+<h2>Write time series to a Reclamation HDB database (datastore)</h2>
+<p>
+<span class="version-note">Version 11.09.02, 2016-03-24</span>
+</p>
+
+<hr>
+<h1>Contents</h1>
+
+<p>
+<ul>
+<li>	<a href="#Summary">Summary</a>
+<li>	<a href="#CommandEditor">Command Editor</a>
+<li>	<a href="#CommandParameters">Command Parameters</a>
+<li>	<a href="#Examples">Examples</a>
+<li>	<a href="#Troubleshooting">Troubleshooting</a>
+</ul>
+</p>
+
+<hr>
+<h1 id="Summary">Summary</h1>
+
+<p>
+The <span class="command">WriteReclamationHDB()</span> command writes time series to a Reclamation HDB database:
+</p>
+
+<p>
+<ul>
+<li>	a single &quot;real&quot; time series (observations)</li>
+<li>	a single &quot;model&quot; time series (results from a model)</li>
+<li>	a time series ensemble, indicated by the ensemble name, in which case each ensemble trace time series is read as a  &quot;model&quot; time series</li>
+</ul>
+</p>
+
+<p>
+See the <a href="../ReadReclamationHDB/ReadReclamationHDB.html"><span class="command">ReadReclamationHDB()</span> command documentation</a>
+for information about reading the time series that are written by this command.
+See the <a href="../../TSTool-Volume3-DatastoreReference/ReclamationHDB/ReclamationHDB.html">Reclamation HDB Datastore Reference</a>
+for more information about the database features and limitations.
+Command functionality includes:
+</p>
+
+<p>
+<ul>
+<li>	<b>Time series metadata/new time series:</b>
+	<ul>
+	<li>	In general, the command will not define new sites, data types, site datatype identifier (SDI) combinations, models or other fundamental data.
+		It is expected that such data have previously been defined in the database.
+	</li>
+	<li>	New real time series can be written by selecting the appropriate SDI.
+		New (non-ensemble) model time series can be specified by selecting a model run information and if appropriate a new run date.
+		New ensembles and corresponding trace time series can be defined by specifying ensemble name, trace number, and model run date
+		using the <span class="command">NewEnsembleName</span> and <span class="command">NewEnsembleModelRunDate</span> command parameters.
+	</li>
+	</ul>
+</li>
+<li>	<b>Date/time handling:</b>
+	<ul>
+	<li>	TSTool uniformly uses the time at the end of the recorded interval for data values (instantaneous time or end of interval for mean and accumulated values),
+	whereas HDB uses the time at the beginning of the recorded interval for hourly data.
+	See the <a href="../../TSTool-Volume3-DatastoreReference/ReclamationHDB/ReclamationHDB.html">Reclamation HDB Datastore Reference</a> for more information.
+	</li>
+	<li>	Writing NHour data uses <code>WRITE_TO_HDB</code> procedure where the <code>SAMPLE_END_DATETIME</code>
+		is set to the TSTool date/time and <code>SAMPLE_DATE_TIME</code> is set the TSTool date/time minus NHour.
+		Currently the procedure always stores the difference as one hour but this is being evaluated.
+	</li>
+	</ul>
+<li>	<b>Updating time series records:</b>
+	<ul>
+	<li>Time series data records for an existing time series will be updated if previously written.
+	The values in the write period are not removed before writing.  <span class="highlight">It would be useful to have the ability to write null or a missing value in the database</span>.
+	</li>
+	</ul>
+<li> 	<b>Missing data:</b>
+	<ul>
+	<li>	Missing data currently are not written.  By convention missing values in HDB are simply not included in the database.
+		Currently the command will not delete previous records if the new value at a date/time is missing.
+		<span class="highlight">It would be useful to have the ability to clear the time series values in the write period before inserting the new values.
+		This would ensure that the data are current</span>.
+	</li>
+	</ul>
+<li>	<b>Data units:</b>
+	<ul>
+	<li>	Data units in the time series are not checked against data units in the database because the units in TSTool data may
+		originally have come from various sources that do not use the same units abbreviations as HDB.
+		It is the user&apos;s responsibility to ensure that time series that are being written have units that are compatible with HDB.
+	</li>
+	</ul>
+<li>	<b>Data flags:</b>
+	<ul>
+	<li>	Data flags from the time series are not written to the database.  The <span class="command">ValidationFlag</span>,
+		<span class="command">OverwriteFlag</span>, and <span class="command">DataFlags</span> parameters are provided to specify HDB flags.
+		Additional capability may be added in the future.
+	</li>
+	</ul>
+<li>	<b>Time zone:</b>
+	<ul>
+	<li>	Time zone can be indicated in TSTool time series by including in the start and end date/time information;
+		however, time zones can be difficult to standardize when data comes from different sources.
+		The default time zone for HDB is configured for the Reclamation office that uses the database.
+		To ensure proper data loading, the <span class="command">TimeZone</span> command parameter, which indicates the time zone for the time series data,
+		is required as of TSTool 11.09.02 (it was optional prior to this version).  If the time zone for the data are different from the database,
+		the HDB <code>WRITE_TO_HDB</code> stored procedure will adjust the data in the database to store as the database time zone.
+		It is the user&apos;s responsibility to verify that the correct time zone is being provided to the <span class="command">WriteReclamationHDB</span> command.
+		It is strongly recommended that standard time be used for time series data and if possible use the same time zone as the database.
+		A daylight savings time zone such as MDT or PDT could be used for a time series period that is entirely in that zone; however,
+		switching between standard and daylight savings time in time series leads to confusion.
+	</li>
+	</ul>
+<li>	<b>HDB data table:</b>
+	<ul>
+	<li>
+	The time series interval is used to determine the HDB time series table to write, with irregular data being written as instantaneous data with date/time precision to minute.
+	</li>
+	<li>
+	TSTool treats year-interval data generically and does not manage water year (or other types of years) in special fashion, other than when processing data into year interval time series.  Water year data can be saved in year interval data but currently there is no way to write to the water-year tables in HDB.
+	</li>
+	</ul>
+<li>	<b>HDB database procedure:</b>
+	<ul>
+	<li>	The HDB <code>WRITE_TO_HDB</code> stored procedure is used to write individual time series data records:
+		<ul>
+		<li>	The time series is written to a model time series table if model parameters are specified.
+		</li>
+		<li>	The model run date, for single time series and ensembles, is truncated to minutes in time series identifiers and for query purposes.
+		</li>
+		</ul>
+	</li>
+	<li>	When writing ensembles, the HDB procedure <code>ENSEMBLE.GET_TSTOOL_ENSEMBLE_MRI</code> is used to determine the model run identifier
+		corresponding to model time series and then the <code>WRITE_TO_HDB</code> procedure (above) is used to write data records:
+		<ul>
+		<li>	The ensemble name is determined from the <span class="command">EnsembleName</span> parameter (or NewEsembleName</span> parameter if creating a new ensemble).
+			Existing names can be selected or a new name can be specified.
+		</li>
+		<li>	The trace number is determined from the <span class="command">EnsembleTrace</span> command parameter,
+			and will result in the trace being taken from specific time series properties.
+			Currently this must be an integer but in the future string trace identifiers may be supported (TSTool uses string identifiers internally).
+		</li>
+		<li>	The model name is determined from the <span class="command">EnsembleModelName</span> parameter.  Model names consistent with non-ensemble model time series are used.
+		</li>
+		<li>	The model run date is determined from the <span class="command">EnsembleModelRunDate</span> parameter (or <span class="command">NewEnsembleModelRunDate</span>
+			parameter if writing data for a new run date).
+			If specified then the <code>P_IS_RUNDATE_KEY</code> procedure parameter is set to <code>Y</code>, if not specified it is set to <code>N</code>).
+			Consequently, ensemble time series can be written with or without a model run date.
+		</li>
+		</ul>
+	</li>
+	</ul>
+</li>
+</ul>
+
+<hr>
+<h1 id="CommandEditor">Command Editor</h1>
+
+<p>
+The following dialog is used to edit the command and illustrates the syntax of the command when writing &quot;real&quot; data,
+in which case model information in the lower panel are not specified.
+Currently the <code>site_name</code> and <code>site_common_name</code> are not required to be unique in HDB and therefore specifying the unique <code>site_datatype_id</code> (SDI)
+is the only way to ensure that the proper time series is being selected.
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/WriteReclamationHDB.png"><br>
+<span class="figure-title">WriteReclamationHDB() Command Editor for &quot;Real&quot; Time Series</span></div>
+</p>
+
+<p>
+The following figure illustrates general command parameters.
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/WriteReclamationHDB_General.png"><br>
+<span class="figure-title">WriteReclamationHDB() Command Editor for General Parameters</span></div>
+</p>
+
+<p>
+The following figure illustrates the syntax of the command when writing &quot;model&quot; data for a single time series,
+in which case the model parameters are specified via the <span class="ui">Single model time series</span> tab.  The model run identifier can be specified in one of two ways:
+
+<ol>
+<li type="1">	Select the MRI from the list at the bottom of the dialog
+</li>
+<li>	Select the MRI by specifying multiple values that result in a unique MRI:
+	<ol type="a">
+	<li>	Model name
+	</li>
+	<li>	Model run name
+	</li>
+	<li>	Hydrologic indicator (can be blank)
+	</li>
+	<li>	Run date (can be blank) - currently a new run date cannot be specified
+	</li>
+	</ol>
+</li>
+</ol>
+
+The example in the following shows parameter values for both methods for illustration; however, the directly selected <span class="command">ModelRunID</span> will be used in this case.
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/WriteReclamationHDB_Model.png"><br>
+<span class="figure-title">WriteReclamationHDB() Command Editor for Single Model Time Series</span></div>
+</p>
+
+The following figure illustrates the syntax of the command when writing an ensemble of model time series, in which case ensemble and related model parameters are specified via the
+<span class="ui">Ensemble of model time series</span> tab.
+The TSTool ensemble to write is specified with the <span class="command">TSList=EnsembleID</span> and <span class="command">EnsembleID</span>
+parameters.  In the following example a new ensemble is being written.  The time series trace number and model run date are both taken from the ensemble time series properties when the command is run.
+
+<p>
+<div style="text-align: center;"><img src="images/WriteReclamationHDB_Ensemble.png" align="middle"><br>
+<span class="figure-title">WriteReclamationHDB() Command Editor for Ensemble of Model Time Series</span></div>
+</p>
+
+<hr>
+<h1 id="CommandParameters">Command Parameters</h1>
+
+<p>
+The command syntax is as follows:
+</p>
+
+<p class="command">
+WriteReclamationHDB(Parameter=Value,&period;&period;&period;)
+</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='border-collapse:collapse;border:none'>
+ <thead>
+  <tr>
+   <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+   background:silver;padding:0in 5.4pt 0in 5.4pt'>
+   <p class=RTiSWDocTableHeading>Parameter</p>
+   </td>
+   <td width="50%" valign=top style='border:solid windowtext 1.0pt;
+   border-left:none;background:silver;padding:0in 5.4pt 0in 5.4pt'>
+   <p class=RTiSWDocTableHeading>Description</p>
+   </td>
+   <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+   border-left:none;background:silver;padding:0in 5.4pt 0in 5.4pt'>
+   <p class=RTiSWDocTableHeading>Default</p>
+  </tr>
+ </thead>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>DataStore</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The identifier for the ReclamationHDB data store to use
+  for the database.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>TSList</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Indicates the list of time series to be processed, one of:</p>
+  <ul>
+  <li><span class=command>AllMatchingTSID</span> - all
+  time series that match the <span class=command>TSID</span>
+  (single TSID or TSID with wildcards) will be processed.</li>
+  <li><span class=command>AllTS</span> - all time series
+  before the command.</li>
+  <li><span class=command>EnsembleID</span> - all time
+  series in the ensemble will be processed.</li>
+  <li><span class=command>FirstMatchingTSID</span> - the
+  first time series that matches the <span class=command>TSID</span>
+  (single TSID or TSID with wildcards) will be processed.</li>
+  <li><span class=command>LastMatchingTSID</span> - the
+  last time series that matches the <span class=command>TSID</span>
+  (single TSID or TSID with wildcards) will be processed.</li>
+  <li><span class=command>SelectedTS</span> - the time
+  series are those selected with the <span class=command>SelectTimeSeries()</span>
+  command.</li>
+  </ul>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>AllTS</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>TSID</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The time series identifier or alias for the time series to
+  be processed, using the <span class=command>*</span> wildcard
+  character to match multiple time series.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Required if <span class=command>TSList=*TSID</span>.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>EnsembleID</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The identifier for the TSTool ensemble to be processed, if
+  processing an ensemble, not to be confused with the <span
+  class=command>Ensemble*</span> parameters below that match HDB
+  data.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Required if <span class=command>TSList=</span>
+  <span class=command>EnsembleID</span>.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>SiteDataTypeID</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The <span class=command>site_datatype_id</span>
+  value to match the time series.  If specified, the value will be used instead
+  of the <span class=command>site_datatype_id</span> determined
+  from <span class=command>SiteCommonName</span> and <span
+  class=command>DataTypeCommonName</span>.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>SiteCommonName</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The site common name for the time series location; used
+  with the data type common name to determine the <span
+  class=command>site_datatype_id</span> in the database.  Because <span
+  class=command>SiteCommonName</span> is not guaranteed to be
+  unique, the <span class=command>SiteDataTypeID</span> should be
+  specified instead.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified unless <span
+  class=command>SiteDataTypeID</span> is specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>DataTypeCommonName</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The data type common name for the time series; used with
+  the site common name to determine the <span class=command>site_datatype_id</span>
+  in the database.  Because <span class=command>DataTypeCommonName</span>
+  is not guaranteed to be unique without additional information such as HDB
+  object type, the <span class=command>SiteDataTypeID</span> should
+  be specified instead.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified unless <span
+  class=command>SiteDataTypeID</span> is specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>&nbsp;</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Use the following parameters when writing a single model
+  time series.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>ModelName</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The model name for the time series; used with the model
+  run name, hydrologic indicator(s), and model run date to determine the <span
+  class=command>model_run_id</span> in the database. </p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified unless <span
+  class=command>ModelRunID</span> is specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>ModelRunName</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The model run name for the time series; used with the
+  model name, hydrologic indicator(s), and model run date to determine the <span
+  class=command>model_run_id</span> in the database.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified unless <span
+  class=command>ModelRunID</span> is specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>HydrologicIndicator</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The hydrologic indicator(s) to use for the time series;
+  used with the model name, model run name, and model run date to determine the
+  <span class=command>model_run_id</span> in the database.  The
+  hydrologic indicate can be blank.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified unless <span
+  class=command>ModelRunID</span> is specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>ModelRunDate</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The model run date (timestamp) to use for the time series;
+  used with the model name, model run name, and hydrologic indicator(s) to
+  determine the <span class=command>model_run_id</span> in the
+  database.  The run date should be specified using the format <span
+  class=command>YYYY-MM-DD hh:mm</span> (zero-padded with hour
+  0-23, minute 0-59).  Run dates in HDB include seconds, but this information
+  is ignored when matching time series.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified unless <span
+  class=command>ModelRunID</span> is specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>NewModelRunDate</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>If specified, the new model run date will be used instead
+  of the <span class=command>ModelRunDate</span>.  This parameter
+  is currently not implemented.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Use <span class=command>ModelRunDate</span>.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>ModelRunID</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The <span class=command>model_run_id</span>
+  value to match the time series.  If specified, the value will be used instead
+  of the <span class=command>model_run_id</span> determined from <span
+  class=command>ModelName</span>, <span class=command>ModelRunName</span>,
+  <span class=command>HydrologicIndicator</span>, and <span class=command>ModelRunDate</span> (or <span
+  class=command>NewModelRunDate</span>).</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>&nbsp;</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Use the following parameters when writing an ensemble of model
+  time series.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>EnsembleName</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The name of the ensemble to write.  The <span
+  class=command>TSList=EnsembleID</span> and <span
+  class=command>EnsembleID</span> parameters also should be
+  specified.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Must be specified if writing an ensemble. </p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>NewEnsembleName</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>If specified, the new ensemble name will be used instead
+  of the <span class=command>EnsembleName</span>.  See <span
+  class=command>EnsembleTrace</span> notes below for options to
+  format the new ensemble name.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>EnsembleName</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>EnsembleModelName</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The model name corresponding to the ensemble.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Must be specified if writing an ensemble.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>EnsembleTrace</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Indicate how to identify time series trace identifiers:</p>
+  <p class=MsoNormal style='margin-left:.25in;text-indent:-.25in'><span
+  <ul>
+  <li></span><span class=command>%z</span> - use standard time
+  series properties to format the ensemble trace ID (see command editor for
+  format characters). <span class=command>%z</span> indicates the
+  sequence identifier from an ensemble trace time series.</li>
+  <li></span><span class=command>${TS:property}</span> - format
+  the trace identifier from time series properties (e.g., properties read from
+  original ensemble data)</li>
+  <li><span class=command>${property}</span> - format the
+  trace identifier from time series processor (global) properties (e.g.,
+  properties set with the <span class=command>SetProperty()</span>
+  command)</li>
+  </ul>
+  <p class=MsoNormal>The HDB <span class=command>GET_TSTOOL_ENSEMBLE_MRI</span>
+   procedure currently requires the identifier to be an integer.  Additional
+  options for identifying traces may be added in the future.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The time series sequence number (equivalent to the <span
+  class=command>%z</span> formatting string)</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>EnsembleModelRunDate</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>When writing an ensemble, an existing model run date for
+  the ensemble, specified using format:</p>
+  <ul>
+  <li><span class=command>YYYY-MM-DD hh:mm </span>(zero-padded
+  with hour 0-23)</li>
+  </ul>
+  <p class=MsoNormal>The model time series associated with the existing run
+  will be overwritten. </p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>NewEnsembleModel</span></p>
+  <p class=MsoNormal><span class=command>RunDate</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>When writing an ensemble, the new model run date for the
+  ensemble, specified using format:</p>
+  <ul>
+  <li><span class=command>YYYY-MM-DD hh:mm </span>(zero-padded
+  with hour 0-23)</li>
+  <li><span class=command>${ts:property}</span> - use a
+  run date from a time series property, truncated to minute</li>
+  <li></span><span class=command>${property}</span> - format the
+  new model run date identifier from time series processor (global) properties
+  (e.g., properties set with the <span class=command>SetProperty()</span>
+  command)</li>
+  </ul>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>If not specified, the ensemble identifier in HDB will not
+  include the model run date.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>&nbsp;</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The following parameters are always appropriate.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>Agency</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The agency abbreviation (e.g., <span
+  class=command>USBR</span>) for data records written to the
+  database.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>No agency is indicated in database.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>ValidationFlag</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>HDB validation flag.  Only uppercase characters are
+  supported.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>No flag is used.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>OverwriteFlag</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>HDB overwrite flag.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Overwrite (enforced by HDB stored procedure)..</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>DataFlags</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>User-defined flags, up to 20 characters.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>No flags are used.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>TimeZone</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Three-letter time zone abbreviation for the time series
+  data records written to the database, consistent with HDB time zones.
+  Specifying helps ensure that the timestamp on time series data is properly
+  handled.  It is recommended that time series data use a standard time zone
+  and not daylight savings time.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>OutputStart</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The date/time for the start of the output.  If not aligned
+  with the time series data records for NHour data, the output start hour will
+  be adjusted to the first interval in the day that aligns with the time series
+  data.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Use the global output period.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>OutputEnd</span></p>
+  </td>
+  <td width="50%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The date/time for the end of the output. If not aligned
+  with the time series data records for NHour data, the output end hour will be
+  adjusted to the last interval in the day that aligns with the time series
+  data.</p>
+  </td>
+  <td width="25%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Use the global output period.</p>
+  </td>
+ </tr>
+</table>
+
+<hr>
+<h1 id="Examples">Examples</h1>
+
+There is currently no documentation for examples.
+
+<hr>
+<h1 id="Troubleshooting">Troubleshooting</h1>
+
+There is currenently no troubleshooting documentation.
+
+<footer>
+<hr>
+<p>Perhaps insert standard footer here</a>
+</footer>
+</body>
+</html>
