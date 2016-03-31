@@ -1,0 +1,233 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../include/TSTool-UserManual.css">
+<title>TSTool Command Reference:  SortTimeSeries()</title>
+</head>
+
+<body>
+<h1>TSTool Command Reference: SortTimeSeries()</h1>
+<h2>Sort time series by identifier or properties</h2>
+<p>
+<span class="version-note">Version 10.31.00, 2013-07-21</span>
+</p>
+
+<hr>
+<h1>Contents</h1>
+
+<p>
+<ul>
+<li>	<a href="#Summary">Summary</a>
+<li>	<a href="#CommandEditor">Command Editor</a>
+<li>	<a href="#CommandParameters">Command Parameters</a>
+<li>	<a href="#Examples">Examples</a>
+<li>	<a href="#Troubleshooting">Troubleshooting</a>
+</ul>
+</p>
+
+<hr>
+<h1 id="Summary">Summary</h1>
+
+<p>
+The <span class="command">SortTimeSeries()</span> sorts time series based on the specified criteria:
+</p>
+
+<p>
+<ul>
+<li>	the time series identifier or alias</li>
+<li>	a time series property</li>
+<li>	a string formatted from time series properties</li>
+</ul>
+</p>
+
+<p>
+This command is useful for ordering time series before writing output or visualization.
+</p>
+
+<hr>
+<h1 id="CommandEditor">Command Editor</h1>
+
+<p>
+The following dialog is used to edit the command and illustrates the syntax of the command.
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/SortTimeSeries.png"><br>
+<span class="figure-title">SortTimeSeries() Command Editor Showing Parameters to Sort by TSID/Alias</span></div>
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/SortTimeSeries_Property.png"><br>
+<span class="figure-title">SortTimeSeries() Command Editor Showing Parameter to Sort by a Time Series Property</span></div>
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/SortTimeSeries_PropertyFormat.png"><br>
+<span class="figure-title">SortTimeSeries() Command Editor Showing Parameter to Sort by Formatted Properties</span></div>
+</p>
+
+
+<hr>
+<h1 id="CommandParameters">Command Parameters</h1>
+
+<p>
+The command syntax is as follows:
+</p>
+
+<p class="command">
+SortTimeSeries(Parameter=Value,&period;&period;&period;)
+</p>
+
+<div>
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  background:silver;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=RTiSWDocTableHeading>Parameter</p>
+  </td>
+  <td width=70% valign=top style='border:solid windowtext 1.0pt;
+  border-left:none;background:silver;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=RTiSWDocTableHeading>Description</p>
+  </td>
+  <td width=16% valign=top style='gborder:solid windowtext 1.0pt;
+  border-left:none;background:silver;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=RTiSWDocTableHeading>Default</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>TSIDFormat</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Sort by alias or TSID, determining the identifier for each
+  time series as per the parameter value:</p>
+  <ul><li></span><span class=command>AliasTSID</span> - use the
+  alias if available, and if not use the TSID</li>
+  <li><span class=command>TSID</span> - Use the TSID only
+  (regardless of whether the alias is available)</li>
+  </ul>
+  </td>
+  <td width=16% valign=top style='gborder-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>TSID</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>Property</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Sort using the values of the specified time series
+  property.  Nulls are treated as blanks if strings and very small number for
+  integers and floating point numbers.</p>
+  </td>
+  <td width=16% valign=top style='gborder-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>PropertyFormat</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Sort using a string that formats one or more time series
+  properties, indicated with:</p>
+  <ul><li></span><span class=command>%</span>-specifiers (e.g., <span
+  class=command>%L</span> for location ID)</li>
+  <li><span class=command>${ts:property}</span> notation</li>
+  </ul>
+  </td>
+  <td width=16% valign=top style='gborder-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>SortOrder</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Sort order, either <span class=command>Ascending</span>
+  or <span class=command>Descending</span>.</p>
+  </td>
+  <td width=16% valign=top style='gborder-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>Ascending</span></p>
+  </td>
+ </tr>
+</table>
+</div>
+
+<hr>
+<h1 id="Examples">Examples</h1>
+
+<p>
+A sample command file using data from the State of Colorado&rsquo;s HydroBase is as follows:
+</p>
+
+<table>
+<td>
+<pre><code>
+06756500.USGS.Streamflow.Month~HydroBase
+# 06758300 - KIOWA CREEK AT BENNETT, CO.
+06758300.USGS.Streamflow.Month~HydroBase
+# 06758000 - KIOWA CREEK AT ELBERT, CO.
+06758000.USGS.Streamflow.Month~HydroBase
+# 06757600 - KIOWA CREEK AT K-79 RES, NEAR EASTONVILLE, CO.
+06757600.DWR.Streamflow.Month~HydroBase
+# 06758200 - KIOWA CREEK AT KIOWA, CO.
+06758200.USGS.Streamflow.Month~HydroBase
+# 06753400 - LONETREE CREEK AT CARR, CO.
+06753400.USGS.Streamflow.Month~HydroBase
+# 06753990 - LONETREE CREEK NEAR GREELEY, CO.
+06753990.USGS.Streamflow.Month~HydroBase
+# 06753500 - LONETREE CREEK NEAR NUNN, CO.
+06753500.USGS.Streamflow.Month~HydroBase
+# 06759910 - SOUTH PLATTE RIVER AT COOPER BRIDGE NEAR BALZAC
+06759910.DWR.Streamflow.Month~HydroBase
+# 06759500 - SOUTH PLATTE RIVER AT FORT MORGAN
+06759500.USGS.Streamflow.Month~HydroBase
+# 06756995 - SOUTH PLATTE RIVER AT MASTERS, CO.
+06756995.USGS.Streamflow.Month~HydroBase
+# 06757000 - SOUTH PLATTE RIVER AT SUBLETTE, CO.
+06757000.USGS.Streamflow.Month~HydroBase
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
+06754000.DWR.Streamflow.Month~HydroBase
+# 06758500 - SOUTH PLATTE RIVER NEAR WELDONA
+06758500.DWR.Streamflow.Month~HydroBase
+# 06758100 - WEST KIOWA CREEK AT ELBERT, CO.
+06758100.USGS.Streamflow.Month~HydroBase
+SortTimeSeries()
+</code>
+</pre>
+</td>
+</table>
+
+<hr>
+<h1 id="Troubleshooting">Troubleshooting</h1>
+
+There is currenently no troubleshooting documentation.
+
+<footer>
+<hr>
+<p></p>
+</footer>
+</body>
+</html>

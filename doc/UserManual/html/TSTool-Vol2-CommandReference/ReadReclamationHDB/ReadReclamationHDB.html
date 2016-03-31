@@ -1,0 +1,641 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../include/TSTool-UserManual.css">
+<title>TSTool Command Reference:  ReadReclamationHDB()</title>
+</head>
+
+<body>
+<h1>TSTool Command Reference: ReadReclamationHDB()</h1>
+<h2>Read time series from a Reclamation HDB database (datastore)</h2>
+<p>
+<span class="version-note">Version 11.10.00, 2016-03-30</span>
+</p>
+
+<hr>
+<h1>Contents</h1>
+
+<p>
+<ul>
+<li>	<a href="#Summary">Summary</a>
+<li>	<a href="#CommandEditor">Command Editor</a>
+<li>	<a href="#CommandParameters">Command Parameters</a>
+<li>	<a href="#Examples">Examples</a>
+<li>	<a href="#Troubleshooting">Troubleshooting</a>
+</ul>
+</p>
+
+<hr>
+<h1 id="Summary">Summary</h1>
+
+<p>
+The <span class="command">ReadReclamationHDB()</span> command reads one or more time series from a Reclamation HDB database:
+</p>
+
+<p>
+<ul>
+<li>	a single &quot;real&quot; time series (observations)</li>
+<li>	a single &quot;model&quot; time series (results from a model)</li>
+<li>	a time series ensemble, indicated by the ensemble name, in which case each ensemble trace time series is read as a  &quot;model&quot; time series</li>
+</ul>
+</p>
+
+<p>
+The primary metadata necessary to read the time series are a site data type identifier (SDI) and, if reading a model time series, a model run identifier (MRI).  These values can be selected directly (from long lists), or selected through incremental selection of other data.  Both options are provided for flexibility where appropriate.
+</p>
+
+<p>
+See the <a href="../WriteReclamationHDB/WriteReclamationHDB.html"><span class="command">WriteReclamationHDB()</span> command documentation</a>
+for information about writing the time series that are read by this command.
+See the <a href="../../TSTool-Volume3-DatastoreReference/ReclamationHDB/ReclamationHDB.html">Reclamation HDB Datastore Reference</a>
+for more information about the database features and limitations.
+</p>
+
+<p>
+In all cases, the choices presented to the user cascade to allow only valid choices.  For example, when a site data type identifier is selected, then only time series and ensembles are listed that have data records with the site data type identifier.  This ensures that only time series with data are read.
+</p>
+
+<p>
+Additional functionality includes:
+</p>
+
+<p>
+<ul>
+<li>
+When reading hour interval data, including NHour data:  regardless of the requested input period, the time series that is read will have its start and end date/time set to actual date/time.  This ensures that odd offsets such as hour 1 for 3Hour data will match the actual data.
+</li>
+</ul>
+
+<hr>
+<h1 id="CommandEditor">Command Editor</h1>
+
+<p>
+The following dialog is used to edit the command and illustrates the syntax of the command when reading &quot;real&quot; or &quot;model&quot; data using filters.
+This approach can be used when reading one or more time series in bulk.  <span class="ui">Where</span> criteria should be specified in sequential order without intervening blank specifiers.  This approach is useful when processing a group of time series in bulk.
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/ReadReclamationHDB.png"><br>
+<span class="figure-title">ReadReclamationHDB() Command Editor When Using Filters to Read 1+ Time Series</span></div>
+</p>
+
+<p>
+The following figure illustrates reading a single &quot;real&quot; time series (note that the model parameters are not specified).
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/ReadReclamationHDB_Real.png"><br>
+<span class="figure-title">ReadReclamationHDB() Command Editor to Read a Single Real Time Series</span></div>
+</p>
+
+<p>
+The following figure illustrates reading a single writing &quot;model&quot; time series,
+in which case the model parameters are specified in addition to the site and data type parameters.  There are two ways to select the MRI:
+
+<ol>
+<li type="1">	Pick the MRI from the list at the bottom of the parameter section:
+	<ol type="a">
+	<li>	Additional information is shown in the choice, but only the MRI is saved in the command parameter
+	</li>
+	</ol>
+</li>
+<li>	Sequentially pick model-related metadata until a unique MRI is determined (multiple command parameters are saved):
+	<ol type="a">
+	<li>	Model name
+	</li>
+	<li>	Model run name
+	</li>
+	<li>	Hydrologic indicator (may be blank)
+	</li>
+	<li>	Run date (may be blank)
+	</li>
+	</ol>
+</li>
+</ol>
+
+The following figure illustrates both approaches, although normally one or the other would be used.  Selecting an MRI directly takes precedence over the other approach.
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/ReadReclamationHDB_Model.png"><br>
+<span class="figure-title">ReadReclamationHDB() Command Editor for Single Model Time Series</span></div>
+</p>
+
+<p>
+The following figure illustrates reading an ensemble of &quot;model&quot; time series, in which case an ensemble name is specified in addition to the SDI.  Ensembles are stored in HDB as follows:
+</p>
+
+<p>
+&emsp;&emsp;&emsp;&emsp;Ensemble (ensemble name is unique)<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Ensemble Trace(s) (trace number is unique)<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Model run identifier(s) (MRI is unique)<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;M_* data tables
+</p>
+
+<p>
+Consequently, in order to list the ensemble names for selection, the data table is checked for matching SDI, and additional queries map the data back to the ensemble data, which provide the list of ensemble names to choose from.
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/ReadReclamationHDB_Ensemble.png" align="middle"><br>
+<span class="figure-title">ReadReclamationHDB() Command Editor to Read an Ensemble of Model Time Series</span></div>
+</p>
+
+<hr>
+<h1 id="CommandParameters">Command Parameters</h1>
+
+<p>
+The command syntax is as follows:
+</p>
+
+<p class="command">
+ReadReclamationHDB(Parameter=Value,&period;&period;&period;)
+</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <thead>
+  <tr>
+   <td width=14% valign=top style='border:solid windowtext 1.0pt;
+   background:silver;padding:0in 5.4pt 0in 5.4pt'>
+   <p class=RTiSWDocTableHeading><span class=command><span
+   style='font-family:"Arial",sans-serif'>Parameter</span></span></p>
+   </td>
+   <td width=70% valign=top style='border:solid windowtext 1.0pt;
+   border-left:none;background:silver;padding:0in 5.4pt 0in 5.4pt'>
+   <p class=RTiSWDocTableHeading>Description</p>
+   </td>
+   <td width=16% valign=top style='border:solid windowtext 1.0pt;
+   border-left:none;background:silver;padding:0in 5.4pt 0in 5.4pt'>
+   <p class=RTiSWDocTableHeading>Default</p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>DataStore</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Reclamation HDB data store name indicating database from
+  which to read time series.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>Interval</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The data interval to read (<span
+  class=command>Hour</span>, <span class=command>Day</span>,
+  <span class=command>Month</span>, <span
+  class=command>Year</span>, <span class=command>Irregular</span>).
+  Irregular is used for instantaneous data and internally results in data with
+  date/times to minute precision.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>NHourIntervalOffset</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>There are cases where data may have been loaded into HDB
+  on hours that do not properly align with expected hour offset for NHour
+  data.  For example, data in HDB for the ECAO office are saved in MST time
+  zone but data may have been saved with a 1-hour daylight savings offset.
+  3Hour interval model data may be loaded on odd offsets, for example hour 1,
+  4, 7, 10, 13, 16, 19, and 22. In this case if extra data were loaded at
+  other hours, TSTool does not know what data are valid and will generate an
+  error.  The offending data can be removed using a database tool, or the <span
+  class=command>NHourIntervalOffset</span> parameter can be specified
+  to tell TSTool what data to use (in this case the offset would be <span
+  class=command>1</span>).</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Data are used as is.  Checks verify that all data align as
+  expected with NHour interval and if not an error is generated.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>&nbsp;</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Use the following parameter when reading 1+ time series
+  using filters</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>DataType</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The data type to read as <span class=command>ObjectType - DataTypeCommonName</span>.  The object type is shown to help with
+  selections. <span class=command>*</span> can be specified to read all data types.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>WhereN</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The &quot;where&quot; clauses to be applied when querying data,
+  which match the values in the <span class=RTiSWDocGUIReference><span
+  style='font-size:10.0pt'>Where</span></span> fields in the TSTool main
+  interface.  The parameters should be specified as <span
+  class=command>Where1</span><span class=command><span
+  style='font-family:"Times New Roman",serif'>, </span></span><span
+  class=command>Where2</span>, etc., with no intervening gaps in
+  numbering.  All clauses are joined as &quot;and&quot; and are therefore cumulative in
+  limiting the query.  The format of each parameter value is:</p>
+  <p class=MsoNormal>&nbsp;</p>
+  <p class=MsoNormal><span class=command>&quot;Item;Operator;Value&quot;</span></p>
+  <p class=MsoNormal>&nbsp;</p>
+  <p class=MsoNormal>Where <span class=command>Item</span>
+  indicates a data field to be filtered on, <span class=command>Operator</span>
+  is the type of constraint, and <span class=command>Value</span>
+  is the value to be checked when querying.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>If not specified, the query will not be limited and very
+  large numbers of time series may result from the query (which may require a
+  long time to perform the query).</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>&nbsp;</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Use the following parameters when reading a single time
+  series or an ensemble of time series.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>SiteDataTypeID</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The <span class=command>site_datatype_id</span>
+  value to match the time series.  Direct selection using the provided choices
+  is preferred because the other parameters (below) are not guaranteed to be
+  unique.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>SiteCommonName</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The site common name for the time series location; used
+  with the data type common name to determine the <span
+  class=command>site_datatype_id</span> in the database.  This approach
+  is discouraged and may be removed in the future because <span
+  class=command>site_common_name </span>is not unique in HDB.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified unless <span
+  class=command>SiteDataTypeID</span> is specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>DataTypeCommonName</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The data type common name for the time series; used with
+  the site common name to determine the <span class=command>site_datatype_id</span>
+  in the database.  This approach is discouraged and may be removed in the
+  future because <span class=command>datatype_common_name</span> is
+  not unique in HDB.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified unless <span
+  class=command>SiteDataTypeID</span> is specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>&nbsp;</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Use the following parameters when reading a single model
+  time series.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>ModelRunID</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The <span class=command>model_run_id</span>
+  value to match the time series.  Direct selection using the provided choices
+  is an option to specifying the equivalent multiple parameters described
+  below.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>ModelName</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The model name for the time series; used with the model
+  run name, hydrologic indicator(s), and model run date to determine the <span
+  class=command>model_run_id</span> in the database. </p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified unless <span
+  class=command>ModelRunID</span> is specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>ModelRunName</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The model run name for the time series; used with the
+  model name, hydrologic indicator(s), and model run date to determine the <span
+  class=command>model_run_id</span> in the database.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified unless <span
+  class=command>ModelRunID</span> is specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>ModelRunDate</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The model run date (timestamp) to use for the time series;
+  used with the model name, model run name, and hydrologic indicator(s) to
+  determine the <span class=command>model_run_id</span> in the
+  database.  The run date should be specified using the format <span
+  class=command>YYYY-MM-DD hh:mm</span> (zero-padded with hour
+  0-23, minute 0-59).</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified unless <span
+  class=command>ModelRunID</span> is specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>HydrologicIndicator</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The hydrologic indicator(s) to use for the time series;
+  used with the model name, model run name, and model run date to determine the
+  <span class=command>model_run_id</span> in the database.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified unless <span
+  class=command>ModelRunID</span> is specified.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>&nbsp;</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Use the following parameters when reading an ensemble of
+  model time series.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>EnsembleName</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The name of the ensemble to read.  Corresponding trace
+  data are queried to determine <span class=command>model_run_id</span>
+  to read individual time series.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Must be specified if reading an ensemble. </p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>&nbsp;</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The following parameters are always appropriate.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>Properties</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>String properties to be assigned to the time series using
+  syntax:  <span class=command>Property1:Value1,Property2:Value2</span></p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>InputStart</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Start of the period to query, specified in format <span
+  class=command>YYYY-MM-DD hh:mm</span>, with a precision
+  appropriate for the interval.  If not aligned with the time series data
+  records for NHour data, the input start hour will be adjusted to the first
+  interval in the day that aligns with the time series data.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Read all available data.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>InputEnd</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>End of the period to query, specified in format <span
+  class=command>YYYY-MM-DD hh:mm</span>, with a precision
+  appropriate for the interval.  If not aligned with the time series data
+  records for NHour data, the input start hour will be adjusted to the last
+  interval in the day that aligns with the time series data.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Read all available data.</p>
+  </td>
+ </tr>
+ <tr style='page-break-inside:avoid'>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>Alias</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Indicate an alias to assign to time series, which can
+  result in shorter identifiers for time series when referenced with other
+  commands.</p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>No alias is assigned.</p>
+  </td>
+ </tr>
+</table>
+
+<hr>
+<h1 id="Examples">Examples</h1>
+
+There is currently no documentation for examples.
+
+<hr>
+<h1 id="Troubleshooting">Troubleshooting</h1>
+
+There is currenently no troubleshooting documentation.
+
+<footer>
+<hr>
+<p></p>
+</footer>
+</body>
+</html>
