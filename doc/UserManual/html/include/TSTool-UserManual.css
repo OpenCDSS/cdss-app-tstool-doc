@@ -56,6 +56,68 @@ Styles for specific classes.
 	background-color: yellow;
 }
 
+/* Styles for command parameter table */
+.table-command-parameter {
+ 	border-collapse: collapse;
+	border: solid;
+}
+
+/* Styles for command parameter table "Parameter" column */
+.table-th-command-parameter-name {
+	font-family: "Arial", Helvetica, sans-serif;
+	font-weight: bold;
+	text-align: left;
+	background-color: lightgray;
+	width: 15%;
+	border: solid;
+	border-width: 1px;
+	padding-top: 0in;
+	padding-right: 5.4pt;
+	padding-bottom: 0in;
+	padding-left: 5.4pt;
+}
+
+/* Styles for command parameter table "Description" column */
+.table-th-command-parameter-description {
+	font-family: "Arial", Helvetica, sans-serif;
+	font-weight: bold;
+	text-align: left;
+	background-color: lightgray;
+	width: 70%;
+	border: solid;
+	border-width: 1px;
+	padding-top: 0in;
+	padding-right: 5.4pt;
+	padding-bottom: 0in;
+	padding-left: 5.4pt;
+}
+
+/* Styles for command parameter table "Default" column */
+.table-th-command-parameter-default {
+	font-family: "Arial", Helvetica, sans-serif;
+	font-weight: bold;
+	text-align: left;
+	background-color: lightgray;
+	width: 15%;
+	border: solid;
+	border-width: 1px;
+	padding-top: 0in;
+	padding-right: 5.4pt;
+	padding-bottom: 0in;
+	padding-left: 5.4pt;
+}
+
+/* Styles for command parameter table cells */
+.table-td-command-parameter {
+	text-align: left;
+	border: solid;
+	border-width: 1px;
+	padding-top: 0in;
+	padding-right: 5.4pt;
+	padding-bottom: 0in;
+	padding-left: 5.4pt;
+}
+
 /* References to UI components like menus, buttons, etc. */
 .ui {
 	font-family: "Arial", Helvetica, sans-serif;
