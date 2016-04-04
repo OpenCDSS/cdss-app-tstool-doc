@@ -16,11 +16,14 @@
 
 <p>
 <ul>
-<li>	<a href="#Summary">Summary</a>
-<li>	<a href="#CommandEditor">Command Editor</a>
-<li>	<a href="#CommandParameters">Command Parameters</a>
-<li>	<a href="#Examples">Examples</a>
-<li>	<a href="#Troubleshooting">Troubleshooting</a>
+<li>	<a href="#Summary">Summary</a></li>
+<li>	<a href="#CommandEditor">Command Editor</a></li>
+<li>	<a href="#CommandParameters">Command Parameters</a></li>
+<li>	<a href="#Examples">Examples</a></li>
+<li>	<a href="#Troubleshooting">Troubleshooting</a></li>
+	<ul>
+	<li><a href="#TroubleshootingAlignmentError">Data Alignment Error for NHour Time Series</a></li>
+	</ul>
 </ul>
 </p>
 
@@ -157,16 +160,16 @@ ReadReclamationHDB(Parameter=Value,&period;&period;&period;)
   <tr>
    <td width=14% valign=top style='border:solid windowtext 1.0pt;
    background:silver;padding:0in 5.4pt 0in 5.4pt'>
-   <p class=RTiSWDocTableHeading><span class=command><span
+   <p class="table-heading"><span class=command><span
    style='font-family:"Arial",sans-serif'>Parameter</span></span></p>
    </td>
    <td width=70% valign=top style='border:solid windowtext 1.0pt;
    border-left:none;background:silver;padding:0in 5.4pt 0in 5.4pt'>
-   <p class=RTiSWDocTableHeading>Description</p>
+   <p class="table-heading">Description</p>
    </td>
    <td width=16% valign=top style='border:solid windowtext 1.0pt;
    border-left:none;background:silver;padding:0in 5.4pt 0in 5.4pt'>
-   <p class=RTiSWDocTableHeading>Default</p>
+   <p class="table-heading">Default</p>
    </td>
   </tr>
  </thead>
@@ -631,7 +634,39 @@ There is currently no documentation for examples.
 <hr>
 <h1 id="Troubleshooting">Troubleshooting</h1>
 
-There is currenently no troubleshooting documentation.
+<h2 id="TroubleshootingAlignmentError">Data Alignment Error for NHour Time Series</h2>
+
+<p>
+The error shown in the following figure may be generated if data were previously loaded such that the timestamp does not align with NHour interval.
+This may be due to using a version of TSTool older than 11.10.00 (which did properly handle daylight savings time for hourly and instantaneous data)
+or because multiple time series intervals are written for the same SDI.  For example, automated tests re-use the same SDI to read and write data for
+different time series intervals.  The solution is to do one of the following.
+</p>
+
+<p>
+<ul>
+<li>	Delete the bad data records in HDB.  For exmaple, use 
+	the <a href="../RunSql/RunSql.html"><span class="command">RunSql()</span> command</a> with an SQL file similar to the following
+	(<b>however, this does not seem to work.</b>):<br>
+	<pre>
+<code>/* SQL to delete all records in period of test so old data does not interfere with test */
+begin
+DELETE_R_BASE(100376,'hour',to_date('2010-03-12 00','YYYY-MM-DD HH24'),to_date('2010-03-17 00','YYYY-MM-DD HH24'),7,NULL);
+end;</code></pre></li>
+<li>	Specify the <span class="command">NHourIntervalOffset</span> commmand parameter as the expected hour offset from midnight for the first data value
+	in the hourly time series, for the HDB time zone (e.g., MST for ECAO database).  This tells TSTool to ignore all records that do not align.</li>
+</ul>
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/ReadReclamationHDB_AlignmentError.png"><br>
+<span class="figure-title">Error Generated When Database Records do not Align with NHour Interval</span></div>
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/ReadReclamationHDB_AlignmentErrorData.png"><br>
+<span class="figure-title">HDB R_HOUR Table Illustrating Extra Data Records (should have ervery 3 hour but have every 1 hour)</span></div>
+</p>
 
 <footer>
 <hr>
