@@ -149,6 +149,7 @@
 60_Command_RunSql.pdf,RunSql
 60_Command_Scale.pdf,Scale
 60_Command_SelectTimeSeries.pdf,SelectTimeSeries
+60_Command_SendEmailMessage.pdf,SendEmailMessage
 60_Command_SetAutoExtendPeriod.pdf,SetAutoExtendPeriod
 60_Command_SetAveragePeriod.pdf,SetAveragePeriod
 60_Command_SetConstant.pdf,SetConstant
