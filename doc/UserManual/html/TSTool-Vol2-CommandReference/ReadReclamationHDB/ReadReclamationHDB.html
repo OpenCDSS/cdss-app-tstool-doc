@@ -8,7 +8,7 @@
 <h1>TSTool Command Reference: ReadReclamationHDB()</h1>
 <h2>Read time series from a Reclamation HDB database (datastore)</h2>
 <p>
-<span class="version-note">Version 11.10.00, 2016-03-30</span>
+<span class="version-note">Version 11.10.01, 2016-05-02</span>
 </p>
 
 <hr>
@@ -77,8 +77,9 @@ This approach can be used when reading one or more time series in bulk.  <span c
 </p>
 
 <p>
-<div style="text-align: center;"><img src="images/ReadReclamationHDB.png"><br>
-<span class="figure-title">ReadReclamationHDB() Command Editor When Using Filters to Read 1+ Time Series</span></div>
+<div style="text-align: center; padding: 0 0 0 0;"><img src="images/ReadReclamationHDB.png"></div><br>
+<div style="text-align: right;"><span class="image-source">ReadReclamationHDB</span></div><br>
+<div style="text-align: center;"><span class="figure-title">ReadReclamationHDB() Command Editor When Using Filters to Read 1+ Time Series</span></div>
 </p>
 
 <p>
@@ -86,12 +87,13 @@ The following figure illustrates reading a single &quot;real&quot; time series (
 </p>
 
 <p>
-<div style="text-align: center;"><img src="images/ReadReclamationHDB_Real.png"><br>
-<span class="figure-title">ReadReclamationHDB() Command Editor to Read a Single Real Time Series</span></div>
+<div style="text-align: center;"><img src="images/ReadReclamationHDB_Real.png"></div><br>
+<div style="text-align: right;"><span class="image-source">ReadReclamationHDB_Real</span></div><br>
+<div style="text-align: center;"><span class="figure-title">ReadReclamationHDB() Command Editor to Read a Single Real Time Series</span></div>
 </p>
 
 <p>
-The following figure illustrates reading a single writing &quot;model&quot; time series,
+The following figure illustrates reading a single &quot;model&quot; time series,
 in which case the model parameters are specified in addition to the site and data type parameters.  There are two ways to select the MRI:
 
 <ol>
@@ -119,8 +121,8 @@ The following figure illustrates both approaches, although normally one or the o
 </p>
 
 <p>
-<div style="text-align: center;"><img src="images/ReadReclamationHDB_Model.png"><br>
-<span class="figure-title">ReadReclamationHDB() Command Editor for Single Model Time Series</span></div>
+<div style="text-align: center;"><img src="images/ReadReclamationHDB_Model.png"><br></div>
+<div><span class="figure-title">ReadReclamationHDB() Command Editor for Single Model Time Series</span></div>
 </p>
 
 <p>
@@ -531,6 +533,22 @@ ReadReclamationHDB(Parameter=Value,&period;&period;&period;)
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   background:white;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal>Must be specified if reading an ensemble. </p>
+  </td>
+ </tr>
+  <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>OutputEnsembleID</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The Ensemble ID to assign to output, which can be used with other TSTool commands.</span></p>
+  </td>
+  <td width=16% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Ensemble ID is set to the <span class="command">EnsembleName</span></p>
   </td>
  </tr>
  <tr>

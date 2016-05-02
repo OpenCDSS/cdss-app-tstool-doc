@@ -56,6 +56,15 @@ Styles for specific classes.
 	background-color: yellow;
 }
 
+/* Small notes indicating figure image source
+	text-align: right;
+*/
+.image-source {
+	font-family: "Arial", Helvetica, sans-serif;
+	font-size: 8pt;
+	align: right;
+}
+
 /* Styles for command parameter table */
 .table-command-parameter {
  	border-collapse: collapse;

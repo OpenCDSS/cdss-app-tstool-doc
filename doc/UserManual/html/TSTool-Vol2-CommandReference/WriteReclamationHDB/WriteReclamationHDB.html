@@ -18,6 +18,12 @@
 <ul>
 <li>	<a href="#Summary">Summary</a>
 <li>	<a href="#CommandEditor">Command Editor</a>
+	<ul>
+	<li>	<a href="#CommandEditorSingleReal">Command Editor for Single Real Time Series</a></li>
+	<li>	<a href="#CommandEditorGeneral">Command Editor for General Parameters and Output Properties</a></li>
+	<li>	<a href="#CommandEditorSingleModel">Command Editor for Single Model Time Series</a></li>
+	<li>	<a href="#CommandEditorEnsembleModel">Command Editor for Ensemble of Model Time Series</a></li>
+	</ul>
 <li>	<a href="#CommandParameters">Command Parameters</a>
 <li>	<a href="#Examples">Examples</a>
 <li>	<a href="#Troubleshooting">Troubleshooting</a>
@@ -159,9 +165,11 @@ Command functionality includes:
 <hr>
 <h1 id="CommandEditor">Command Editor</h1>
 
+<h2 id="CommandEditorSingleReal">Command Editor for Single Real Time Series</h2>
+
 <p>
 The following dialog is used to edit the command and illustrates the syntax of the command when writing &quot;real&quot; data,
-in which case model information in the lower panel are not specified.
+in which case model information in the lower panel are not specified.  Time series or ensemble to write are specified with <a href="#ParametersShared">shared parameters</a>.
 Currently the <code>site_name</code> and <code>site_common_name</code> are not required to be unique in HDB and therefore specifying the unique <code>site_datatype_id</code> (SDI)
 is the only way to ensure that the proper time series is being selected.
 </p>
@@ -171,8 +179,10 @@ is the only way to ensure that the proper time series is being selected.
 <span class="figure-title">WriteReclamationHDB() Command Editor for &quot;Real&quot; Time Series</span></div>
 </p>
 
+<h2 id="CommandEditorGeneral">Command Editor for General Parameters and Output Properties</h2>
+
 <p>
-The following figure illustrates general command parameters.
+The following figure illustrates <a href="#ParametersGeneral">general command parameters</a>.
 </p>
 
 <p>
@@ -181,8 +191,19 @@ The following figure illustrates general command parameters.
 </p>
 
 <p>
+The following figure illustrates <a href="#ParametersOutputProperties">output property parameters</a>.
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/WriteReclamationHDB_OutputProperties.png"><br>
+<span class="figure-title">WriteReclamationHDB() Command Editor for Output Property Parameters</span></div>
+</p>
+
+<h2 id="CommandEditorSingleModel">Command Editor for Single Model Time Series</h2>
+
+<p>
 The following figure illustrates the syntax of the command when writing &quot;model&quot; data for a single time series,
-in which case the model parameters are specified via the <span class="ui">Single model time series</span> tab.  The model run identifier can be specified in one of two ways:
+in which case the <a href="#ParametersModelSingle">model parameters</a> are specified via the <span class="ui">Single model time series</span> tab.  The model run identifier can be specified in one of two ways:
 
 <ol>
 <li type="1">	Select the MRI from the list at the bottom of the dialog
@@ -209,7 +230,10 @@ The example in the following shows parameter values for both methods for illustr
 <span class="figure-title">WriteReclamationHDB() Command Editor for Single Model Time Series</span></div>
 </p>
 
-The following figure illustrates the syntax of the command when writing an ensemble of model time series, in which case ensemble and related model parameters are specified via the
+<h2 id="CommandEditorEnsembleModel">Command Editor for Ensemble of Model Time Series</h2>
+
+The following figure illustrates the syntax of the command when writing an ensemble of model time series, in which case
+<a href="#ParametersEnsembleModel">ensemble and related model parameters</a> are specified via the
 <span class="ui">Ensemble of model time series</span> tab.
 The TSTool ensemble to write is specified with the <span class="command">TSList=EnsembleID</span> and <span class="command">EnsembleID</span>
 parameters.  In the following example a new ensemble is being written.  The time series trace number and model run date are both taken from the ensemble time series properties when the command is run.
@@ -226,7 +250,7 @@ parameters.  In the following example a new ensemble is being written.  The time
 The command syntax is as follows:
 </p>
 
-<p class="command">
+<p id="ParametersShared" class="command">
 WriteReclamationHDB(Parameter=Value,&period;&period;&period;)
 </p>
 
@@ -408,7 +432,7 @@ WriteReclamationHDB(Parameter=Value,&period;&period;&period;)
   <td width="70%" valign=top style='border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal>Use the following parameters when writing a single model
+  <p id="ParametersModelSingle" class=MsoNormal>Use the following parameters when writing a single model
   time series.</p>
   </td>
   <td width="15%" valign=top style='border-top:none;border-left:
@@ -545,7 +569,7 @@ WriteReclamationHDB(Parameter=Value,&period;&period;&period;)
   <td width="70%" valign=top style='border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal>Use the following parameters when writing an ensemble of model
+  <p id="ParametersEnsembleModel" class=MsoNormal>Use the following parameters when writing an ensemble of model
   time series.</p>
   </td>
   <td width="15%" valign=top style='border-top:none;border-left:
@@ -702,7 +726,7 @@ WriteReclamationHDB(Parameter=Value,&period;&period;&period;)
   <td width="70%" valign=top style='border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal>The following parameters are always appropriate.</p>
+  <p id="ParametersGeneral" class=MsoNormal>The following general parameters are always appropriate.</p>
   </td>
   <td width="15%" valign=top style='border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -833,6 +857,40 @@ WriteReclamationHDB(Parameter=Value,&period;&period;&period;)
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal>Use the global output period.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="15%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>&nbsp;</span></p>
+  </td>
+  <td width="70%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p id="ParametersOutputProperties" class=MsoNormal>The following output property parameters are useful for controlling workflow.</p>
+  </td>
+  <td width="15%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>&nbsp;</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="15%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>EnsembleIDProperty</span></p>
+  </td>
+  <td width="70%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The value of <code>HDB_REF_ENSEMBLE.ENSEMBLE_ID</code> will be assigned to the property.
+  This is useful for automated tests to allow direct database queries to verify that the ensemble was written.
+  </p>
+  </td>
+  <td width="15%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>No property value is assigned.</p>
   </td>
  </tr>
 </table>
