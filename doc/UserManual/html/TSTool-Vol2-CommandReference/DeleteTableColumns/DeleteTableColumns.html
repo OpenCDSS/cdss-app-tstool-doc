@@ -1,0 +1,156 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../include/TSTool-UserManual.css">
+<title>TSTool Command Reference:  DeleteTableColumns()</title>
+</head>
+
+<body>
+<h1>TSTool Command Reference: DeleteTableColumns()</h1>
+<h2>Delete 1+ columns from a table</h2>
+<p>
+<span class="version-note">Version 11.10.00, 2016-05-25</span>
+</p>
+
+<hr>
+<h1>Contents</h1>
+
+<p>
+<ul>
+<li>	<a href="#Summary">Summary</a>
+<li>	<a href="#CommandEditor">Command Editor</a>
+<li>	<a href="#CommandParameters">Command Parameters</a>
+<li>	<a href="#Examples">Examples</a>
+<li>	<a href="#Troubleshooting">Troubleshooting</a>
+</ul>
+</p>
+
+<hr>
+<h1 id="Summary">Summary</h1>
+
+<p>
+The <span class="command">DeleteTableColumns()</span> deletes specified columns from a table.
+</p>
+
+<hr>
+<h1 id="CommandEditor">Command Editor</h1>
+
+<p>
+The following dialog is used to edit the command and illustrates the syntax of the command.
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/DeleteTableColumns.png"><br>
+<span class="figure-title">DeleteTableColumns() Command Editor</span></div>
+</p>
+
+<hr>
+<h1 id="CommandParameters">Command Parameters</h1>
+
+<p>
+The command syntax is as follows:
+</p>
+
+<p class="command">
+DeleteTableColumns(Parameter=Value,&period;&period;&period;)
+</p>
+
+<div>
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  background:silver;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=RTiSWDocTableHeading>Parameter</p>
+  </td>
+  <td width=70% valign=top style='border:solid windowtext 1.0pt;
+  border-left:none;background:silver;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=RTiSWDocTableHeading>Description</p>
+  </td>
+  <td width=16% valign=top style='gborder:solid windowtext 1.0pt;
+  border-left:none;background:silver;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=RTiSWDocTableHeading>Default</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>TableID</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The table identifier for the table to process.  Can specify with <span class="command">${Property}</span>.
+  </p>
+  </td>
+  <td width=16% valign=top style='gborder-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>None - must be specified.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=14% valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>DeleteColumns</span></p>
+  </td>
+  <td width=70% valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The names of columns to delete, separated by commas.
+  Can use <span class="command">${Property}</span> to specify column names.</p>
+  </td>
+  <td width=16% valign=top style='gborder-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>None - must be specified.</p>
+  </td>
+ </tr>
+</table>
+</div>
+
+<hr>
+<h1 id="Examples">Examples</h1>
+
+<p>
+A simple comma-separated-value data file is as follows and can be read with <span class="command">ReadTableFromDelimitedFile()</span>:
+</p>
+
+<pre><code>
+# Simple table for testing
+"string1","double1","integer1"
+"String1",1.0,1
+"String2",2.0,2
+"String3",3.0,3
+</code>
+</pre>
+
+<p>
+The command file to read the above file remove the last two columns is as follows:
+</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+<td>
+<tr>
+<td>
+<pre><code>
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="testtable.csv")
+DeleteTableColumns(TableID="Table1",DeleteColumns="double1,integer1")
+</code>
+</pre>
+</td>
+</tr>
+</td>
+</table>
+
+<hr>
+<h1 id="Troubleshooting">Troubleshooting</h1>
+
+There is currently no troubleshooting documentation.
+
+<footer>
+<hr>
+<p></p>
+</footer>
+</body>
+</html>
