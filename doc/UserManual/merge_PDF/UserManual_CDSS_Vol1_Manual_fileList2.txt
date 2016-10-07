@@ -13,6 +13,7 @@
 29_Troubleshooting.pdf,8 - Troubleshooting
 33_QualityControl.pdf,9 - Quality Control
 35_SpreadsheetIntegration.pdf,10 - Spreadsheet Integration
+38_ModelFrameworkIntegration.pdf,11 - Model Framework Integration
 80_Appendix_Install_Config_CDSS.pdf,Appendix - Installation and Configuration
 85_Appendix_RunningTSTool.pdf,Appendix - Running TSTool in Various Modes
 95_Appendix_TSView.pdf,Appendix - TSView - Time Series Viewing Tools
