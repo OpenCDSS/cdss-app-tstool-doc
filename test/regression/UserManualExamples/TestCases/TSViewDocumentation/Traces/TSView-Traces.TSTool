@@ -1,0 +1,5 @@
+# Command file used to generate the graphic for the TSView Traces section
+# 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR, CO.
+08236000.DWR.Streamflow.Month~HydroBase
+CreateEnsembleFromOneTimeSeries(TSID="08236000.DWR.Streamflow.Month",TraceLength=1Year,EnsembleID="Ensemble",ShiftDataHow=ShiftToReference)
+ProcessTSProduct(TSProductFile="TSView-Traces.tsp",View=True)

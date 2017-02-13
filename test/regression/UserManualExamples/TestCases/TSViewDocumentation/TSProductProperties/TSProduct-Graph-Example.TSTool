@@ -1,0 +1,8 @@
+# Command file used to generate the graphic for the TSProduct graph example
+# 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR, CO.
+# USC00050125 - ALAMOSA
+USC00050125.NOAA.Precip.Month~HydroBase
+08236000.DWR.Streamflow.Month~HydroBase
+# 08236500 - ALAMOSA RIVER BELOW TERRACE RESERVOIR, CO.
+08236500.DWR.Streamflow.Month~HydroBase
+ProcessTSProduct(TSProductFile="TSProduct-Graph-Example.tsp")

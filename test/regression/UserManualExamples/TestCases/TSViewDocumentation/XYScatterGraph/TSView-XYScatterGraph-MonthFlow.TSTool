@@ -1,0 +1,5 @@
+# Command file used to generate the graphic for the TSView XY scatter graph example
+# 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR, CO.
+08236000.DWR.Streamflow.Month~HydroBase
+# 08236500 - ALAMOSA RIVER BELOW TERRACE RESERVOIR, CO.
+08236500.DWR.Streamflow.Month~HydroBase

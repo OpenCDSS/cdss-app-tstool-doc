@@ -13,7 +13,7 @@ BarPosition = "CenteredOnDate"
 [Data 1.1]
 
 Color = "Blue"
-TSID = "7337.NOAA.Precip.Month~HydroBase"
+TSID = "USC00057337.NOAA.Precip.Month~HydroBase"
 
 [SubProduct 2]
 
