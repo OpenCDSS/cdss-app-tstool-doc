@@ -166,6 +166,7 @@
 60_Command_SetOutputYearType.pdf,SetOutputYearType
 60_Command_SetPatternFile.pdf,SetPatternFile
 60_Command_SetProperty.pdf,SetProperty
+60_Command_SetPropertyFromEnsemble.pdf,SetPropertyFromEnsemble
 60_Command_SetPropertyFromTable.pdf,SetPropertyFromTable
 60_Command_SetPropertyFromTimeSeries.pdf,SetPropertyFromTimeSeries
 60_Command_SetTableValues.pdf,SetTableValues
