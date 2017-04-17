@@ -20,6 +20,7 @@
 60_Command_CalculateTimeSeriesStatistic.pdf,CalculateTimeSeriesStatistic
 60_Command_ChangeInterval.pdf,ChangeInterval
 60_Command_ChangePeriod.pdf,ChangePeriod
+60_Command_ChangeTimeZone.pdf,ChangeTimeZone
 60_Command_CheckTimeSeries.pdf,CheckTimeSeries
 60_Command_CheckTimeSeriesStatistic.pdf,CheckTimeSeriesStatistic
 60_Command_CloseDataStore.pdf,CloseDataStore
@@ -40,6 +41,8 @@
 60_Command_CreateTimeSeriesEventTable.pdf,CreateTimeSeriesEventTable
 60_Command_Cumulate.pdf,Cumulate
 60_Command_DeleteDataStoreTableRows.pdf,DeleteDataStoreTableRows
+60_Command_DeleteTableColumns.pdf,DeleteTableColumns
+60_Command_DeleteTableRows.pdf,DeleteTableRows
 60_Command_Delta.pdf,Delta
 60_Command_DeselectTimeSeries.pdf,DeselectTimeSeries
 60_Command_Disaggregate.pdf,Disaggregate

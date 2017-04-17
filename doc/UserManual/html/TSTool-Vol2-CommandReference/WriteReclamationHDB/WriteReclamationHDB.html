@@ -8,7 +8,7 @@
 <h1>TSTool Command Reference: WriteReclamationHDB()</h1>
 <h2>Write time series to a Reclamation HDB database (datastore)</h2>
 <p>
-<span class="version-note">Version 11.09.02, 2016-03-24</span>
+<span class="version-note">Version 12.00.00, 2017-04-16</span>
 </p>
 
 <hr>
@@ -81,7 +81,8 @@ Command functionality includes:
 <li>	<b>Updating time series records:</b>
 	<ul>
 	<li>Time series data records for an existing time series will be updated if previously written.
-	The values in the write period are not removed before writing.  <span class="highlight">It would be useful to have the ability to write null or a missing value in the database</span>.
+	The values in the write period are not removed before writing.  <span class="highlight">It would be useful to have the ability
+	to write null or a missing value in the database or delete values before writing</span>.
 	</li>
 	</ul>
 <li> 	<b>Missing data:</b>
@@ -115,9 +116,9 @@ Command functionality includes:
 		is required as of TSTool 11.09.02 (it was optional prior to this version).  If the time zone for the data are different from the database,
 		the HDB <code>WRITE_TO_HDB</code> stored procedure will adjust the data in the database to store as the database time zone.
 		It is the user&apos;s responsibility to verify that the correct time zone is being provided to the <span class="command">WriteReclamationHDB</span> command.
-		It is strongly recommended that standard time be used for time series data and if possible use the same time zone as the database.
+		<b>It is strongly recommended that standard time be used for time series data and if possible use the same time zone as the database.
 		A daylight savings time zone such as MDT or PDT could be used for a time series period that is entirely in that zone; however,
-		switching between standard and daylight savings time in time series leads to confusion.
+		switching between standard and daylight savings time in time series leads to confusion</b>.
 	</li>
 	</ul>
 <li>	<b>HDB data table:</b>
@@ -131,16 +132,24 @@ Command functionality includes:
 	</ul>
 <li>	<b>HDB database procedure:</b>
 	<ul>
-	<li>	The HDB <code>WRITE_TO_HDB</code> stored procedure is used to write individual time series data records:
+	<li>	The write procedure is controlled by the <code>WriteProcedure</code> command parameter.
+		If <code>WriteProcedure=WRITE_DATA</code>, then the new HDB <code>TS_XFER.WRITE_REAL_DATA</code> and
+		<code>TS_XFER.WRITE_MODEL_DATA</code> stored procedures are used to write the data.  These procedures take arrays for the date/times and values,
+		and consequently are faster.
+		If <code>WriteProcedure=OLD_WRITE_TO_HDB</code>, then the legacy HDB <code>WRITE_TO_HDB</code> stored procedure
+		is used to write individual time series data records.  This has the disadvantage of higher overhead.
+		For the legacy and new procedures:
 		<ul>
 		<li>	The time series is written to a model time series table if model parameters are specified.
 		</li>
 		<li>	The model run date, for single time series and ensembles, is truncated to minutes in time series identifiers and for query purposes.
+			In general, however, current software functionality uses the site datatype identifier (SDI) and model run identifier (MRI)
+			rather than the text versions of identifiers.
 		</li>
 		</ul>
 	</li>
 	<li>	When writing ensembles, the HDB procedure <code>ENSEMBLE.GET_TSTOOL_ENSEMBLE_MRI</code> is used to determine the model run identifier
-		corresponding to model time series and then the <code>WRITE_TO_HDB</code> procedure (above) is used to write data records:
+		corresponding to model time series and then the data-writing procedures (above) are used to write data records:
 		<ul>
 		<li>	The ensemble name is determined from the <span class="command">EnsembleName</span> parameter (or NewEsembleName</span> parameter if creating a new ensemble).
 			Existing names can be selected or a new name can be specified.
@@ -197,6 +206,15 @@ The following figure illustrates <a href="#ParametersOutputProperties">output pr
 <p>
 <div style="text-align: center;"><img src="images/WriteReclamationHDB_OutputProperties.png"><br>
 <span class="figure-title">WriteReclamationHDB() Command Editor for Output Property Parameters</span></div>
+</p>
+
+<p>
+The following figure illustrates <a href="#ParametersDeveloper">developer property parameters</a>.
+</p>
+
+<p>
+<div style="text-align: center;"><img src="images/WriteReclamationHDB_Developer.png"><br>
+<span class="figure-title">WriteReclamationHDB() Command Editor for Developer Property Parameters</span></div>
 </p>
 
 <h2 id="CommandEditorSingleModel">Command Editor for Single Model Time Series</h2>
@@ -743,13 +761,61 @@ WriteReclamationHDB(Parameter=Value,&period;&period;&period;)
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal>The agency abbreviation (e.g., <span
-  class=command>USBR</span>) for data records written to the
-  database.</p>
+  class=command>USBR</span>) or agency name for data records written to the
+  database.  The user interface will show question marks if abbreviation is not known.</p>
   </td>
   <td width="15%" valign=top style='border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal>No agency is indicated in database.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="15%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>CollectionSystem</span></p>
+  </td>
+  <td width="70%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The collection system name.</p>
+  </td>
+  <td width="15%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><code>See loading application</code></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="15%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>Computation</span></p>
+  </td>
+  <td width="70%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The computation name.</p>
+  </td>
+  <td width="15%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><code>unknown</code></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="15%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>Method</span></p>
+  </td>
+  <td width="70%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>The method used to generate data.</p>
+  </td>
+  <td width="15%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><code>unknown</code></p>
   </td>
  </tr>
  <tr>
@@ -810,7 +876,8 @@ WriteReclamationHDB(Parameter=Value,&period;&period;&period;)
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal>Three-letter time zone abbreviation for the time series
-  data records written to the database, consistent with HDB time zones.
+  data records written to the database, used if the time series does not supply a time zone.
+  The time zone should be consistent with HDB time zones.
   Specifying helps ensure that the timestamp on time series data is properly
   handled.  It is recommended that time series data use a standard time zone
   and not daylight savings time.</p>
@@ -859,6 +926,18 @@ WriteReclamationHDB(Parameter=Value,&period;&period;&period;)
   <p class=MsoNormal>Use the global output period.</p>
   </td>
  </tr>
+ <tr>
+  <td width="15%" valign=top style='border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span class=command>WriteProcedure</span></p>
+  </td>
+  <td width="70%" valign=top style='border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Indicates which stored procedure should be used to write data to HDB.
+  <code>OLD_WRITE_TO_HDB</code> will use the old write procedure, which is slow.
+  <code>WRITE_DATA</code> uses the <code>TS_XFER</code> package.</p>
+  </td>
  <tr>
   <td width="15%" valign=top style='border:solid windowtext 1.0pt;
   border-top:none;background:#BFBFBF;padding:0in 5.4pt 0in 5.4pt'>
