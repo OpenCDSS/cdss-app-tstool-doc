@@ -231,4 +231,5 @@
 60_Command_WriteTimeSeriesToJson.pdf,WriteTimeSeriesToJson
 60_Command_WriteTimeSeriesToKml.pdf,WriteTimeSeriesToKml
 60_Command_WriteWaterML.pdf,WriteWaterML
+60_Command_WriteWaterML2.pdf,WriteWaterML2
 99_TSTool_Spine_CDSS_CommandReference.pdf,Binder Spine
