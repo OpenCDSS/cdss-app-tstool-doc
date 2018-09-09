@@ -3,9 +3,11 @@
 This repository contains the legacy Word/PDF TSTool software documentation,
 including user manual, training materials, and a variety of developer resources.
 
-**This documentation is being phased out in favor of new
-Markdown/MkDocs documentation (see the developer and user documentation below).
+**This documentation is being phased out in favor of new Markdown/MkDocs documentation.
 In general, do not edit this documentation and only use as a reference when migrating into the newer format.**
+See the
+[TSTool Developer Documentation](https://github.com/OpenWaterFoundation/cdss-app-tstool-doc-dev) and
+[TSTool User Documentation](https://github.com/OpenWaterFoundation/cdss-app-tstool-doc-user) repositories.
 
 See the following online resources:
 
