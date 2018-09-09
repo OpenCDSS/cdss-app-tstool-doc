@@ -86,7 +86,7 @@ See also the [OpenCDSS / TSTool protocols](http://learn.openwaterfoundation.org/
 ## License ##
 
 A license for the software is being determined as part of the OpenCDSS project.
-GPL 3.0 has been recommended.
+A Creative Commons license has been recommended.
 
 ## Contact ##
 
