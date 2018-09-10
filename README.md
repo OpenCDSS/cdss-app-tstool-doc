@@ -12,7 +12,7 @@ See the
 See the following online resources:
 
 * [CDSS](http://cdss.state.co.us)
-* [OpenCDSS](http://learn.openwaterfoundation.org/cdss-emod-dev/)
+* [OpenCDSS](http://learn.openwaterfoundation.org/cdss-website-opencdss/)
 * [TSTool Developer Documentation](http://learn.openwaterfoundation.org/cdss-app-tstool-doc-dev/)
 * [TSTool User Documentation](http://learn.openwaterfoundation.org/cdss-app-tstool-doc-user/)
 
