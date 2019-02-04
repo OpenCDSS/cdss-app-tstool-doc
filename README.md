@@ -56,7 +56,8 @@ Repository dependencies fall into two categories as indicated below.
 
 ### TSTool Documentation Repository Dependencies ###
 
-None, although more information will be added here later about PDF merge utilities.
+None, although more information may be added here later about PDF merge utilities.
+Such utilities are no longer needed given that this documentation is no longer used.
 
 ### Repositories that Depend on This Repository ###
 
@@ -76,17 +77,17 @@ Contributions to this project can be submitted using the following options:
 1. TSTool software developers with commit privileges can write to this repository
 as per normal OpenCDSS development protocols.
 2. Post an issue on GitHub with suggested change.  Provide information using the issue template.
-3. Email a development contact.
-4. Fork the repository, make changes, and do a pull request.
-Contents of the current master branch should be merged with the fork to minimize
-code review before committing the pull request.
+3. Fork the repository, make changes, and do a pull request.
 
 See also the [OpenCDSS / TSTool protocols](http://learn.openwaterfoundation.org/cdss-website-opencdss/tstool/tstool/).
 
 ## License ##
 
-A license for the software is being determined as part of the OpenCDSS project.
-A Creative Commons license has been recommended.
+This documentation is released under the Creative Commons Attribution 4.0 International License (CC BY 4.0).  See the [LICENSE.md](LICENSE.md) file.
+
+The TSTool software is released under the GPL v3 license.
+This legacy documentation has not been updated to reflect this,
+given that a new version of the documentation is available.
 
 ## Contact ##
 
